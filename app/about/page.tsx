@@ -146,7 +146,7 @@ export default function AboutPage() {
             <div>
               <h2 className="text-4xl md:text-5xl font-bold text-[#1A1A1A] mb-8">Our Leadership</h2>
               <p className="text-gray-500 text-lg leading-relaxed mb-8">
-                SalHurry is led by <span className="text-black font-bold">Kasi</span> and <span className="text-black font-bold">Karthik DS, Akhijith Raj</span>, co-founders and growth architects under DiveGrid Private Limited.
+                SalHurry is led by <span className="text-black font-bold">Kasinathan, Karthik DS</span> and <span className="text-black font-bold">Akhijith Raj</span>, co-founders and growth architects under DiveGrid Private Limited.
               </p>
               <p className="text-gray-500 text-lg leading-relaxed mb-8">
                 With experience leading operations, strategy, and execution teams across multiple industries, the founders bring structured thinking and performance discipline into every engagement.
