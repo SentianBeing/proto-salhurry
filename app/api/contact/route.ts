@@ -54,7 +54,7 @@ export async function POST(req: NextRequest) {
 
     const { data, error } = await resend.emails.send({
       from: process.env.EMAIL_FROM || 'onboarding@resend.dev',
-      to: process.env.EMAIL_TO || 'salhurry@gmail.com',
+      to: process.env.EMAIL_TO || 'karthikdude0022@gmail.com',
       subject: `New Contact Form Submission: ${projectType} from ${name}`,
       text: `
         Name: ${name}

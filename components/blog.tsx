@@ -5,28 +5,41 @@ import Image from 'next/image';
 import { motion } from 'motion/react';
 import { ArrowRight } from 'lucide-react';
 
-const posts = [
+const defaultPosts = [
   {
     title: '5 things you should know in Figma',
     desc: 'As a UI/UX designer, of course you shouldn&apos;t be unaware of these 5 things...',
     tag: 'Design',
-    image: 'https://picsum.photos/600/800?random=50'
+    image: 'https://picsum.photos/600/800?random=50',
+    slug: '#'
   },
   {
     title: 'Building best practice for skill',
     desc: 'Do you feel like your skills are lacking? Let&apos;s find out how to improve your skill...',
     tag: 'Skill',
-    image: 'https://picsum.photos/600/800?random=51'
+    image: 'https://picsum.photos/600/800?random=51',
+    slug: '#'
   },
   {
     title: 'Front end developer guide',
     desc: 'As a beginner, you should know the first steps when becoming a front end deve...',
     tag: 'Developer',
-    image: 'https://picsum.photos/600/800?random=52'
+    image: 'https://picsum.photos/600/800?random=52',
+    slug: '#'
   }
 ];
 
-export default function Blog() {
+export default function Blog({ initialPosts = [] }: { initialPosts?: any[] }) {
+  const posts = initialPosts.length > 0
+    ? initialPosts.map((post) => ({
+      title: post.title,
+      desc: post.excerpt,
+      tag: post.categories?.[0]?.title || 'Blog',
+      image: post.coverImage || 'https://picsum.photos/600/800?random=50',
+      slug: `/blog/${post.slug}`
+    }))
+    : defaultPosts;
+
   return (
     <section className="px-4 sm:px-6 md:px-12 max-w-7xl mx-auto py-12 sm:py-24">
       <div className="bg-[#1A1A1A] rounded-[40px] sm:rounded-[60px] p-6 sm:p-12 md:p-20">
@@ -49,7 +62,7 @@ export default function Blog() {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
           {posts.map((post, i) => (
-            <motion.div 
+            <motion.div
               key={i}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -58,7 +71,7 @@ export default function Blog() {
               className="group cursor-pointer"
             >
               <div className="relative h-[350px] sm:h-[400px] rounded-[30px] sm:rounded-[40px] overflow-hidden mb-6 sm:mb-8">
-                <Image 
+                <Image
                   src={post.image}
                   alt={post.title}
                   fill
@@ -66,7 +79,7 @@ export default function Blog() {
                   referrerPolicy="no-referrer"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
-                
+
                 <div className="absolute bottom-8 left-8 right-8">
                   <span className="inline-block px-3 py-1 bg-white/10 backdrop-blur-md rounded-full text-[10px] uppercase tracking-widest text-white mb-4">
                     {post.tag}
@@ -77,9 +90,9 @@ export default function Blog() {
                   <p className="text-xs text-gray-400 leading-relaxed line-clamp-2 mb-4">
                     {post.desc}
                   </p>
-                  <button className="flex items-center gap-2 text-white text-xs font-bold group/btn">
+                  <a href={post.slug} className="flex items-center gap-2 text-white text-xs font-bold group/btn">
                     Learn more <ArrowRight className="w-3 h-3 group-hover/btn:translate-x-1 transition-transform" />
-                  </button>
+                  </a>
                 </div>
               </div>
             </motion.div>

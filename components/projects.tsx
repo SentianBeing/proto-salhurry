@@ -5,13 +5,14 @@ import Image from 'next/image';
 import { motion } from 'motion/react';
 import { ArrowRight } from 'lucide-react';
 
-const projects = [
+const defaultProjects = [
   {
     title: 'Paperplane Wedding Studio',
     desc: 'We helped them grow their online visibility on Instagram through organic reach and trending strategies. We also handled branding and UI/UX design. Paperplane is a luxury wedding photography company in Kerala.',
     image: 'https://res.cloudinary.com/der2xk0cv/image/upload/v1772204480/rishi0_1_-AJivLpPK_bfnlgh.jpg',
     color: 'bg-[#F3F4F6]',
-    btnColor: 'border border-gray-200 text-black'
+    btnColor: 'border border-gray-200 text-black',
+    slug: '#'
   },
   {
     title: 'Jones Gym App',
@@ -20,25 +21,47 @@ const projects = [
     color: 'bg-[#1A1A1A]',
     textColor: 'text-white',
     descColor: 'text-gray-400',
-    btnColor: 'bg-[#A3E635] text-black'
+    btnColor: 'bg-[#A3E635] text-black',
+    slug: '#'
   },
   {
     title: 'Sigma Sands',
     desc: 'A construction and mining giant. We provided total branding, ERP setup, and secured investments. Our work included lead generation and sales as a service for their Sigma Rocks division.',
     image: 'https://res.cloudinary.com/der2xk0cv/image/upload/v1772207119/051737f6-fec7-4d05-9dbb-3c10f65d12cf_wu1bl6.png',
     color: 'bg-[#F3F4F6]',
-    btnColor: 'border border-gray-200 text-black'
+    btnColor: 'border border-gray-200 text-black',
+    slug: '#'
   },
   {
     title: 'Transindia Cooling Solutions',
     desc: 'An HVAC Contracting Company. We implemented a complete digital transformation including marketing, sales lead generation setup, and custom website development.',
     image: 'https://res.cloudinary.com/der2xk0cv/image/upload/v1772208495/Screenshot_2026-02-27_213719_nxaxrs.png',
     color: 'bg-[#F3F4F6]',
-    btnColor: 'border border-gray-200 text-black'
+    btnColor: 'border border-gray-200 text-black',
+    slug: '#'
   }
 ];
 
-export default function Projects() {
+const colorVariants = [
+  { color: 'bg-[#F3F4F6]', btnColor: 'border border-gray-200 text-black', textColor: 'text-black', descColor: 'text-gray-500' },
+  { color: 'bg-[#1A1A1A]', btnColor: 'bg-[#A3E635] text-black', textColor: 'text-white', descColor: 'text-gray-400' },
+];
+
+export default function Projects({ initialCaseStudies = [] }: { initialCaseStudies?: any[] }) {
+  const projects = initialCaseStudies.length > 0
+    ? initialCaseStudies.map((study, index) => {
+      // Apply alternate coloring to maintain existing design aesthetic
+      const variant = colorVariants[index % colorVariants.length];
+      return {
+        title: study.title,
+        desc: study.industry ? `${study.clientName} (${study.industry})` : study.clientName || 'Case Study',
+        image: study.coverImage || 'https://res.cloudinary.com/der2xk0cv/image/upload/v1772204480/rishi0_1_-AJivLpPK_bfnlgh.jpg',
+        slug: `/case-studies/${study.slug}`,
+        ...variant
+      };
+    })
+    : defaultProjects;
+
   return (
     <section className="px-6 md:px-12 max-w-7xl mx-auto py-24">
       <div className="text-center mb-16">
@@ -55,7 +78,7 @@ export default function Projects() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         {projects.map((project, i) => (
-          <motion.div 
+          <motion.div
             key={i}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -64,7 +87,7 @@ export default function Projects() {
             className={`${project.color} p-8 sm:p-12 rounded-[40px] flex flex-col gap-8`}
           >
             <div className="relative h-[250px] sm:h-[350px] rounded-[30px] overflow-hidden">
-              <Image 
+              <Image
                 src={project.image}
                 alt={project.title}
                 fill
@@ -79,9 +102,9 @@ export default function Projects() {
               <p className={`text-sm leading-relaxed ${project.descColor || 'text-gray-500'}`}>
                 {project.desc}
               </p>
-              <button className={`px-6 py-3 rounded-full font-bold text-xs flex items-center gap-2 w-fit hover:opacity-80 transition-all ${project.btnColor}`}>
+              <a href={project.slug} className={`px-6 py-3 rounded-full font-bold text-xs flex items-center gap-2 w-fit hover:opacity-80 transition-all ${project.btnColor}`}>
                 Learn More <ArrowRight className="w-4 h-4" />
-              </button>
+              </a>
             </div>
           </motion.div>
         ))}

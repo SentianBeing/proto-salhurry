@@ -36,22 +36,22 @@ export default function Navbar() {
     <nav className="relative z-50 flex items-center justify-between py-6 px-6 md:px-12 max-w-7xl mx-auto w-full">
       <div className="flex items-center gap-2">
         <div className="relative w-32 h-10">
-          <Image 
-            src="https://res.cloudinary.com/der2xk0cv/image/upload/v1768468698/eOOLuJEvTLWEYPDnDVB5EtBMEw_b1c3a0.svg" 
-            alt="Salhurry Logo" 
-            fill 
+          <Image
+            src="https://res.cloudinary.com/der2xk0cv/image/upload/v1768468698/eOOLuJEvTLWEYPDnDVB5EtBMEw_b1c3a0.svg"
+            alt="Salhurry Logo"
+            fill
             className="object-contain"
             referrerPolicy="no-referrer"
           />
         </div>
       </div>
-      
+
       {/* Desktop Menu */}
       <div className="hidden md:flex items-center gap-8 text-sm font-medium text-gray-400">
         <Link href="/" className="text-white hover:text-[#A3E635] transition-colors">Home</Link>
-        
+
         {/* Services Dropdown Trigger */}
-        <div 
+        <div
           className="relative group py-2"
           onMouseEnter={() => setIsServicesHovered(true)}
           onMouseLeave={() => setIsServicesHovered(false)}
@@ -76,9 +76,9 @@ export default function Navbar() {
                     <p className="text-[10px] uppercase tracking-widest text-gray-400 font-bold mb-8">Services</p>
                     <div className="flex flex-col gap-6">
                       {servicesList.map((service) => (
-                        <Link 
-                          key={service.name} 
-                          href={service.href} 
+                        <Link
+                          key={service.name}
+                          href={service.href}
                           className="text-lg font-bold text-gray-800 hover:text-[#A3E635] transition-colors"
                         >
                           {service.name}
@@ -92,10 +92,10 @@ export default function Navbar() {
                     {featuredServices.map((item, idx) => (
                       <div key={idx} className="group/item cursor-pointer">
                         <div className="relative h-40 rounded-2xl overflow-hidden mb-4">
-                          <Image 
-                            src={item.image} 
-                            alt={item.title} 
-                            fill 
+                          <Image
+                            src={item.image}
+                            alt={item.title}
+                            fill
                             className="object-cover transition-transform duration-500 group-hover/item:scale-110"
                             referrerPolicy="no-referrer"
                           />
@@ -116,15 +116,15 @@ export default function Navbar() {
       </div>
 
       <div className="flex items-center gap-4">
-        <button 
+        <button
           onClick={openModal}
           className="hidden md:block px-6 py-2 border border-white/20 text-white rounded-full text-sm font-medium hover:bg-white hover:text-black transition-all"
         >
           Contact Us
         </button>
-        
+
         {/* Mobile Menu Toggle */}
-        <button 
+        <button
           className="md:hidden p-2 text-white"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
         >
@@ -150,7 +150,7 @@ export default function Navbar() {
             </div>
             <Link href="#" className="text-lg font-medium text-gray-600" onClick={() => setIsMenuOpen(false)}>Project</Link>
             <Link href="/about" className="text-lg font-medium text-gray-600" onClick={() => setIsMenuOpen(false)}>About Us</Link>
-            <button 
+            <button
               onClick={() => {
                 setIsMenuOpen(false);
                 openModal();

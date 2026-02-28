@@ -12,9 +12,9 @@ export default function AboutPage() {
         {/* Neon Smudge Effect */}
         <div className="absolute top-[-10%] left-[-10%] w-[60%] h-[60%] bg-[#2D3321] blur-[120px] rounded-full opacity-40 pointer-events-none"></div>
         <div className="absolute bottom-[20%] right-[-5%] w-[40%] h-[40%] bg-[#1A1C18] blur-[100px] rounded-full opacity-30 pointer-events-none"></div>
-        
+
         <Navbar />
-        
+
         <div className="px-6 md:px-12 max-w-7xl mx-auto pt-20">
           <div className="max-w-3xl">
             <span className="inline-block px-4 py-1 border border-white/10 rounded-full text-[10px] uppercase tracking-widest text-[#A3E635] mb-6">
@@ -35,7 +35,7 @@ export default function AboutPage() {
       <section className="py-24 px-6 md:px-12 max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <div className="relative h-[400px] md:h-[600px] rounded-[40px] overflow-hidden shadow-2xl">
-            <Image 
+            <Image
               src="https://picsum.photos/seed/about-team/800/1000"
               alt="Our Team"
               fill
@@ -135,7 +135,7 @@ export default function AboutPage() {
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div className="relative h-[500px] rounded-[40px] overflow-hidden">
-              <Image 
+              <Image
                 src="https://picsum.photos/seed/leadership/800/1000"
                 alt="Leadership"
                 fill
@@ -146,7 +146,7 @@ export default function AboutPage() {
             <div>
               <h2 className="text-4xl md:text-5xl font-bold text-[#1A1A1A] mb-8">Our Leadership</h2>
               <p className="text-gray-500 text-lg leading-relaxed mb-8">
-                SalHurry is led by <span className="text-black font-bold">Karthik Kasi</span> and <span className="text-black font-bold">Karthik</span>, co-founders and growth architects under DiveGrid Private Limited.
+                SalHurry is led by <span className="text-black font-bold">Kasi</span> and <span className="text-black font-bold">Karthik DS, Akhijith Raj</span>, co-founders and growth architects under DiveGrid Private Limited.
               </p>
               <p className="text-gray-500 text-lg leading-relaxed mb-8">
                 With experience leading operations, strategy, and execution teams across multiple industries, the founders bring structured thinking and performance discipline into every engagement.
