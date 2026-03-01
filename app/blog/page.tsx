@@ -9,7 +9,7 @@ export const metadata = {
     description: 'Latest insights, updates, and news from SalHurry.',
 };
 
-export const revalidate = 60; // Revalidate every 60 seconds
+export const dynamic = 'force-dynamic'; // Always fetch fresh data from Sanity
 
 export default async function BlogListingPage() {
     const blogs = await sanityClient.fetch(allBlogsQuery);

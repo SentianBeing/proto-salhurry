@@ -9,11 +9,12 @@ import { blogBySlugQuery } from '@/lib/sanity.queries';
 export const revalidate = 60; // Revalidate every 60 seconds
 
 type Props = {
-    params: { slug: string };
+    params: Promise<{ slug: string }>;
 };
 
 export async function generateMetadata({ params }: Props) {
-    const blog = await sanityClient.fetch(blogBySlugQuery, { slug: params.slug });
+    const { slug } = await params;
+    const blog = await sanityClient.fetch(blogBySlugQuery, { slug });
     if (!blog) return { title: 'Not Found' };
 
     return {
@@ -68,7 +69,8 @@ const portableTextComponents = {
 };
 
 export default async function BlogDetailPage({ params }: Props) {
-    const blog = await sanityClient.fetch(blogBySlugQuery, { slug: params.slug });
+    const { slug } = await params;
+    const blog = await sanityClient.fetch(blogBySlugQuery, { slug });
 
     if (!blog) {
         notFound();

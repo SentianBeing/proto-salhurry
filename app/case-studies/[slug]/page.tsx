@@ -9,11 +9,12 @@ import { caseStudyBySlugQuery } from '@/lib/sanity.queries';
 export const revalidate = 60; // Revalidate every 60 seconds
 
 type Props = {
-    params: { slug: string };
+    params: Promise<{ slug: string }>;
 };
 
 export async function generateMetadata({ params }: Props) {
-    const caseStudy = await sanityClient.fetch(caseStudyBySlugQuery, { slug: params.slug });
+    const { slug } = await params;
+    const caseStudy = await sanityClient.fetch(caseStudyBySlugQuery, { slug });
     if (!caseStudy) return { title: 'Not Found' };
 
     return {
@@ -60,7 +61,8 @@ const portableTextComponents = {
 };
 
 export default async function CaseStudyDetailPage({ params }: Props) {
-    const caseStudy = await sanityClient.fetch(caseStudyBySlugQuery, { slug: params.slug });
+    const { slug } = await params;
+    const caseStudy = await sanityClient.fetch(caseStudyBySlugQuery, { slug });
 
     if (!caseStudy) {
         notFound();

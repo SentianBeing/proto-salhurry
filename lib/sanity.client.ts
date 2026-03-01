@@ -8,5 +8,5 @@ export const sanityClient = createClient({
     projectId,
     dataset,
     apiVersion,
-    useCdn: true, // `false` if you want to ensure fresh data
+    useCdn: false, // `false` to ensure fresh data instantly bypasses edge cache
 });

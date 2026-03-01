@@ -12,6 +12,8 @@ import Footer from '@/layouts/footer';
 import { sanityClient } from '@/lib/sanity.client';
 import { latestBlogsQuery, allCaseStudiesQuery } from '@/lib/sanity.queries';
 
+export const revalidate = 60; // Revalidate the homepage periodically
+
 export default async function Home() {
   const latestBlogs = await sanityClient.fetch(latestBlogsQuery, { limit: 3 });
   const allCaseStudies = await sanityClient.fetch(allCaseStudiesQuery);
