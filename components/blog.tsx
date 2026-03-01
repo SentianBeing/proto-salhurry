@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { motion } from 'motion/react';
 import { ArrowRight } from 'lucide-react';
 
@@ -70,7 +71,7 @@ export default function Blog({ initialPosts = [] }: { initialPosts?: any[] }) {
               transition={{ delay: i * 0.1 }}
               className="group cursor-pointer"
             >
-              <div className="relative h-[350px] sm:h-[400px] rounded-[30px] sm:rounded-[40px] overflow-hidden mb-6 sm:mb-8">
+              <Link href={post.slug} className="block relative h-[350px] sm:h-[400px] rounded-[30px] sm:rounded-[40px] overflow-hidden mb-6 sm:mb-8">
                 <Image
                   src={post.image}
                   alt={post.title}
@@ -90,11 +91,11 @@ export default function Blog({ initialPosts = [] }: { initialPosts?: any[] }) {
                   <p className="text-xs text-gray-400 leading-relaxed line-clamp-2 mb-4">
                     {post.desc}
                   </p>
-                  <a href={post.slug} className="flex items-center gap-2 text-white text-xs font-bold group/btn">
+                  <span className="flex items-center gap-2 text-white text-xs font-bold group/btn">
                     Learn more <ArrowRight className="w-3 h-3 group-hover/btn:translate-x-1 transition-transform" />
-                  </a>
+                  </span>
                 </div>
-              </div>
+              </Link>
             </motion.div>
           ))}
         </div>
