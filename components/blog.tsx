@@ -56,9 +56,9 @@ export default function Blog({ initialPosts = [] }: { initialPosts?: any[] }) {
               Follow our blog for specific topics, be it in science, technology, tips and tricks, etc. We always provide updated news and current trends.
             </p>
           </div>
-          <button className="bg-[#A3E635] text-black px-8 py-3 rounded-full font-bold text-xs flex items-center gap-2 hover:bg-white transition-all w-fit">
+          <Link href="/blog" className="bg-[#A3E635] text-black px-8 py-3 rounded-full font-bold text-xs flex items-center gap-2 hover:bg-white transition-all w-fit">
             All Post <ArrowRight className="w-4 h-4" />
-          </button>
+          </Link>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">

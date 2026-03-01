@@ -35,7 +35,7 @@ export default function Navbar() {
   return (
     <nav className="relative z-50 flex items-center justify-between py-6 px-6 md:px-12 max-w-7xl mx-auto w-full">
       <div className="flex items-center gap-2">
-        <div className="relative w-32 h-10">
+        <Link href="/" className="relative w-32 h-10 block">
           <Image
             src="https://res.cloudinary.com/der2xk0cv/image/upload/v1768468698/eOOLuJEvTLWEYPDnDVB5EtBMEw_b1c3a0.svg"
             alt="Salhurry Logo"
@@ -43,7 +43,7 @@ export default function Navbar() {
             className="object-contain"
             referrerPolicy="no-referrer"
           />
-        </div>
+        </Link>
       </div>
 
       {/* Desktop Menu */}
@@ -113,6 +113,7 @@ export default function Navbar() {
 
         <Link href="#" className="hover:text-white transition-colors">Project</Link>
         <Link href="/about" className="hover:text-white transition-colors">About Us</Link>
+        <Link href="/blog" className="hover:text-white transition-colors">Blog</Link>
       </div>
 
       <div className="flex items-center gap-4">
@@ -150,6 +151,7 @@ export default function Navbar() {
             </div>
             <Link href="#" className="text-lg font-medium text-gray-600" onClick={() => setIsMenuOpen(false)}>Project</Link>
             <Link href="/about" className="text-lg font-medium text-gray-600" onClick={() => setIsMenuOpen(false)}>About Us</Link>
+            <Link href="/blog" className="text-lg font-medium text-gray-600" onClick={() => setIsMenuOpen(false)}>Blog</Link>
             <button
               onClick={() => {
                 setIsMenuOpen(false);

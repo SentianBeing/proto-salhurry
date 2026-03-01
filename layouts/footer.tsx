@@ -10,17 +10,17 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-20">
           <div className="col-span-1 md:col-span-1">
-            <div className="flex items-center gap-2 mb-6">
+            <Link href="/" className="flex items-center gap-2 mb-6 block w-fit">
               <div className="relative w-32 h-10">
-                <Image 
-                  src="https://res.cloudinary.com/der2xk0cv/image/upload/v1772211250/salhurry-logo_encw7m.svg" 
-                  alt="Salhurry Logo" 
-                  fill 
+                <Image
+                  src="https://res.cloudinary.com/der2xk0cv/image/upload/v1772211250/salhurry-logo_encw7m.svg"
+                  alt="Salhurry Logo"
+                  fill
                   className="object-contain brightness-0 invert"
                   referrerPolicy="no-referrer"
                 />
               </div>
-            </div>
+            </Link>
             <p className="text-gray-400 text-sm leading-relaxed max-w-xs">
               We are digital magicians, turning ideas into compelling designs.
             </p>
@@ -29,11 +29,11 @@ export default function Footer() {
           <div>
             <h4 className="font-bold mb-6 text-sm">Pages</h4>
             <ul className="space-y-4 text-sm text-gray-400">
-              <li><Link href="#" className="hover:text-[#A3E635] transition-colors">Home</Link></li>
-              <li><Link href="#" className="hover:text-[#A3E635] transition-colors">Service</Link></li>
+              <li><Link href="/" className="hover:text-[#A3E635] transition-colors">Home</Link></li>
+              <li><Link href="/services" className="hover:text-[#A3E635] transition-colors">Service</Link></li>
               <li><Link href="/about" className="hover:text-[#A3E635] transition-colors">About Us</Link></li>
-              <li><Link href="#" className="hover:text-[#A3E635] transition-colors">Blog</Link></li>
-              <li><Link href="#" className="hover:text-[#A3E635] transition-colors">Contact Us</Link></li>
+              <li><Link href="/blog" className="hover:text-[#A3E635] transition-colors">Blog</Link></li>
+              <li><Link href="/contact" className="hover:text-[#A3E635] transition-colors">Contact Us</Link></li>
             </ul>
           </div>
 
