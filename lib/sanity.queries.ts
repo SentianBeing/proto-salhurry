@@ -34,10 +34,16 @@ export const blogBySlugQuery = groq`
     excerpt,
     "coverImage": coverImage.asset->url,
     publishedAt,
-    content,
     seoTitle,
     seoDescription,
     "seoImage": seoImage.asset->url,
+    content[]{
+      ...,
+      _type == "image" => {
+        ...,
+        "asset": asset->
+      }
+    },
     author->{name, "image": image.asset->url, bio, role, socialLinks},
     categories[]->{title, "slug": slug.current}
   }
@@ -61,7 +67,13 @@ export const caseStudyBySlugQuery = groq`
     "slug": slug.current,
     clientName,
     industry,
-    content,
+    content[]{
+      ...,
+      _type == "image" => {
+        ...,
+        "asset": asset->
+      }
+    },
     "galleryImages": galleryImages[].asset->url,
     seoTitle,
     seoDescription,

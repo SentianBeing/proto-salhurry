@@ -14,6 +14,8 @@ type Props = {
 
 export async function generateMetadata({ params }: Props) {
     const { slug } = await params;
+    if (!slug) return { title: 'Not Found' };
+
     const blog = await sanityClient.fetch(blogBySlugQuery, { slug });
     if (!blog) return { title: 'Not Found' };
 
@@ -70,6 +72,8 @@ const portableTextComponents = {
 
 export default async function BlogDetailPage({ params }: Props) {
     const { slug } = await params;
+    if (!slug) notFound();
+
     const blog = await sanityClient.fetch(blogBySlugQuery, { slug });
 
     if (!blog) {
