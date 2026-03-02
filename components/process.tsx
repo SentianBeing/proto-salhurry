@@ -35,8 +35,8 @@ export default function Process() {
         </div>
 
         <div className="md:col-span-8 relative rounded-[30px] sm:rounded-[40px] overflow-hidden group min-h-[250px] sm:min-h-[350px]">
-          <Image 
-            src="https://picsum.photos/1200/600?random=30"
+          <Image
+            src="https://res.cloudinary.com/der2xk0cv/image/upload/v1772370499/salhurry_lvye6e.png"
             alt="Process"
             fill
             className="object-cover transition-transform duration-700 group-hover:scale-105"

@@ -11,16 +11,16 @@ export default function About() {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20 items-center">
         <div className="relative mb-12 lg:mb-0">
           <div className="relative h-[350px] sm:h-[500px] w-full lg:w-[450px] rounded-[30px] sm:rounded-[40px] overflow-hidden">
-            <Image 
-              src="https://picsum.photos/800/1000?random=10"
+            <Image
+              src="https://res.cloudinary.com/der2xk0cv/image/upload/v1772368693/salhurry-why-choose-us_coslns.webp"
               alt="Office"
               fill
               className="object-cover"
               referrerPolicy="no-referrer"
             />
           </div>
-          
-          <motion.div 
+
+          <motion.div
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
@@ -31,7 +31,7 @@ export default function About() {
             <div className="flex items-center -space-x-2 sm:-space-x-3">
               {[1, 2, 3, 4].map((i) => (
                 <div key={i} className="w-8 h-8 sm:w-10 sm:h-10 rounded-full border-2 border-[#1A1A1A] overflow-hidden relative">
-                  <Image src={`https://picsum.photos/100/100?random=${i+20}`} alt="User" fill className="object-cover" referrerPolicy="no-referrer" />
+                  <Image src={`https://picsum.photos/100/100?random=${i + 20}`} alt="User" fill className="object-cover" referrerPolicy="no-referrer" />
                 </div>
               ))}
               <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full border-2 border-[#1A1A1A] bg-gray-800 flex items-center justify-center text-[10px] sm:text-xs font-bold">

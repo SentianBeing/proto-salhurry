@@ -16,7 +16,7 @@ const testimonials = [
   },
   {
     name: 'Jimson',
-    role: 'Trans India Cooling Solutions',
+    role: 'TransIndia Cooling Solutions',
     image: 'https://picsum.photos/100/100?random=2',
     content: "I didn’t expect the website to turn out this impressive. SalHurry exceeded my expectations completely. I even showcased it at an international conference. Their support was incredible — even late-night changes were handled instantly. I highly recommend them.",
     rating: 5,
@@ -24,7 +24,7 @@ const testimonials = [
   },
   {
     name: 'Mr. Joy Alex',
-    role: 'Josiko Furniture',
+    role: 'Joseco Furniture',
     image: 'https://picsum.photos/100/100?random=3',
     content: "I’ve been in the furniture business for years, but SalHurry helped me understand modern marketing. They expanded our reach and positioned our products to a wider audience. I’m truly thankful for their guidance and support.",
     rating: 5,
@@ -57,7 +57,7 @@ export default function Testimonials() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
         {testimonials.map((t, i) => (
-          <motion.div 
+          <motion.div
             key={i}
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}

@@ -130,6 +130,21 @@ export default function AboutPage() {
         </div>
       </section>
 
+      {/* What SalHurry Stands For Section */}
+      <section className="py-24 px-6 md:px-12 max-w-7xl mx-auto">
+        <h2 className="text-4xl md:text-5xl font-bold text-[#1A1A1A] mb-12 text-center">What SalHurry Stands For</h2>
+        <div className="relative w-full rounded-[40px] overflow-hidden shadow-2xl bg-white flex justify-center">
+          <Image
+            src="/images/salhurry-meaning.jpg.jpeg"
+            alt="What SalHurry Stands For"
+            width={1400}
+            height={800}
+            className="w-full h-auto object-contain rounded-[40px]"
+            unoptimized
+          />
+        </div>
+      </section>
+
       {/* Leadership Section */}
       <section className="bg-[#F9FAFB] py-24 px-6 md:px-12">
         <div className="max-w-7xl mx-auto">
