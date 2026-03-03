@@ -4,9 +4,14 @@ import Blog from '@/components/blog';
 import { sanityClient } from '@/lib/sanity.client';
 import { allBlogsQuery } from '@/lib/sanity.queries';
 
-export const metadata = {
-    title: 'Blog - SalHurry',
-    description: 'Latest insights, updates, and news from SalHurry.',
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+    title: 'Growth Marketing & SEO Blog | SalHurry',
+    description: 'Explore the latest articles, insights, and industry trends on growth marketing, SEO, and web development curated by the SalHurry team.',
+    alternates: {
+        canonical: '/blog',
+    },
 };
 
 export const dynamic = 'force-dynamic'; // Always fetch fresh data from Sanity

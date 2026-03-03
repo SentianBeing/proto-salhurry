@@ -22,7 +22,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
     setError(null);
 
     const formData = new FormData(e.currentTarget);
-    
+
     try {
       const response = await fetch('/api/contact', {
         method: 'POST',
@@ -76,133 +76,140 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
             initial={{ opacity: 0, scale: 0.9, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.9, y: 20 }}
-            className="relative w-full max-w-lg bg-white rounded-[32px] shadow-2xl overflow-hidden"
+            className="relative w-full max-w-lg p-[2px] rounded-[34px] shadow-2xl overflow-hidden"
           >
-            <button
-              onClick={onClose}
-              className="absolute top-6 right-6 p-2 hover:bg-gray-100 rounded-full transition-colors z-10"
-            >
-              <X className="w-5 h-5 text-gray-500" />
-            </button>
+            {/* Beaming Border Effect */}
+            <div className="absolute inset-[-100%] z-0 animate-[spin_4s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#A3E635_0%,transparent_15%,transparent_85%,#A3E635_100%)]" />
 
-            <div className="p-8 sm:p-10">
-              {isSuccess ? (
-                <div className="py-12 text-center">
-                  <motion.div
-                    initial={{ scale: 0 }}
-                    animate={{ scale: 1 }}
-                    className="w-20 h-20 bg-[#A3E635]/20 rounded-full flex items-center justify-center mx-auto mb-6"
-                  >
-                    <CheckCircle2 className="w-10 h-10 text-[#A3E635]" />
-                  </motion.div>
-                  <h2 className="text-2xl font-bold text-gray-900 mb-2">Thank you!</h2>
-                  <p className="text-gray-500">We will respond within 24 hours.</p>
-                  <button
-                    onClick={onClose}
-                    className="mt-8 px-8 py-3 bg-black text-white rounded-full font-bold text-sm hover:bg-gray-800 transition-all"
-                  >
-                    Close
-                  </button>
-                </div>
-              ) : (
-                <>
-                  <div className="mb-8">
-                    <h2 className="text-2xl font-bold text-gray-900 mb-2">Let&apos;s Build Something Great</h2>
-                    <p className="text-gray-500 text-sm">Fill out the form below and we&apos;ll get back to you shortly.</p>
-                  </div>
+            {/* Inner Modal Container */}
+            <div className="relative w-full h-full bg-white rounded-[32px] z-10">
+              <button
+                onClick={onClose}
+                className="absolute top-6 right-6 p-2 hover:bg-gray-100 rounded-full transition-colors z-20"
+              >
+                <X className="w-5 h-5 text-gray-500" />
+              </button>
 
-                  <form onSubmit={handleSubmit} className="space-y-4">
-                    <div>
-                      <label className="block text-[10px] uppercase tracking-widest text-gray-400 font-bold mb-1.5 ml-1">Full Name *</label>
-                      <input
-                        required
-                        name="name"
-                        type="text"
-                        placeholder="John Doe"
-                        className="w-full px-5 py-3 bg-gray-50 border border-gray-100 rounded-2xl text-sm focus:outline-none focus:border-[#A3E635] transition-colors"
-                      />
-                    </div>
-
-                    <div>
-                      <label className="block text-[10px] uppercase tracking-widest text-gray-400 font-bold mb-1.5 ml-1">Phone Number *</label>
-                      <input
-                        required
-                        name="phone"
-                        type="tel"
-                        placeholder="+91 00000 00000"
-                        className="w-full px-5 py-3 bg-gray-50 border border-gray-100 rounded-2xl text-sm focus:outline-none focus:border-[#A3E635] transition-colors"
-                      />
-                    </div>
-
-                    <div>
-                      <label className="block text-[10px] uppercase tracking-widest text-gray-400 font-bold mb-1.5 ml-1">Project Type *</label>
-                      <select
-                        required
-                        name="projectType"
-                        className="w-full px-5 py-3 bg-gray-50 border border-gray-100 rounded-2xl text-sm focus:outline-none focus:border-[#A3E635] transition-colors appearance-none"
-                      >
-                        <option value="">Select a service</option>
-                        <option value="Digital Marketing">Digital Marketing</option>
-                        <option value="Branding">Branding</option>
-                        <option value="Web Development">Web Development</option>
-                        <option value="Ai Video Production">Ai Video Production</option>
-                        <option value="Ai Automation">Ai Automation</option>
-                        <option value="Others">Others</option>
-                      </select>
-                    </div>
-
-                    <div>
-                      <label className="block text-[10px] uppercase tracking-widest text-gray-400 font-bold mb-1.5 ml-1">Message (Optional)</label>
-                      <textarea
-                        name="message"
-                        rows={3}
-                        placeholder="Tell us about your project..."
-                        className="w-full px-5 py-3 bg-gray-50 border border-gray-100 rounded-2xl text-sm focus:outline-none focus:border-[#A3E635] transition-colors resize-none"
-                      />
-                    </div>
-
-                    <div>
-                      <label className="block text-[10px] uppercase tracking-widest text-gray-400 font-bold mb-1.5 ml-1">Attachment (PDF, DOC, DOCX - Max 10MB)</label>
-                      <div 
-                        onClick={() => fileInputRef.current?.click()}
-                        className="w-full px-5 py-3 bg-gray-50 border border-dashed border-gray-200 rounded-2xl text-sm cursor-pointer hover:border-[#A3E635] transition-colors flex items-center justify-between"
-                      >
-                        <span className="text-gray-400 truncate max-w-[200px]">
-                          {fileName || 'Upload project brief...'}
-                        </span>
-                        <Upload className="w-4 h-4 text-gray-400" />
-                      </div>
-                      <input
-                        ref={fileInputRef}
-                        name="file"
-                        type="file"
-                        accept=".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
-                        onChange={handleFileChange}
-                        className="hidden"
-                      />
-                    </div>
-
-                    {error && (
-                      <p className="text-red-500 text-xs mt-2 ml-1">{error}</p>
-                    )}
-
-                    <button
-                      disabled={isSubmitting}
-                      type="submit"
-                      className="w-full py-4 bg-black text-white rounded-full font-bold text-sm hover:bg-gray-800 transition-all flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed mt-4"
+              <div className="p-8 sm:p-10 relative z-10">
+                {isSuccess ? (
+                  <div className="py-12 text-center">
+                    <motion.div
+                      initial={{ scale: 0 }}
+                      animate={{ scale: 1 }}
+                      className="w-20 h-20 bg-[#A3E635]/20 rounded-full flex items-center justify-center mx-auto mb-6"
                     >
-                      {isSubmitting ? (
-                        <>
-                          <Loader2 className="w-4 h-4 animate-spin" />
-                          Submitting...
-                        </>
-                      ) : (
-                        'Send Message'
-                      )}
+                      <CheckCircle2 className="w-10 h-10 text-[#A3E635]" />
+                    </motion.div>
+                    <h2 className="text-2xl font-bold text-gray-900 mb-2">Thank you!</h2>
+                    <p className="text-gray-500">We will respond within 24 hours.</p>
+                    <button
+                      onClick={onClose}
+                      className="mt-8 px-8 py-3 bg-black text-white rounded-full font-bold text-sm hover:bg-gray-800 transition-all"
+                    >
+                      Close
                     </button>
-                  </form>
-                </>
-              )}
+                  </div>
+                ) : (
+                  <>
+                    <div className="mb-8">
+                      <h2 className="text-2xl font-bold text-gray-900 mb-2">Let&apos;s Build Something Great</h2>
+                      <p className="text-gray-500 text-sm">Fill out the form below and we&apos;ll get back to you shortly.</p>
+                    </div>
+
+                    <form onSubmit={handleSubmit} className="space-y-4">
+                      <div>
+                        <label className="block text-[10px] uppercase tracking-widest text-gray-400 font-bold mb-1.5 ml-1">Full Name *</label>
+                        <input
+                          required
+                          name="name"
+                          type="text"
+                          placeholder="John Doe"
+                          className="w-full px-5 py-3 bg-gray-50 border border-gray-100 rounded-2xl text-sm focus:outline-none focus:border-[#A3E635] transition-colors"
+                        />
+                      </div>
+
+                      <div>
+                        <label className="block text-[10px] uppercase tracking-widest text-gray-400 font-bold mb-1.5 ml-1">Phone Number *</label>
+                        <input
+                          required
+                          name="phone"
+                          type="tel"
+                          placeholder="+91 00000 00000"
+                          className="w-full px-5 py-3 bg-gray-50 border border-gray-100 rounded-2xl text-sm focus:outline-none focus:border-[#A3E635] transition-colors"
+                        />
+                      </div>
+
+                      <div>
+                        <label className="block text-[10px] uppercase tracking-widest text-gray-400 font-bold mb-1.5 ml-1">Project Type *</label>
+                        <select
+                          required
+                          name="projectType"
+                          className="w-full px-5 py-3 bg-gray-50 border border-gray-100 rounded-2xl text-sm focus:outline-none focus:border-[#A3E635] transition-colors appearance-none"
+                        >
+                          <option value="">Select a service</option>
+                          <option value="Digital Marketing">Digital Marketing</option>
+                          <option value="Branding">Branding</option>
+                          <option value="Web Development">Web Development</option>
+                          <option value="Ai Video Production">Ai Video Production</option>
+                          <option value="Ai Automation">Ai Automation</option>
+                          <option value="Others">Others</option>
+                        </select>
+                      </div>
+
+                      <div>
+                        <label className="block text-[10px] uppercase tracking-widest text-gray-400 font-bold mb-1.5 ml-1">Message (Optional)</label>
+                        <textarea
+                          name="message"
+                          rows={3}
+                          placeholder="Tell us about your project..."
+                          className="w-full px-5 py-3 bg-gray-50 border border-gray-100 rounded-2xl text-sm focus:outline-none focus:border-[#A3E635] transition-colors resize-none"
+                        />
+                      </div>
+
+                      <div>
+                        <label className="block text-[10px] uppercase tracking-widest text-gray-400 font-bold mb-1.5 ml-1">Attachment (PDF, DOC, DOCX - Max 10MB)</label>
+                        <div
+                          onClick={() => fileInputRef.current?.click()}
+                          className="w-full px-5 py-3 bg-gray-50 border border-dashed border-gray-200 rounded-2xl text-sm cursor-pointer hover:border-[#A3E635] transition-colors flex items-center justify-between"
+                        >
+                          <span className="text-gray-400 truncate max-w-[200px]">
+                            {fileName || 'Upload project brief...'}
+                          </span>
+                          <Upload className="w-4 h-4 text-gray-400" />
+                        </div>
+                        <input
+                          ref={fileInputRef}
+                          name="file"
+                          type="file"
+                          accept=".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                          onChange={handleFileChange}
+                          className="hidden"
+                        />
+                      </div>
+
+                      {error && (
+                        <p className="text-red-500 text-xs mt-2 ml-1">{error}</p>
+                      )}
+
+                      <button
+                        disabled={isSubmitting}
+                        type="submit"
+                        className="w-full py-4 bg-black text-white rounded-full font-bold text-sm hover:bg-gray-800 transition-all flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed mt-4 relative overflow-hidden group"
+                      >
+                        <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-[150%] animate-[shimmer_2s_infinite] group-hover:animate-none" />
+                        {isSubmitting ? (
+                          <>
+                            <Loader2 className="w-4 h-4 animate-spin" />
+                            Submitting...
+                          </>
+                        ) : (
+                          'Send Message'
+                        )}
+                      </button>
+                    </form>
+                  </>
+                )}
+              </div>
             </div>
           </motion.div>
         </div>

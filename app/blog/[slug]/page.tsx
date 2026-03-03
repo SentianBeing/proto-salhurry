@@ -25,6 +25,9 @@ export async function generateMetadata({ params }: Props) {
         openGraph: {
             images: [blog.seoImage || blog.coverImage],
         },
+        alternates: {
+            canonical: `/blog/${slug}`,
+        },
     };
 }
 
@@ -35,7 +38,7 @@ const portableTextComponents = {
             <div className="relative w-full h-[400px] md:h-[600px] rounded-3xl overflow-hidden my-12">
                 <Image
                     src={value.asset.url || value.url}
-                    alt={value.alt || 'Blog image'}
+                    alt={value.alt || 'SalHurry Blog Image'}
                     fill
                     className="object-cover"
                 />
@@ -108,20 +111,7 @@ export default async function BlogDetailPage({ params }: Props) {
                             {blog.title}
                         </h1>
 
-                        {/* Author */}
-                        {blog.author && (
-                            <div className="flex items-center justify-center gap-4">
-                                {blog.author.image && (
-                                    <div className="w-12 h-12 rounded-full overflow-hidden relative">
-                                        <Image src={blog.author.image} alt={blog.author.name} fill className="object-cover" />
-                                    </div>
-                                )}
-                                <div className="text-left">
-                                    <p className="text-white font-bold">{blog.author.name}</p>
-                                    <p className="text-gray-400 text-sm">{blog.author.role}</p>
-                                </div>
-                            </div>
-                        )}
+                        {/* Author section moved to the bottom */}
                     </div>
                 </div>
 
@@ -148,6 +138,21 @@ export default async function BlogDetailPage({ params }: Props) {
                             <p className="text-gray-500 text-lg leading-relaxed">{blog.excerpt}</p>
                         )}
                     </div>
+
+                    {/* Author Section */}
+                    {blog.author && (
+                        <div className="mt-16 pt-10 border-t border-gray-100 flex items-center gap-5">
+                            {blog.author.image && (
+                                <div className="w-16 h-16 rounded-full overflow-hidden relative shrink-0">
+                                    <Image src={blog.author.image} alt={blog.author.name} fill className="object-cover" />
+                                </div>
+                            )}
+                            <div>
+                                <p className="text-black font-bold text-xl">{blog.author.name}</p>
+                                <p className="text-gray-500 mt-1">{blog.author.role}</p>
+                            </div>
+                        </div>
+                    )}
                 </div>
             </article>
 

@@ -2,8 +2,16 @@ import React from 'react';
 import Navbar from '@/layouts/navbar';
 import Footer from '@/layouts/footer';
 import Image from 'next/image';
-import { motion } from 'motion/react';
+import { Metadata } from 'next';
 import { Target, Lightbulb, Shield, Zap, Users, MapPin, CheckCircle2, ArrowRight } from 'lucide-react';
+
+export const metadata: Metadata = {
+  title: 'About SalHurry | Growth Architects in Kerala & UAE',
+  description: 'Learn about SalHurry, a strategy-first growth platform based in Trivandrum, Kerala. We help businesses in Kerala and UAE build scalable growth systems.',
+  alternates: {
+    canonical: '/about',
+  },
+};
 
 export default function AboutPage() {
   return (
@@ -37,7 +45,7 @@ export default function AboutPage() {
           <div className="relative h-[400px] md:h-[600px] rounded-[40px] overflow-hidden shadow-2xl">
             <Image
               src="https://picsum.photos/seed/about-team/800/1000"
-              alt="Our Team"
+              alt="SalHurry Growth Engineering Team"
               fill
               className="object-cover"
               referrerPolicy="no-referrer"
@@ -151,11 +159,11 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div className="relative h-[500px] rounded-[40px] overflow-hidden">
               <Image
-                src="https://picsum.photos/seed/leadership/800/1000"
-                alt="Leadership"
+                src="/images/Salhurry-divegrid-peoples.jpeg"
+                alt="Salhurry team, DiveGrid team, DiveGrid CEO and leadership"
+                title="Salhurry and DiveGrid Founders and Team"
                 fill
                 className="object-cover"
-                referrerPolicy="no-referrer"
               />
             </div>
             <div>

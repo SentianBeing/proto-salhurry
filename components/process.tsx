@@ -13,7 +13,7 @@ export default function Process() {
           How it works?
         </span>
         <h2 className="text-4xl md:text-5xl font-bold text-[#1A1A1A] mb-6">
-          How Do We Works?
+          How Do We Work?
         </h2>
         <p className="text-gray-500 max-w-2xl mx-auto text-sm leading-relaxed">
           We strive to create extraordinary experiences, increase brand awareness, expand target audience reach, and optimize overall business results.
@@ -37,7 +37,7 @@ export default function Process() {
         <div className="md:col-span-8 relative rounded-[30px] sm:rounded-[40px] overflow-hidden group min-h-[250px] sm:min-h-[350px]">
           <Image
             src="https://res.cloudinary.com/der2xk0cv/image/upload/v1772370499/salhurry_lvye6e.png"
-            alt="Process"
+            alt="SalHurry Growth Process Steps"
             fill
             className="object-cover transition-transform duration-700 group-hover:scale-105"
             referrerPolicy="no-referrer"

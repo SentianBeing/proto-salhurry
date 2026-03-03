@@ -2,10 +2,20 @@ import React from 'react';
 import Navbar from '@/layouts/navbar';
 import Footer from '@/layouts/footer';
 import Partners from '@/components/partners';
+import StackSection from '@/components/stack-section';
 import CTA from '@/components/cta';
+import ContactButton from '@/components/contact-button';
 import Image from 'next/image';
-import { motion } from 'motion/react';
+import { Metadata } from 'next';
 import { Code2, Layout, Smartphone, Zap, ArrowRight, CheckCircle2, Cpu, Shield, Rocket, Layers } from 'lucide-react';
+
+export const metadata: Metadata = {
+  title: 'Web Development & Engineering | SalHurry',
+  description: 'Custom web apps, high-performance UI/UX design, and speed-optimized development services by SalHurry.',
+  alternates: {
+    canonical: '/services/web-development',
+  },
+};
 
 export default function WebDevelopmentPage() {
   return (
@@ -14,25 +24,38 @@ export default function WebDevelopmentPage() {
         {/* Neon Smudge Effect */}
         <div className="absolute top-[-10%] left-[-10%] w-[60%] h-[60%] bg-[#2D3321] blur-[120px] rounded-full opacity-40 pointer-events-none"></div>
         <div className="absolute bottom-[20%] right-[-5%] w-[40%] h-[40%] bg-[#1A1C18] blur-[100px] rounded-full opacity-30 pointer-events-none"></div>
-        
+
         <Navbar />
-        
+
         <div className="px-6 md:px-12 max-w-7xl mx-auto pt-20">
-          <div className="max-w-3xl">
-            <h1 className="text-5xl md:text-7xl font-bold text-white mb-8 leading-tight">
-              Web Development <br />
-              <span className="text-[#A3E635]">& Engineering</span>
-            </h1>
-            <p className="text-xl text-gray-400 leading-relaxed mb-12">
-              Building high-performance, conversion-optimized web experiences that serve as your 24/7 digital sales force.
-            </p>
-            <div className="flex flex-wrap gap-4">
-              <button className="bg-[#A3E635] text-black px-8 py-4 rounded-full font-bold hover:bg-white transition-all">
-                Start Your Project
-              </button>
-              <button className="border border-white/20 text-white px-8 py-4 rounded-full font-bold hover:bg-white/10 transition-all">
-                View Our Stack
-              </button>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10 block">
+            <div className="max-w-2xl">
+              <h1 className="text-5xl md:text-7xl font-bold text-white mb-8 leading-tight">
+                Web Development <br />
+                <span className="text-[#A3E635]">& Engineering</span>
+              </h1>
+              <p className="text-xl text-gray-400 leading-relaxed mb-12">
+                Building high-performance, conversion-optimized web experiences that serve as your 24/7 digital sales force.
+              </p>
+              <div className="flex flex-wrap gap-4">
+                <ContactButton
+                  text="Start Your Project"
+                  className="bg-[#A3E635] text-black px-8 py-4 rounded-full font-bold hover:bg-white transition-all"
+                />
+                <a href="#tech-stack" className="border border-white/20 text-white px-8 py-4 rounded-full font-bold hover:bg-white/10 transition-all">
+                  View Our Stack
+                </a>
+              </div>
+            </div>
+
+            <div className="relative w-full h-[400px] lg:h-[500px] rounded-[30px] overflow-hidden lg:ml-auto">
+              <Image
+                src="/images/salhurry-growth.png"
+                alt="SalHurry Engineering and Growth"
+                fill
+                className="object-contain"
+                priority
+              />
             </div>
           </div>
         </div>
@@ -89,9 +112,9 @@ export default function WebDevelopmentPage() {
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-20">
             <div className="order-2 lg:order-1 relative h-[400px] md:h-[600px] rounded-[40px] overflow-hidden">
-              <Image 
+              <Image
                 src="https://picsum.photos/seed/web-dev-code/800/1000"
-                alt="Web Development Process"
+                alt="SalHurry Web Development Process"
                 fill
                 className="object-cover"
                 referrerPolicy="no-referrer"
@@ -184,9 +207,9 @@ export default function WebDevelopmentPage() {
             </button>
           </div>
           <div className="relative h-[400px] md:h-[500px] rounded-[40px] overflow-hidden shadow-2xl">
-            <Image 
+            <Image
               src="https://picsum.photos/seed/web-dev-hero/800/800"
-              alt="Web Development Excellence"
+              alt="High-Performance Custom Web Development by SalHurry"
               fill
               className="object-cover"
               referrerPolicy="no-referrer"
@@ -194,6 +217,8 @@ export default function WebDevelopmentPage() {
           </div>
         </div>
       </section>
+
+      <StackSection />
 
       <CTA />
       <Footer />

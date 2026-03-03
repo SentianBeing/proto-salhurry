@@ -1,8 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { Resend } from 'resend';
+import * as dotenv from 'dotenv';
 
 export async function POST(req: NextRequest) {
   try {
+    dotenv.config({ path: '.env.local' });
     const resendApiKey = process.env.RESEND_API_KEY;
     if (!resendApiKey) {
       console.error('RESEND_API_KEY is not defined');
@@ -29,7 +31,7 @@ export async function POST(req: NextRequest) {
     }
 
     let attachments = [];
-    if (file) {
+    if (file && file.size > 0) {
       // Validate file size (10MB)
       if (file.size > 10 * 1024 * 1024) {
         return NextResponse.json({ error: 'File size exceeds 10MB limit' }, { status: 400 });
@@ -52,7 +54,7 @@ export async function POST(req: NextRequest) {
       });
     }
 
-    const { data, error } = await resend.emails.send({
+    const emailPayload: any = {
       from: process.env.EMAIL_FROM || 'onboarding@resend.dev',
       to: process.env.EMAIL_TO || 'karthikdude0022@gmail.com',
       subject: `New Contact Form Submission: ${projectType} from ${name}`,
@@ -62,13 +64,20 @@ export async function POST(req: NextRequest) {
         Project Type: ${projectType}
         Message: ${message || 'No message provided'}
       `,
-      attachments: attachments,
-    });
+    };
+
+    if (attachments.length > 0) {
+      emailPayload.attachments = attachments;
+    }
+
+    const { data, error } = await resend.emails.send(emailPayload);
 
     if (error) {
       console.error('Resend error:', error);
       return NextResponse.json({ error: error.message }, { status: 500 });
     }
+
+    console.log('Resend Delivery Success:', data);
 
     return NextResponse.json({ success: true });
   } catch (err: any) {

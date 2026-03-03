@@ -25,6 +25,9 @@ export async function generateMetadata({ params }: Props) {
         openGraph: {
             images: [caseStudy.seoImage || caseStudy.galleryImages?.[0]],
         },
+        alternates: {
+            canonical: `/case-studies/${slug}`,
+        },
     };
 }
 
@@ -35,7 +38,7 @@ const portableTextComponents = {
             <div className="relative w-full h-[400px] md:h-[600px] rounded-[40px] overflow-hidden my-12 shadow-xl">
                 <Image
                     src={value.asset.url || value.url}
-                    alt={value.alt || 'Case study image'}
+                    alt={value.alt || 'SalHurry Case Study Image'}
                     fill
                     className="object-cover"
                 />

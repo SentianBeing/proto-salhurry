@@ -102,7 +102,7 @@ export default function Projects({ initialCaseStudies = [] }: { initialCaseStudi
               <p className={`text-sm leading-relaxed ${project.descColor || 'text-gray-500'}`}>
                 {project.desc}
               </p>
-              <a href={project.slug} className={`px-6 py-3 rounded-full font-bold text-xs flex items-center gap-2 w-fit hover:opacity-80 transition-all ${project.btnColor}`}>
+              <a href="/maintenance" className={`px-6 py-3 rounded-full font-bold text-xs flex items-center gap-2 w-fit hover:opacity-80 transition-all ${project.btnColor}`}>
                 Learn More <ArrowRight className="w-4 h-4" />
               </a>
             </div>

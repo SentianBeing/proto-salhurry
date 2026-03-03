@@ -1,6 +1,16 @@
 import React from 'react';
 import Navbar from '@/layouts/navbar';
 import Footer from '@/layouts/footer';
+import JobBoard from '@/components/job-board';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Careers at SalHurry | Join Our Digital Growth Team',
+  description: 'Join SalHurry in Trivandrum, Kerala. We are always looking for talented digital marketers, web developers, and SEO engineers.',
+  alternates: {
+    canonical: '/careers',
+  },
+};
 
 export default function CareersPage() {
   return (
@@ -14,18 +24,7 @@ export default function CareersPage() {
         </div>
       </div>
 
-      <section className="py-24 px-6 md:px-12 max-w-7xl mx-auto text-center">
-        <div className="bg-[#F9FAFB] p-12 md:p-20 rounded-[40px] border border-gray-100">
-          <h2 className="text-3xl font-bold mb-6">Current Openings</h2>
-          <p className="text-gray-500 text-lg">
-            Thank you for your interest in joining SalHurry. <br />
-            Currently, there are <span className="text-black font-bold">no positions open</span>. 
-          </p>
-          <p className="text-gray-400 mt-4">
-            Please check back later or follow us on our social media for updates.
-          </p>
-        </div>
-      </section>
+      <JobBoard />
 
       <Footer />
     </main>

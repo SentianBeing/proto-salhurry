@@ -3,9 +3,18 @@ import Navbar from '@/layouts/navbar';
 import Footer from '@/layouts/footer';
 import Partners from '@/components/partners';
 import CTA from '@/components/cta';
+import ContactButton from '@/components/contact-button';
 import Image from 'next/image';
-import { motion } from 'motion/react';
+import { Metadata } from 'next';
 import { Target, TrendingUp, BarChart3, Megaphone, ArrowRight, CheckCircle2, Zap, Users, Globe } from 'lucide-react';
+
+export const metadata: Metadata = {
+  title: 'Digital Marketing Services | Growth Systems in Kerala',
+  description: 'Data-driven performance marketing, SEO, and brand strategy services by SalHurry to build comprehensive growth engines for your business.',
+  alternates: {
+    canonical: '/services/digital-marketing',
+  },
+};
 
 export default function DigitalMarketingPage() {
   return (
@@ -14,9 +23,9 @@ export default function DigitalMarketingPage() {
         {/* Neon Smudge Effect */}
         <div className="absolute top-[-10%] left-[-10%] w-[60%] h-[60%] bg-[#2D3321] blur-[120px] rounded-full opacity-40 pointer-events-none"></div>
         <div className="absolute bottom-[20%] right-[-5%] w-[40%] h-[40%] bg-[#1A1C18] blur-[100px] rounded-full opacity-30 pointer-events-none"></div>
-        
+
         <Navbar />
-        
+
         <div className="px-6 md:px-12 max-w-7xl mx-auto pt-20">
           <div className="max-w-3xl">
             <h1 className="text-5xl md:text-7xl font-bold text-white mb-8 leading-tight">
@@ -27,9 +36,10 @@ export default function DigitalMarketingPage() {
               We don&apos;t just run ads. We build comprehensive growth engines that capture, nurture, and convert high-quality leads into loyal customers.
             </p>
             <div className="flex flex-wrap gap-4">
-              <button className="bg-[#A3E635] text-black px-8 py-4 rounded-full font-bold hover:bg-white transition-all">
-                Get Started
-              </button>
+              <ContactButton
+                text="Get Started"
+                className="bg-[#A3E635] text-black px-8 py-4 rounded-full font-bold hover:bg-white transition-all"
+              />
               <button className="border border-white/20 text-white px-8 py-4 rounded-full font-bold hover:bg-white/10 transition-all">
                 View Case Studies
               </button>
@@ -113,9 +123,9 @@ export default function DigitalMarketingPage() {
               </div>
             </div>
             <div className="relative h-[400px] md:h-[600px] rounded-[40px] overflow-hidden">
-              <Image 
+              <Image
                 src="https://picsum.photos/seed/marketing-data/800/1000"
-                alt="Marketing Strategy"
+                alt="SalHurry Digital Marketing Strategy and Growth Funnel"
                 fill
                 className="object-cover"
                 referrerPolicy="no-referrer"

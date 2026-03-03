@@ -12,7 +12,7 @@ export default function CTA() {
       <div className="relative h-[350px] sm:h-[400px] rounded-[40px] sm:rounded-[60px] overflow-hidden flex items-center justify-center text-center px-6">
         <Image
           src="https://picsum.photos/1200/600?grayscale"
-          alt="Contact background"
+          alt="SalHurry Contact Us Background"
           fill
           className="object-cover"
           referrerPolicy="no-referrer"

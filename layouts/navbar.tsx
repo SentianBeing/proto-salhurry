@@ -111,7 +111,6 @@ export default function Navbar() {
           </AnimatePresence>
         </div>
 
-        <Link href="#" className="hover:text-white transition-colors">Project</Link>
         <Link href="/about" className="hover:text-white transition-colors">About Us</Link>
         <Link href="/blog" className="hover:text-white transition-colors">Blog</Link>
       </div>
@@ -149,7 +148,6 @@ export default function Navbar() {
                 <Link key={s.name} href={s.href} className="text-lg font-medium text-gray-600 pl-4" onClick={() => setIsMenuOpen(false)}>{s.name}</Link>
               ))}
             </div>
-            <Link href="#" className="text-lg font-medium text-gray-600" onClick={() => setIsMenuOpen(false)}>Project</Link>
             <Link href="/about" className="text-lg font-medium text-gray-600" onClick={() => setIsMenuOpen(false)}>About Us</Link>
             <Link href="/blog" className="text-lg font-medium text-gray-600" onClick={() => setIsMenuOpen(false)}>Blog</Link>
             <button
