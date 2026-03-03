@@ -53,6 +53,9 @@ export const metadata: Metadata = {
     ],
   },
   manifest: '/favicon/site.webmanifest',
+  verification: {
+    google: 'zkeSgv8mjH7qkHS0ccgWGHA1Sd4MCIvCRBMPnotsXWk',
+  },
 };
 
 import { ContactModalProvider } from '@/context/contact-modal-context';
