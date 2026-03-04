@@ -4,6 +4,7 @@ import Footer from '@/layouts/footer';
 import Partners from '@/components/partners';
 import StackSection from '@/components/stack-section';
 import CTA from '@/components/cta';
+import AnimatedHeroImage from '@/components/animated-hero-image';
 import ContactButton from '@/components/contact-button';
 import Image from 'next/image';
 import { Metadata } from 'next';
@@ -48,15 +49,7 @@ export default function WebDevelopmentPage() {
               </div>
             </div>
 
-            <div className="relative w-full h-[400px] lg:h-[500px] rounded-[30px] overflow-hidden lg:ml-auto">
-              <Image
-                src="/images/salhurry-growth.png"
-                alt="SalHurry Engineering and Growth"
-                fill
-                className="object-contain"
-                priority
-              />
-            </div>
+            <AnimatedHeroImage />
           </div>
         </div>
       </div>
