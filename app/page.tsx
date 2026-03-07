@@ -11,15 +11,15 @@ import CTA from '@/components/cta';
 import Footer from '@/layouts/footer';
 import { sanityClient } from '@/lib/sanity.client';
 import { latestBlogsQuery, allCaseStudiesQuery } from '@/lib/sanity.queries';
+import { constructMetadata } from '@/lib/seo';
+import { Suspense } from 'react';
 import type { Metadata } from 'next';
 
-export const metadata: Metadata = {
-  title: 'SalHurry | Growth Systems in Kerala & UAE',
+export const metadata: Metadata = constructMetadata({
+  title: 'SalHurry Growth Systems: Scale Your Business in Kerala & UAE',
   description: 'SalHurry is a Growth Systems and Sales Acceleration company helping businesses in Kerala & UAE (Dubai, Abu Dhabi) with GTM strategy, SEO, and web development.',
-  alternates: {
-    canonical: '/',
-  },
-};
+  path: '/',
+});
 
 export const revalidate = 60; // Revalidate the homepage periodically
 
@@ -68,7 +68,9 @@ export default async function Home() {
         <About />
         <Process />
         <Projects initialCaseStudies={allCaseStudies.slice(0, 4)} />
-        <Blog initialPosts={latestBlogs} />
+        <Suspense fallback={<div className="py-12 bg-[#0A0A0A] text-center text-gray-500">Loading Latest Insights...</div>}>
+          <Blog initialPosts={latestBlogs} />
+        </Suspense>
         <Testimonials />
         <Partners />
         <CTA />

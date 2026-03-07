@@ -46,7 +46,7 @@ export default function About() {
             About Us
           </span>
           <h2 className="text-4xl md:text-5xl font-bold text-[#1A1A1A] leading-tight mb-8">
-            Why You Should<br />Choose <span className="text-[#A3E635]">Salhurry</span>
+            Why You Should<br />Choose <span className="text-[#A3E635] bg-color">Salhurry</span>
           </h2>
           <p className="text-gray-500 text-sm leading-relaxed mb-10 max-w-lg">
             We proudly introduce ourselves as a digital creative agency committed to realizing our clients&apos; vision and mission through creative, innovative, and technology-based solutions in the digital world.

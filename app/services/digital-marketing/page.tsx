@@ -5,16 +5,15 @@ import Partners from '@/components/partners';
 import CTA from '@/components/cta';
 import ContactButton from '@/components/contact-button';
 import Image from 'next/image';
+import { constructMetadata } from '@/lib/seo';
 import { Metadata } from 'next';
 import { Target, TrendingUp, BarChart3, Megaphone, ArrowRight, CheckCircle2, Zap, Users, Globe } from 'lucide-react';
 
-export const metadata: Metadata = {
-  title: 'Digital Marketing Services | Growth Systems in Kerala',
+export const metadata: Metadata = constructMetadata({
+  title: 'Data-Driven Digital Marketing Services in Kerala | SalHurry',
   description: 'Data-driven performance marketing, SEO, and brand strategy services by SalHurry to build comprehensive growth engines for your business.',
-  alternates: {
-    canonical: '/services/digital-marketing',
-  },
-};
+  path: '/services/digital-marketing',
+});
 
 export default function DigitalMarketingPage() {
   return (
@@ -26,40 +25,38 @@ export default function DigitalMarketingPage() {
 
         <Navbar />
 
-        <div className="px-6 md:px-12 max-w-7xl mx-auto pt-20 relative z-10 flex min-h-[500px] items-center">
-          {/* Left Content (Overlay) */}
-          <div className="max-w-3xl relative z-20">
-            <h1 className="text-5xl md:text-7xl font-bold text-white mb-8 leading-tight drop-shadow-lg">
-              Digital Marketing <br />
-              <span className="text-[#A3E635]">Growth Systems</span>
-            </h1>
-            <p className="text-xl text-gray-300 leading-relaxed mb-12 drop-shadow-md">
-              We don&apos;t just run ads. We build comprehensive growth engines that capture, nurture, and convert high-quality leads into loyal customers.
-            </p>
-            <div className="flex flex-wrap gap-4">
-              <ContactButton
-                text="Get Started"
-                className="bg-[#A3E635] text-black px-8 py-4 rounded-full font-bold hover:bg-white transition-all shadow-lg"
-              />
-              <button className="border border-white/20 text-white px-8 py-4 rounded-full font-bold hover:bg-white/10 transition-all backdrop-blur-sm">
-                View Case Studies
-              </button>
+        <div className="px-6 md:px-12 max-w-7xl mx-auto pt-20 relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            {/* Left Content */}
+            <div className="max-w-3xl relative z-20">
+              <h1 className="text-5xl md:text-7xl font-bold text-white mb-8 leading-tight drop-shadow-lg">
+                Digital Marketing <br />
+                <span className="text-[#A3E635]">Growth Systems</span>
+              </h1>
+              <p className="text-xl text-gray-300 leading-relaxed mb-12 drop-shadow-md">
+                We don&apos;t just run ads. We build comprehensive growth engines that capture, nurture, and convert high-quality leads into loyal customers.
+              </p>
+              <div className="flex flex-wrap gap-4">
+                <ContactButton
+                  text="Get Started"
+                  className="bg-[#A3E635] text-black px-8 py-4 rounded-full font-bold hover:bg-white transition-all shadow-lg"
+                />
+                <button className="border border-white/20 text-white px-8 py-4 rounded-full font-bold hover:bg-white/10 transition-all backdrop-blur-sm">
+                  View Case Studies
+                </button>
+              </div>
             </div>
-          </div>
 
-          {/* Right Video (Background absolute) */}
-          <div className="absolute right-[-10%] md:right-0 top-1/2 -translate-y-1/2 w-[80%] md:w-[60%] lg:w-[50%] aspect-square max-h-[600px] opacity-70 z-0 pointer-events-none mix-blend-screen overflow-visible flex items-center justify-center">
-            <div className="absolute inset-0 bg-gradient-to-r from-[#0A0A0A] via-transparent to-transparent z-10"></div>
-            <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-transparent to-transparent z-10"></div>
-            <div className="absolute inset-0 bg-gradient-to-b from-[#0A0A0A] via-transparent to-transparent z-10"></div>
-            <video
-              src="/images/salhurry-lock.mp4"
-              autoPlay
-              loop
-              muted
-              playsInline
-              className="w-full h-full object-contain"
-            />
+            {/* Right Animation (Foreground Grid Item) */}
+            <div className="relative w-full h-[400px] lg:h-[500px] flex items-center justify-center lg:ml-auto">
+              <Image
+                src="/images/salhurry-digital-Marketing.webp"
+                alt="Salhurry Digital Marketing"
+                fill
+                className="object-contain drop-shadow-2xl"
+                priority
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -208,7 +205,7 @@ export default function DigitalMarketingPage() {
               In a world of noise, we help your brand stand out. Our digital marketing strategies are built on a foundation of deep technical expertise and creative excellence.
             </p>
             <button className="flex items-center gap-2 font-bold text-black border-b-2 border-[#A3E635] pb-1 hover:gap-4 transition-all">
-              Learn more about our approach <ArrowRight className="w-5 h-5" />
+              Discover our data-driven digital marketing approach <ArrowRight className="w-5 h-5" />
             </button>
           </div>
         </div>

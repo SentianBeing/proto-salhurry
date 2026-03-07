@@ -2,15 +2,14 @@ import React from 'react';
 import Navbar from '@/layouts/navbar';
 import Footer from '@/layouts/footer';
 import JobBoard from '@/components/job-board';
+import { constructMetadata } from '@/lib/seo';
 import { Metadata } from 'next';
 
-export const metadata: Metadata = {
-  title: 'Careers at SalHurry | Join Our Digital Growth Team',
+export const metadata: Metadata = constructMetadata({
+  title: 'Careers at SalHurry | Join Our Digital Growth Team in Kerala',
   description: 'Join SalHurry in Trivandrum, Kerala. We are always looking for talented digital marketers, web developers, and SEO engineers.',
-  alternates: {
-    canonical: '/careers',
-  },
-};
+  path: '/careers',
+});
 
 export default function CareersPage() {
   return (

@@ -5,13 +5,13 @@ import Image from 'next/image';
 import { Metadata } from 'next';
 import { Target, Lightbulb, Shield, Zap, Users, MapPin, CheckCircle2, ArrowRight } from 'lucide-react';
 
-export const metadata: Metadata = {
-  title: 'About SalHurry | Growth Architects in Kerala & UAE',
+import { constructMetadata } from '@/lib/seo';
+
+export const metadata: Metadata = constructMetadata({
+  title: 'About SalHurry: High-Growth Architects in Kerala & UAE',
   description: 'Learn about SalHurry, a strategy-first growth platform based in Trivandrum, Kerala. We help businesses in Kerala and UAE build scalable growth systems.',
-  alternates: {
-    canonical: '/about',
-  },
-};
+  path: '/about',
+});
 
 export default function AboutPage() {
   return (
@@ -55,8 +55,11 @@ export default function AboutPage() {
             <h2 className="text-4xl md:text-5xl font-bold text-[#1A1A1A] mb-8">Who We Are</h2>
             <div className="space-y-6 text-gray-500 text-lg leading-relaxed">
               <p>
-                We are not just a digital marketing agency. We design growth architecture — combining strategy, creative execution, and performance intelligence to help brands expand beyond traditional limits.
-              </p>
+                We’re SalHurry — a growth-first engine for businesses that want more than just likes or clicks. Born under Divegrid Pvt Ltd, we exist to turn opportunities into sales, ideas into real revenue, and strategies into systems that actually work.
+
+                We don’t do fluff. We don’t do buzzwords for the sake of it. What we do is simple: we help businesses grow smarter and faster. From building lead-generating campaigns to creating digital systems that actually convert, we make sure every effort counts.
+
+                Think of us as the team that maps your growth, fuels your sales, and keeps you ahead — all while keeping things simple, actionable, and a little addictive. Because growth isn’t just a goal. It’s an experience. And we make sure you feel it.</p>
               <p>
                 SalHurry operates as a venture under <span className="text-black font-bold">DiveGrid Private Limited</span>, our parent company focused on building structured business ecosystems.
               </p>

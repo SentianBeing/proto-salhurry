@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 import { PortableText } from '@portabletext/react';
 import Navbar from '@/layouts/navbar';
 import Footer from '@/layouts/footer';
+import BlogAudioPlayer from '@/components/blog-audio-player';
 import { sanityClient } from '@/lib/sanity.client';
 import { blogBySlugQuery } from '@/lib/sanity.queries';
 
@@ -12,6 +13,8 @@ type Props = {
     params: Promise<{ slug: string }>;
 };
 
+import { constructMetadata } from '@/lib/seo';
+
 export async function generateMetadata({ params }: Props) {
     const { slug } = await params;
     if (!slug) return { title: 'Not Found' };
@@ -19,16 +22,21 @@ export async function generateMetadata({ params }: Props) {
     const blog = await sanityClient.fetch(blogBySlugQuery, { slug });
     if (!blog) return { title: 'Not Found' };
 
-    return {
-        title: blog.seoTitle || `${blog.title} - SalHurry`,
-        description: blog.seoDescription || blog.excerpt,
+    return constructMetadata({
+        title: blog.seoTitle || `${blog.title} | SalHurry Blog`,
+        description: blog.seoDescription || blog.excerpt || 'Read our latest blog post on SalHurry.',
+        path: `/blog/${slug}`,
         openGraph: {
-            images: [blog.seoImage || blog.coverImage],
+            images: [
+                {
+                    url: blog.seoImage || blog.coverImage || '/images/og-image.jpg',
+                    width: 1200,
+                    height: 630,
+                    alt: blog.title,
+                }
+            ],
         },
-        alternates: {
-            canonical: `/blog/${slug}`,
-        },
-    };
+    });
 }
 
 // Portable Text custom components mapping existing typography styles
@@ -73,6 +81,18 @@ const portableTextComponents = {
     },
 };
 
+function extractTextFromBlocks(blocks: any[]): string {
+    if (!blocks || !Array.isArray(blocks)) return '';
+    return blocks
+        .map(block => {
+            if (block._type !== 'block' || !block.children) {
+                return '';
+            }
+            return block.children.map((child: any) => child.text).join('');
+        })
+        .join('.\n');
+}
+
 export default async function BlogDetailPage({ params }: Props) {
     const { slug } = await params;
     if (!slug) notFound();
@@ -82,6 +102,8 @@ export default async function BlogDetailPage({ params }: Props) {
     if (!blog) {
         notFound();
     }
+
+    const plainTextContent = extractTextFromBlocks(blog.content) || blog.excerpt || '';
 
     return (
         <main className="min-h-screen bg-white">
@@ -107,9 +129,11 @@ export default async function BlogDetailPage({ params }: Props) {
                             ))}
                         </div>
 
-                        <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white leading-tight mb-8">
+                        <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight mb-8">
                             {blog.title}
                         </h1>
+
+                        {/* Audio Player was moved below cover image */}
 
                         {/* Author section moved to the bottom */}
                     </div>
@@ -128,6 +152,11 @@ export default async function BlogDetailPage({ params }: Props) {
                                 priority
                             />
                         </div>
+                    )}
+
+                    {/* Audio Player Toolbar */}
+                    {plainTextContent && (
+                        <BlogAudioPlayer text={plainTextContent} />
                     )}
 
                     {/* Portable Text Content */}

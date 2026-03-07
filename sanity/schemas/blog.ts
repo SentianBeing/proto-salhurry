@@ -101,6 +101,13 @@ export default defineType({
             },
             initialValue: 'draft',
         }),
+        defineField({
+            name: 'likes',
+            title: 'Likes',
+            type: 'number',
+            description: 'Number of claps/likes for this blog post.',
+            initialValue: 0,
+        }),
     ],
     groups: [
         {

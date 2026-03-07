@@ -11,7 +11,7 @@ const servicesList = [
   { name: 'Digital Marketing', href: '/services/digital-marketing' },
   { name: 'Ai Video Production', href: '#' },
   { name: 'Web Development', href: '/services/web-development' },
-  { name: 'Custom ERP Solutions', href: '#' }
+  { name: 'Custom ERP Solutions', href: '/services/custom-erp-solutions' }
 ];
 
 const featuredServices = [

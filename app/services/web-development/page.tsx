@@ -7,16 +7,15 @@ import CTA from '@/components/cta';
 import AnimatedHeroImage from '@/components/animated-hero-image';
 import ContactButton from '@/components/contact-button';
 import Image from 'next/image';
+import { constructMetadata } from '@/lib/seo';
 import { Metadata } from 'next';
 import { Code2, Layout, Smartphone, Zap, ArrowRight, CheckCircle2, Cpu, Shield, Rocket, Layers } from 'lucide-react';
 
-export const metadata: Metadata = {
-  title: 'Web Development & Engineering | SalHurry',
+export const metadata: Metadata = constructMetadata({
+  title: 'Custom Web Development & Performance Engineering | SalHurry',
   description: 'Custom web apps, high-performance UI/UX design, and speed-optimized development services by SalHurry.',
-  alternates: {
-    canonical: '/services/web-development',
-  },
-};
+  path: '/services/web-development',
+});
 
 export default function WebDevelopmentPage() {
   return (

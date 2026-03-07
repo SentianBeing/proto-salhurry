@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import Image from 'next/image';
 
 export default function AnimatedHeroImage() {
     const [currentFrame, setCurrentFrame] = useState(1);
@@ -41,13 +42,15 @@ export default function AnimatedHeroImage() {
     const imagePath = `/lock-frames/ezgif-frame-${frameString}.png`;
 
     return (
-        <div className="relative w-full h-[400px] lg:h-[500px] rounded-[30px] overflow-hidden lg:ml-auto flex items-center justify-center">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
+        <div className="relative w-full h-[280px] sm:h-[350px] lg:h-[500px] -mt-6 sm:-mt-8 lg:mt-0 overflow-visible lg:ml-auto flex items-center justify-center">
+            <Image
                 src={imagePath}
                 alt="Animated web development visualization"
-                className="w-full h-full object-contain mix-blend-screen"
+                className="w-full h-full object-contain mix-blend-screen scale-125 sm:scale-110 lg:scale-100"
                 style={{ willChange: 'contents' }}
+                width={800}
+                height={800}
+                unoptimized
             />
         </div>
     );

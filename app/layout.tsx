@@ -19,10 +19,10 @@ export const viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
   title: {
-    default: 'SalHurry | Growth Systems',
-    template: '%s | SalHurry',
+    default: 'SalHurry Growth Systems: Scaling Businesses in Kerala & UAE',
+    template: '%s | SalHurry Growth Systems',
   },
-  description: 'Growth Systems and Sales Acceleration company helping businesses with GTM strategy, SEO, and web development.',
+  description: 'SalHurry is a Growth Systems and Sales Acceleration company helping businesses in Kerala & UAE (Dubai, Abu Dhabi) with GTM strategy, SEO, and web development.',
   openGraph: {
     type: 'website',
     locale: 'en_IN',

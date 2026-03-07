@@ -12,6 +12,8 @@ type Props = {
     params: Promise<{ slug: string }>;
 };
 
+import { constructMetadata } from '@/lib/seo';
+
 export async function generateMetadata({ params }: Props) {
     const { slug } = await params;
     if (!slug) return { title: 'Not Found' };
@@ -19,16 +21,21 @@ export async function generateMetadata({ params }: Props) {
     const caseStudy = await sanityClient.fetch(caseStudyBySlugQuery, { slug });
     if (!caseStudy) return { title: 'Not Found' };
 
-    return {
-        title: caseStudy.seoTitle || `${caseStudy.title} - SalHurry`,
-        description: caseStudy.seoDescription || `Case study for ${caseStudy.clientName}`,
+    return constructMetadata({
+        title: caseStudy.seoTitle || `${caseStudy.title} | SalHurry Case Study`,
+        description: caseStudy.seoDescription || `Read our case study on how SalHurry helped ${caseStudy.clientName} achieve growth.`,
+        path: `/case-studies/${slug}`,
         openGraph: {
-            images: [caseStudy.seoImage || caseStudy.galleryImages?.[0]],
+            images: [
+                {
+                    url: caseStudy.seoImage || caseStudy.galleryImages?.[0] || '/images/og-image.jpg',
+                    width: 1200,
+                    height: 630,
+                    alt: caseStudy.title,
+                }
+            ],
         },
-        alternates: {
-            canonical: `/case-studies/${slug}`,
-        },
-    };
+    });
 }
 
 // Reusing same mapping for Case Studies
