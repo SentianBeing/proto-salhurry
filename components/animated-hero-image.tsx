@@ -3,55 +3,43 @@
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 
+const VALID_FRAMES = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 19, 20, 21, 22];
+
 export default function AnimatedHeroImage() {
-    const [currentFrame, setCurrentFrame] = useState(1);
-    const totalFrames = 22;
+    const [currentFrameIndex, setCurrentFrameIndex] = useState(0);
 
     useEffect(() => {
         const fps = 10;
         const interval = 1000 / fps;
 
         const intervalId = setInterval(() => {
-            setCurrentFrame((prev) => {
-                // Skip missing frames 17 and 18
-                if (prev === 16) return 19;
-                if (prev >= totalFrames) return 1;
-                return prev + 1;
-            });
+            setCurrentFrameIndex((prev) => (prev + 1) % VALID_FRAMES.length);
         }, interval);
 
-        // Preload next few frames
-        const preloadFrames = () => {
-            for (let i = 1; i <= 3; i++) {
-                let nextFrame = currentFrame + i;
-                if (nextFrame === 17) nextFrame = 19;
-                if (nextFrame === 18) nextFrame = 19;
-                if (nextFrame > totalFrames) nextFrame = (nextFrame % totalFrames) || 1;
-
-                const img = document.createElement('img');
-                const frameString = nextFrame.toString().padStart(3, '0');
-                img.src = `/lock-frames/ezgif-frame-${frameString}.png`;
-            }
-        };
-        preloadFrames();
-
         return () => clearInterval(intervalId);
-    }, [currentFrame, totalFrames]);
-
-    const frameString = currentFrame.toString().padStart(3, '0');
-    const imagePath = `/lock-frames/ezgif-frame-${frameString}.png`;
+    }, []);
 
     return (
         <div className="relative w-full h-[280px] sm:h-[350px] lg:h-[500px] -mt-6 sm:-mt-8 lg:mt-0 overflow-visible lg:ml-auto flex items-center justify-center">
-            <Image
-                src={imagePath}
-                alt="Animated web development visualization"
-                className="w-full h-full object-contain mix-blend-screen scale-125 sm:scale-110 lg:scale-100"
-                style={{ willChange: 'contents' }}
-                width={800}
-                height={800}
-                unoptimized
-            />
+            {VALID_FRAMES.map((frame, index) => {
+                const frameString = frame.toString().padStart(3, '0');
+                const imagePath = `/lock-frames/ezgif-frame-${frameString}.png`;
+                const isActive = index === currentFrameIndex;
+
+                return (
+                    <Image
+                        key={frame}
+                        src={imagePath}
+                        alt={`Animated web development frame ${frameString}`}
+                        className={`absolute inset-0 w-full h-full object-contain mix-blend-screen scale-125 sm:scale-110 lg:scale-100 ${isActive ? 'opacity-100 relative' : 'opacity-0'}`}
+                        style={{ willChange: 'opacity' }}
+                        width={800}
+                        height={800}
+                        priority={index < 3}
+                        unoptimized
+                    />
+                );
+            })}
         </div>
     );
 }
