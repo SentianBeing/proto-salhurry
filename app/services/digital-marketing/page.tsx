@@ -31,7 +31,7 @@ export default function DigitalMarketingPage() {
             {/* Left Content */}
             <div className="max-w-xl relative z-20 pb-12 lg:pb-0 pt-8 lg:pt-0">
               <span className="inline-block px-4 py-1.5 border border-[#A3E635]/50 text-[#A3E635] rounded-full text-[10px] tracking-[0.2em] font-medium uppercase mb-8 shadow-[0_0_15px_rgba(163,230,53,0.15)] bg-[#A3E635]/5">
-                Who We Are
+                DIGITAL MARKETING
               </span>
               <h1 className="text-5xl md:text-[5.5rem] font-semibold text-white mb-6 leading-[1.05] tracking-tight">
                 We Help <br />
@@ -39,8 +39,7 @@ export default function DigitalMarketingPage() {
                 <span className="font-serif italic font-normal text-white">Grow Faster</span>
               </h1>
               <p className="text-[15px] sm:text-[17px] text-gray-300 leading-[1.8] mb-12 max-w-sm font-light">
-                We are a full-service strategy, design and digital marketing agency that helps emerging and established brands grow faster.
-              </p>
+                We help businesses generate qualified leads, convert more customers, and increase revenue through strategic SEO and digital marketing systems  </p>
               <div className="flex flex-wrap gap-4">
                 <ContactButton
                   text="Get Started"
