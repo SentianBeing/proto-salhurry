@@ -25,6 +25,10 @@ export default async function BlogListingPage() {
     return (
         <main className="min-h-screen bg-white">
             <div className="relative bg-[#0A0A0A] overflow-hidden">
+                {/* Neon Smudge Effect */}
+                <div className="absolute top-[-10%] left-[-10%] w-[60%] h-[60%] bg-[#2D3321] blur-[120px] rounded-full opacity-40 pointer-events-none"></div>
+                <div className="absolute bottom-[20%] right-[-5%] w-[40%] h-[40%] bg-[#1A1C18] blur-[100px] rounded-full opacity-30 pointer-events-none"></div>
+
                 <Antigravity
                     count={300}
                     magnetRadius={6}
@@ -68,7 +72,7 @@ export default async function BlogListingPage() {
             {/* Reusing the existing Blog component but hiding the "All Post" button */}
             <div className="-mt-12 bg-white pb-20" id="blog-grid">
                 <Suspense fallback={<div className="py-24 text-center text-gray-400 font-medium">Loading posts...</div>}>
-                    <Blog initialPosts={blogs} hideAllPostButton={true} />
+                    <Blog initialPosts={blogs} hideAllPostButton={true} variant="transparent-light" />
                 </Suspense>
             </div>
 

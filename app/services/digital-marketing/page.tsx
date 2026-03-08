@@ -4,10 +4,11 @@ import Footer from '@/layouts/footer';
 import Partners from '@/components/partners';
 import CTA from '@/components/cta';
 import ContactButton from '@/components/contact-button';
+import FivePillars from '@/components/five-pillars';
 import Image from 'next/image';
 import { constructMetadata } from '@/lib/seo';
 import { Metadata } from 'next';
-import { Target, TrendingUp, BarChart3, Megaphone, ArrowRight, CheckCircle2, Zap, Users, Globe } from 'lucide-react';
+import { Target, TrendingUp, BarChart3, Megaphone, ArrowRight, CheckCircle2, Zap, Users, Globe, ArrowUp } from 'lucide-react';
 
 export const metadata: Metadata = constructMetadata({
   title: 'Data-Driven Digital Marketing Services in Kerala | SalHurry',
@@ -25,38 +26,219 @@ export default function DigitalMarketingPage() {
 
         <Navbar />
 
-        <div className="px-6 md:px-12 max-w-7xl mx-auto pt-20 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div className="relative z-10 pt-16 lg:pt-24 pb-0 lg:pb-12">
+          <div className="px-6 md:px-12 max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             {/* Left Content */}
-            <div className="max-w-3xl relative z-20">
-              <h1 className="text-5xl md:text-7xl font-bold text-white mb-8 leading-tight drop-shadow-lg">
-                Digital Marketing <br />
-                <span className="text-[#A3E635]">Growth Systems</span>
+            <div className="max-w-xl relative z-20 pb-12 lg:pb-0 pt-8 lg:pt-0">
+              <span className="inline-block px-4 py-1.5 border border-[#A3E635]/50 text-[#A3E635] rounded-full text-[10px] tracking-[0.2em] font-medium uppercase mb-8 shadow-[0_0_15px_rgba(163,230,53,0.15)] bg-[#A3E635]/5">
+                Who We Are
+              </span>
+              <h1 className="text-5xl md:text-[5.5rem] font-semibold text-white mb-6 leading-[1.05] tracking-tight">
+                We Help <br />
+                Companies <br />
+                <span className="font-serif italic font-normal text-white">Grow Faster</span>
               </h1>
-              <p className="text-xl text-gray-300 leading-relaxed mb-12 drop-shadow-md">
-                We don&apos;t just run ads. We build comprehensive growth engines that capture, nurture, and convert high-quality leads into loyal customers.
+              <p className="text-[15px] sm:text-[17px] text-gray-300 leading-[1.8] mb-12 max-w-sm font-light">
+                We are a full-service strategy, design and digital marketing agency that helps emerging and established brands grow faster.
               </p>
               <div className="flex flex-wrap gap-4">
                 <ContactButton
                   text="Get Started"
-                  className="bg-[#A3E635] text-black px-8 py-4 rounded-full font-bold hover:bg-white transition-all shadow-lg"
+                  className="border border-[#A3E635]/80 shadow-[0_0_20px_rgba(163,230,53,0.2)] bg-black/50 backdrop-blur-md text-white px-8 py-3.5 rounded-full font-medium hover:bg-[#A3E635]/10 mt-2 transition-all flex items-center gap-2"
                 />
-                <button className="border border-white/20 text-white px-8 py-4 rounded-full font-bold hover:bg-white/10 transition-all backdrop-blur-sm">
-                  View Case Studies
-                </button>
               </div>
             </div>
 
-            {/* Right Animation (Foreground Grid Item) */}
-            <div className="relative w-full h-[400px] lg:h-[500px] flex items-center justify-center lg:ml-auto">
-              <Image
-                src="/images/salhurry-digital-Marketing.webp"
-                alt="Salhurry Digital Marketing"
-                fill
-                className="object-contain drop-shadow-2xl"
-                priority
-              />
+            {/* Desktop spacer to keep layout heights balanced */}
+            <div className="hidden lg:block h-[500px]"></div>
+          </div>
+
+          {/* Bright Neon Smudge behind the grid */}
+          <div className="absolute top-1/2 lg:right-[-5%] -translate-y-1/2 w-[80%] lg:w-[50vw] h-[80%] lg:h-[70vh] bg-[#A3E635] blur-[180px] opacity-20 pointer-events-none rounded-full z-0"></div>
+
+          {/* Right Content - Staggered Bento Grid */}
+          <div
+            className="relative w-full z-10 h-[600px] sm:h-[700px] lg:absolute lg:top-1/2 lg:-translate-y-1/2 lg:-right-4 lg:w-[60vw] lg:h-[800px]"
+            style={{
+              WebkitMaskImage: 'linear-gradient(to right, transparent, black 15%, black 95%, transparent)',
+              maskImage: 'linear-gradient(to right, transparent, black 15%, black 95%, transparent)'
+            }}
+          >
+            <div className="absolute inset-0 w-full h-full" style={{ WebkitMaskImage: 'linear-gradient(to bottom, transparent, black 5%, black 95%, transparent)', maskImage: 'linear-gradient(to bottom, transparent, black 5%, black 95%, transparent)' }}>
+              <div className="flex gap-4 sm:gap-6 absolute top-0 left-0 w-full h-[200%] -rotate-[4deg] scale-110 lg:scale-[1.10] origin-center justify-center pt-12">
+
+                {/* Column 1 - Starts lower, fast scroll */}
+                <div className="flex flex-col gap-4 sm:gap-6 w-[180px] sm:w-[220px] shrink-0 mt-32 overflow-visible">
+                  <div className="flex flex-col gap-4 sm:gap-6 animate-scroll-up-fast">
+                    {/* Card Set 1 */}
+                    <div className="bg-[#1A1A1A] rounded-[24px] p-5 aspect-square flex flex-col justify-between border border-white/5 relative overflow-hidden group hover:border-[#A3E635]/30 transition-all cursor-pointer">
+                      <div className="text-gray-400 text-[10px] font-bold tracking-wider relative z-10">ROAS</div>
+                      <div className="flex items-center gap-2 relative z-10">
+                        <span className="text-3xl font-semibold text-white">340%</span>
+                        <div className="w-5 h-5 rounded-full bg-[#A3E635] flex items-center justify-center">
+                          <ArrowUp className="w-3 h-3 text-black stroke-[3]" />
+                        </div>
+                      </div>
+                      {/* fake chart line */}
+                      <div className="absolute bottom-0 left-0 w-full h-1/2 opacity-80 flex items-end">
+                        <svg viewBox="0 0 100 40" className="w-full h-full stroke-[#A3E635]" fill="none" strokeWidth="1.5" preserveAspectRatio="none">
+                          <path d="M0,40 Q15,30 25,35 T50,20 T75,25 T100,5" />
+                        </svg>
+                      </div>
+                    </div>
+                    <div className="relative rounded-[24px] aspect-[4/5] bg-gray-900 overflow-hidden shadow-2xl">
+                      <Image unoptimized src="https://picsum.photos/400/500?random=11" alt="Growth Metric" fill className="object-cover" />
+                      <div className="absolute top-4 left-4 bg-[#A3E635] text-black text-[9px] font-bold px-2.5 py-1.5 rounded-full flex items-center gap-1 shadow-md z-10">
+                        <ArrowUp className="w-2.5 h-2.5 stroke-[3]" /> 340% ROAS
+                      </div>
+                    </div>
+                    <div className="bg-[#A3E635] rounded-[24px] aspect-square flex items-center justify-center shadow-[inset_0_-10px_20px_rgba(0,0,0,0.1)]">
+                      <Globe className="w-16 h-16 text-black opacity-80" strokeWidth={1} />
+                    </div>
+
+                    {/* Card Set 1 (Duplicated for Infinite Scroll Loop) */}
+                    <div className="bg-[#1A1A1A] rounded-[24px] p-5 aspect-square flex flex-col justify-between border border-white/5 relative overflow-hidden group hover:border-[#A3E635]/30 transition-all cursor-pointer">
+                      <div className="text-gray-400 text-[10px] font-bold tracking-wider relative z-10">ROAS</div>
+                      <div className="flex items-center gap-2 relative z-10">
+                        <span className="text-3xl font-semibold text-white">340%</span>
+                        <div className="w-5 h-5 rounded-full bg-[#A3E635] flex items-center justify-center">
+                          <ArrowUp className="w-3 h-3 text-black stroke-[3]" />
+                        </div>
+                      </div>
+                      {/* fake chart line */}
+                      <div className="absolute bottom-0 left-0 w-full h-1/2 opacity-80 flex items-end">
+                        <svg viewBox="0 0 100 40" className="w-full h-full stroke-[#A3E635]" fill="none" strokeWidth="1.5" preserveAspectRatio="none">
+                          <path d="M0,40 Q15,30 25,35 T50,20 T75,25 T100,5" />
+                        </svg>
+                      </div>
+                    </div>
+                    <div className="relative rounded-[24px] aspect-[4/5] bg-gray-900 overflow-hidden shadow-2xl">
+                      <Image unoptimized src="https://picsum.photos/400/500?random=11" alt="Growth Metric" fill className="object-cover" />
+                      <div className="absolute top-4 left-4 bg-[#A3E635] text-black text-[9px] font-bold px-2.5 py-1.5 rounded-full flex items-center gap-1 shadow-md z-10">
+                        <ArrowUp className="w-2.5 h-2.5 stroke-[3]" /> 340% ROAS
+                      </div>
+                    </div>
+                    <div className="bg-[#A3E635] rounded-[24px] aspect-square flex items-center justify-center shadow-[inset_0_-10px_20px_rgba(0,0,0,0.1)]">
+                      <Globe className="w-16 h-16 text-black opacity-80" strokeWidth={1} />
+                    </div>
+                  </div>
+                </div>
+
+                {/* Column 2 - Staggered high, slow scroll */}
+                <div className="flex flex-col gap-4 sm:gap-6 w-[180px] sm:w-[220px] shrink-0 -mt-12 overflow-visible">
+                  <div className="flex flex-col gap-4 sm:gap-6 animate-scroll-up-slow">
+                    {/* Card Set 2 */}
+                    <div className="relative rounded-[24px] aspect-[4/5] bg-gray-800 overflow-hidden shadow-2xl">
+                      <Image unoptimized src="https://picsum.photos/400/500?random=12" alt="Sleep Product" fill className="object-cover" />
+                    </div>
+                    <div className="bg-black rounded-[24px] aspect-square flex items-center justify-center border border-white/5 relative overflow-hidden group shadow-2xl">
+                      <Globe className="w-12 h-12 text-[#A3E635]" strokeWidth={1.5} />
+                      <svg viewBox="0 0 100 100" className="absolute inset-2 w-[calc(100%-16px)] h-[calc(100%-16px)] animate-[spin_12s_linear_infinite]">
+                        <path id="circlePath" d="M 50, 50 m -36, 0 a 36,36 0 1,1 72,0 a 36,36 0 1,1 -72,0" fill="none" />
+                        <text className="text-[10px] font-mono tracking-[0.16em] fill-white uppercase font-bold">
+                          <textPath href="#circlePath" startOffset="0%">
+                            convert • grow • optimize • strategize •
+                          </textPath>
+                        </text>
+                      </svg>
+                    </div>
+                    <div className="bg-white rounded-[24px] p-6 aspect-[4/5] flex flex-col justify-between shadow-xl">
+                      <div>
+                        <div className="text-gray-900 text-sm font-semibold mb-2">Growth</div>
+                        <div className="flex items-center gap-2">
+                          <span className="text-4xl font-semibold text-black tracking-tight">96%</span>
+                          <div className="w-5 h-5 rounded-full border border-gray-300 flex items-center justify-center">
+                            <ArrowUp className="w-3 h-3 text-gray-500 stroke-[3]" />
+                          </div>
+                        </div>
+                      </div>
+                      <p className="text-[10px] text-gray-500 font-medium leading-relaxed max-w-[80%] pb-4">Average increase in ROAS this month of our customers</p>
+                    </div>
+
+                    {/* Card Set 2 (Duplicated) */}
+                    <div className="relative rounded-[24px] aspect-[4/5] bg-gray-800 overflow-hidden shadow-2xl">
+                      <Image unoptimized src="https://picsum.photos/400/500?random=12" alt="Sleep Product" fill className="object-cover" />
+                    </div>
+                    <div className="bg-black rounded-[24px] aspect-square flex items-center justify-center border border-white/5 relative overflow-hidden group shadow-2xl">
+                      <Globe className="w-12 h-12 text-[#A3E635]" strokeWidth={1.5} />
+                      <svg viewBox="0 0 100 100" className="absolute inset-2 w-[calc(100%-16px)] h-[calc(100%-16px)] animate-[spin_12s_linear_infinite]">
+                        <path id="circlePath" d="M 50, 50 m -36, 0 a 36,36 0 1,1 72,0 a 36,36 0 1,1 -72,0" fill="none" />
+                        <text className="text-[10px] font-mono tracking-[0.16em] fill-white uppercase font-bold">
+                          <textPath href="#circlePath" startOffset="0%">
+                            convert • grow • optimize • strategize •
+                          </textPath>
+                        </text>
+                      </svg>
+                    </div>
+                    <div className="bg-white rounded-[24px] p-6 aspect-[4/5] flex flex-col justify-between shadow-xl">
+                      <div>
+                        <div className="text-gray-900 text-sm font-semibold mb-2">Growth</div>
+                        <div className="flex items-center gap-2">
+                          <span className="text-4xl font-semibold text-black tracking-tight">96%</span>
+                          <div className="w-5 h-5 rounded-full border border-gray-300 flex items-center justify-center">
+                            <ArrowUp className="w-3 h-3 text-gray-500 stroke-[3]" />
+                          </div>
+                        </div>
+                      </div>
+                      <p className="text-[10px] text-gray-500 font-medium leading-relaxed max-w-[80%] pb-4">Average increase in ROAS this month of our customers</p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Column 3 - Staggered slightly lower than 2, medium scroll */}
+                <div className="flex flex-col gap-4 sm:gap-6 w-[180px] sm:w-[220px] shrink-0 mt-8 overflow-visible">
+                  <div className="flex flex-col gap-4 sm:gap-6 animate-scroll-up">
+                    {/* Card Set 3 */}
+                    <div className="bg-white rounded-[24px] p-6 aspect-[4/5] flex flex-col justify-between shadow-xl relative overflow-hidden">
+                      <div>
+                        <div className="text-gray-900 text-sm font-semibold mb-2">Growth</div>
+                        <div className="flex items-center gap-2">
+                          <span className="text-4xl font-semibold text-black tracking-tight">96%</span>
+                          <div className="w-5 h-5 rounded-full border border-gray-300 flex items-center justify-center">
+                            <ArrowUp className="w-3 h-3 text-gray-500 stroke-[3]" />
+                          </div>
+                        </div>
+                      </div>
+                      <p className="text-[10px] text-gray-500 font-medium leading-relaxed max-w-[80%] pb-8">Average increase in ROAS this month of our customers</p>
+                    </div>
+                    <div className="relative rounded-[24px] aspect-square bg-gray-900 overflow-hidden shadow-2xl">
+                      <Image unoptimized src="https://picsum.photos/400/400?random=14" alt="Bags" fill className="object-cover" />
+                      <div className="absolute top-4 right-4 bg-[#A3E635] text-black text-[9px] font-bold px-2.5 py-1.5 rounded-full flex items-center gap-1 shadow-md z-10">
+                        <ArrowUp className="w-2.5 h-2.5 stroke-[3]" /> 340% ROAS
+                      </div>
+                    </div>
+                    <div className="bg-[#A3E635]/10 rounded-[24px] aspect-[4/5] flex items-center justify-center border border-[#A3E635]/20">
+                      <Users className="w-16 h-16 text-[#A3E635] opacity-90" strokeWidth={1.5} />
+                    </div>
+
+                    {/* Card Set 3 (Duplicated) */}
+                    <div className="bg-white rounded-[24px] p-6 aspect-[4/5] flex flex-col justify-between shadow-xl relative overflow-hidden">
+                      <div>
+                        <div className="text-gray-900 text-sm font-semibold mb-2">Growth</div>
+                        <div className="flex items-center gap-2">
+                          <span className="text-4xl font-semibold text-black tracking-tight">96%</span>
+                          <div className="w-5 h-5 rounded-full border border-gray-300 flex items-center justify-center">
+                            <ArrowUp className="w-3 h-3 text-gray-500 stroke-[3]" />
+                          </div>
+                        </div>
+                      </div>
+                      <p className="text-[10px] text-gray-500 font-medium leading-relaxed max-w-[80%] pb-8">Average increase in ROAS this month of our customers</p>
+                    </div>
+                    <div className="relative rounded-[24px] aspect-square bg-gray-900 overflow-hidden shadow-2xl">
+                      <Image unoptimized src="https://picsum.photos/400/400?random=14" alt="Bags" fill className="object-cover" />
+                      <div className="absolute top-4 right-4 bg-[#A3E635] text-black text-[9px] font-bold px-2.5 py-1.5 rounded-full flex items-center gap-1 shadow-md z-10">
+                        <ArrowUp className="w-2.5 h-2.5 stroke-[3]" /> 340% ROAS
+                      </div>
+                    </div>
+                    <div className="bg-[#A3E635]/10 rounded-[24px] aspect-[4/5] flex items-center justify-center border border-[#A3E635]/20">
+                      <Users className="w-16 h-16 text-[#A3E635] opacity-90" strokeWidth={1.5} />
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
+
+            {/* Fade overlays removed - using pure native CSS alpha masks on the container for seamless blending over the neon smudge */}
           </div>
         </div>
       </div>
@@ -116,7 +298,7 @@ export default function DigitalMarketingPage() {
                 Our Methodology
               </span>
               <h2 className="text-4xl md:text-6xl font-bold text-white mb-8">
-                How We Scale <br />Your Business
+                How We <span className="font-serif italic font-normal text-[#A3E635]">Scale</span> <br />Your Business
               </h2>
               <p className="text-gray-400 text-lg leading-relaxed mb-8">
                 Our approach is rooted in data and driven by results. We follow a rigorous process to ensure every dollar spent contributes to your bottom line.
@@ -211,6 +393,7 @@ export default function DigitalMarketingPage() {
         </div>
       </section>
 
+      <FivePillars />
       <CTA />
       <Footer />
     </main>
