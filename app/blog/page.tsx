@@ -54,8 +54,12 @@ export default async function BlogListingPage() {
 
                     <div className="flex-1 flex flex-col justify-end pb-16 px-4 sm:px-6 md:px-12 max-w-7xl w-full mx-auto relative mt-12 sm:mt-20">
                         <div className="max-w-3xl">
-                            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-8 leading-tight pointer-events-auto w-fit">
-                                Insights at the Intersection of Tech, Marketing & Sales
+                            <span className="inline-block px-4 py-1.5 border border-[#A3E635]/50 text-[#A3E635] rounded-full text-[10px] tracking-[0.2em] font-medium uppercase mb-8 shadow-[0_0_15px_rgba(163,230,53,0.15)] bg-[#A3E635]/5 pointer-events-auto">
+                                THE BLOG
+                            </span>
+                            <h1 className="text-5xl md:text-[4.5rem] font-semibold text-white mb-8 leading-[1.05] tracking-tight pointer-events-auto w-fit">
+                                Insights at the Intersection of <br />
+                                <span className="font-serif italic font-normal text-white">Tech, Marketing & Sales</span>
                             </h1>
 
                             <div className="pointer-events-auto inline-block w-full max-w-md">

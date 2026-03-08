@@ -25,14 +25,14 @@ export default function AboutPage() {
 
         <div className="px-6 md:px-12 max-w-7xl mx-auto pt-20">
           <div className="max-w-3xl">
-            <span className="inline-block px-4 py-1 border border-white/10 rounded-full text-[10px] uppercase tracking-widest text-[#A3E635] mb-6">
-              About SalHurry
+            <span className="inline-block px-4 py-1.5 border border-[#A3E635]/50 text-[#A3E635] rounded-full text-[10px] tracking-[0.2em] font-medium uppercase mb-8 shadow-[0_0_15px_rgba(163,230,53,0.15)] bg-[#A3E635]/5">
+              ABOUT SALHURRY
             </span>
-            <h1 className="text-5xl md:text-7xl font-bold text-white mb-8 leading-tight">
+            <h1 className="text-5xl md:text-[5.5rem] font-semibold text-white mb-6 leading-[1.05] tracking-tight">
               We Architect <br />
-              <span className="text-[#A3E635]">Growth Systems</span>
+              <span className="font-serif italic font-normal text-white">Growth Systems</span>
             </h1>
-            <p className="text-xl text-gray-400 leading-relaxed mb-12">
+            <p className="text-[15px] sm:text-[17px] text-gray-300 leading-[1.8] mb-12 max-w-sm font-light">
               SalHurry is a strategy-first growth platform based in Trivandrum, Kerala. We work with ambitious businesses across Kerala and the UAE to build structured, scalable growth systems.
             </p>
           </div>

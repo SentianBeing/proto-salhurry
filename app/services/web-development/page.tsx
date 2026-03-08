@@ -30,11 +30,14 @@ export default function WebDevelopmentPage() {
         <div className="px-6 md:px-12 max-w-7xl mx-auto pt-20">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10 block">
             <div className="max-w-2xl">
-              <h1 className="text-5xl md:text-7xl font-bold text-white mb-8 leading-tight">
+              <span className="inline-block px-4 py-1.5 border border-[#A3E635]/50 text-[#A3E635] rounded-full text-[10px] tracking-[0.2em] font-medium uppercase mb-8 shadow-[0_0_15px_rgba(163,230,53,0.15)] bg-[#A3E635]/5">
+                WEB DEVELOPMENT
+              </span>
+              <h1 className="text-5xl md:text-[5.5rem] font-semibold text-white mb-6 leading-[1.05] tracking-tight">
                 Web Development <br />
-                <span className="text-[#A3E635]">& Engineering</span>
+                <span className="font-serif italic font-normal text-white">& Engineering</span>
               </h1>
-              <p className="text-xl text-gray-400 leading-relaxed mb-12">
+              <p className="text-[15px] sm:text-[17px] text-gray-300 leading-[1.8] mb-12 max-w-sm font-light">
                 Building high-performance, conversion-optimized web experiences that serve as your 24/7 digital sales force.
               </p>
               <div className="flex flex-wrap gap-4">

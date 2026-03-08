@@ -5,6 +5,7 @@ import Partners from '@/components/partners';
 import CTA from '@/components/cta';
 import ContactButton from '@/components/contact-button';
 import FivePillars from '@/components/five-pillars';
+import DigitalMarketingFAQ from '@/components/digital-marketing-faq';
 import Image from 'next/image';
 import { constructMetadata } from '@/lib/seo';
 import { Metadata } from 'next';
@@ -19,6 +20,51 @@ export const metadata: Metadata = constructMetadata({
 export default function DigitalMarketingPage() {
   return (
     <main className="min-h-screen bg-white">
+      {/* JSON-LD Schema Markup for local SEO and Service definition */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Service",
+            "name": "Data-Driven Digital Marketing & SEO Services",
+            "provider": {
+              "@type": "Organization",
+              "name": "SalHurry"
+            },
+            "description": "Comprehensive digital marketing systems including SEO, performance marketing, and funnel architecture designed for revenue growth in Kerala and the UAE.",
+            "areaServed": ["Kerala", "UAE", "Global"],
+            "hasOfferCatalog": {
+              "@type": "OfferCatalog",
+              "name": "Digital Marketing Services",
+              "itemListElement": [
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Performance Marketing"
+                  }
+                },
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "SEO & Content Strategy"
+                  }
+                },
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Brand Strategy"
+                  }
+                }
+              ]
+            }
+          }),
+        }}
+      />
+
       <div className="relative bg-[#0A0A0A] overflow-hidden pb-24">
         {/* Neon Smudge Effect */}
         <div className="absolute top-[-10%] left-[-10%] w-[60%] h-[60%] bg-[#2D3321] blur-[120px] rounded-full opacity-40 pointer-events-none"></div>
@@ -86,7 +132,7 @@ export default function DigitalMarketingPage() {
                       </div>
                     </div>
                     <div className="relative rounded-[24px] aspect-[4/5] bg-gray-900 overflow-hidden shadow-2xl">
-                      <Image unoptimized src="https://picsum.photos/400/500?random=11" alt="Growth Metric" fill className="object-cover" />
+                      <Image unoptimized src="https://picsum.photos/400/500?random=11" alt="SalHurry data-driven digital marketing growth metrics showing 340% ROAS increase" fill className="object-cover" />
                       <div className="absolute top-4 left-4 bg-[#A3E635] text-black text-[9px] font-bold px-2.5 py-1.5 rounded-full flex items-center gap-1 shadow-md z-10">
                         <ArrowUp className="w-2.5 h-2.5 stroke-[3]" /> 340% ROAS
                       </div>
@@ -112,7 +158,7 @@ export default function DigitalMarketingPage() {
                       </div>
                     </div>
                     <div className="relative rounded-[24px] aspect-[4/5] bg-gray-900 overflow-hidden shadow-2xl">
-                      <Image unoptimized src="https://picsum.photos/400/500?random=11" alt="Growth Metric" fill className="object-cover" />
+                      <Image unoptimized src="https://picsum.photos/400/500?random=11" alt="Growth Metric chart for customer acquisition and conversion optimization by SalHurry" fill className="object-cover" />
                       <div className="absolute top-4 left-4 bg-[#A3E635] text-black text-[9px] font-bold px-2.5 py-1.5 rounded-full flex items-center gap-1 shadow-md z-10">
                         <ArrowUp className="w-2.5 h-2.5 stroke-[3]" /> 340% ROAS
                       </div>
@@ -128,7 +174,7 @@ export default function DigitalMarketingPage() {
                   <div className="flex flex-col gap-4 sm:gap-6 animate-scroll-up-slow">
                     {/* Card Set 2 */}
                     <div className="relative rounded-[24px] aspect-[4/5] bg-gray-800 overflow-hidden shadow-2xl">
-                      <Image unoptimized src="https://picsum.photos/400/500?random=12" alt="Sleep Product" fill className="object-cover" />
+                      <Image unoptimized src="https://picsum.photos/400/500?random=12" alt="Performance marketing dashboard showcasing conversion rate optimization and strategy by SalHurry" fill className="object-cover" />
                     </div>
                     <div className="bg-black rounded-[24px] aspect-square flex items-center justify-center border border-white/5 relative overflow-hidden group shadow-2xl">
                       <Globe className="w-12 h-12 text-[#A3E635]" strokeWidth={1.5} />
@@ -156,7 +202,7 @@ export default function DigitalMarketingPage() {
 
                     {/* Card Set 2 (Duplicated) */}
                     <div className="relative rounded-[24px] aspect-[4/5] bg-gray-800 overflow-hidden shadow-2xl">
-                      <Image unoptimized src="https://picsum.photos/400/500?random=12" alt="Sleep Product" fill className="object-cover" />
+                      <Image unoptimized src="https://picsum.photos/400/500?random=12" alt="SEO ranking improvements and search engine optimization strategy graphic" fill className="object-cover" />
                     </div>
                     <div className="bg-black rounded-[24px] aspect-square flex items-center justify-center border border-white/5 relative overflow-hidden group shadow-2xl">
                       <Globe className="w-12 h-12 text-[#A3E635]" strokeWidth={1.5} />
@@ -201,7 +247,7 @@ export default function DigitalMarketingPage() {
                       <p className="text-[10px] text-gray-500 font-medium leading-relaxed max-w-[80%] pb-8">Average increase in ROAS this month of our customers</p>
                     </div>
                     <div className="relative rounded-[24px] aspect-square bg-gray-900 overflow-hidden shadow-2xl">
-                      <Image unoptimized src="https://picsum.photos/400/400?random=14" alt="Bags" fill className="object-cover" />
+                      <Image unoptimized src="https://picsum.photos/400/400?random=14" alt="Client revenue growth chart from targeted SEO and content marketing campaigns" fill className="object-cover" />
                       <div className="absolute top-4 right-4 bg-[#A3E635] text-black text-[9px] font-bold px-2.5 py-1.5 rounded-full flex items-center gap-1 shadow-md z-10">
                         <ArrowUp className="w-2.5 h-2.5 stroke-[3]" /> 340% ROAS
                       </div>
@@ -224,7 +270,7 @@ export default function DigitalMarketingPage() {
                       <p className="text-[10px] text-gray-500 font-medium leading-relaxed max-w-[80%] pb-8">Average increase in ROAS this month of our customers</p>
                     </div>
                     <div className="relative rounded-[24px] aspect-square bg-gray-900 overflow-hidden shadow-2xl">
-                      <Image unoptimized src="https://picsum.photos/400/400?random=14" alt="Bags" fill className="object-cover" />
+                      <Image unoptimized src="https://picsum.photos/400/400?random=14" alt="Digital marketing lead generation system architecture overview" fill className="object-cover" />
                       <div className="absolute top-4 right-4 bg-[#A3E635] text-black text-[9px] font-bold px-2.5 py-1.5 rounded-full flex items-center gap-1 shadow-md z-10">
                         <ArrowUp className="w-2.5 h-2.5 stroke-[3]" /> 340% ROAS
                       </div>
@@ -318,11 +364,10 @@ export default function DigitalMarketingPage() {
             </div>
             <div className="relative h-[400px] md:h-[600px] rounded-[40px] overflow-hidden">
               <Image
-                src="https://picsum.photos/seed/marketing-data/800/1000"
-                alt="SalHurry Digital Marketing Strategy and Growth Funnel"
+                src="/images/megaphone-marketing-salhurry.webp"
+                alt="Salhurry megaphone digital marketing and growth scaling strategies"
                 fill
                 className="object-cover"
-                referrerPolicy="no-referrer"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
             </div>
@@ -393,6 +438,7 @@ export default function DigitalMarketingPage() {
       </section>
 
       <FivePillars />
+      <DigitalMarketingFAQ />
       <CTA />
       <Footer />
     </main>
