@@ -1,12 +1,13 @@
 'use client';
 
 import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
+import { motion } from 'motion/react';
 import { Plus, Minus } from 'lucide-react';
 
 const faqs = [
     {
         question: 'What makes SalHurry different from a typical digital marketing agency?',
+        schemaText: 'Most digital marketing agencies focus only on running ads or posting on social media. SalHurry operates as a sales growth agency. Instead of just executing marketing tasks, we build structured customer acquisition systems that help businesses generate consistent sales. This includes strategy, campaign architecture, landing pages, funnels, lead management systems, and performance marketing. Our goal is not just traffic or leads — it is real business growth and measurable sales results.',
         answer: (
             <div className="space-y-4">
                 <p>Most digital marketing agencies focus only on running ads or posting on social media.</p>
@@ -17,6 +18,7 @@ const faqs = [
     },
     {
         question: 'Do you only run ads or do you provide complete marketing systems?',
+        schemaText: 'We build complete growth systems. Running ads without the right strategy often wastes budget. Before launching campaigns, we design the growth infrastructure needed for customer acquisition. This may include: Growth strategy and GTM planning, Landing page and funnel systems, Lead generation and CRM automation, Performance marketing campaigns, and Creative marketing campaigns and activations. The goal is to build a structured system that consistently brings customers, not just temporary ad results.',
         answer: (
             <div className="space-y-4">
                 <p>We build complete growth systems.</p>
@@ -34,6 +36,7 @@ const faqs = [
     },
     {
         question: 'What types of businesses do you work with?',
+        schemaText: 'We primarily work with: Startups and early-stage businesses, Local businesses, Construction, mining, and real estate companies, Clinics and gyms, Event companies and wedding planners, and Businesses launching new products or services. Many of our clients already have a product or service but need a structured strategy to acquire customers and scale their sales.',
         answer: (
             <div className="space-y-4">
                 <p>We primarily work with:</p>
@@ -51,6 +54,7 @@ const faqs = [
     },
     {
         question: 'Do you help startups launch their products in the market?',
+        schemaText: 'Yes. We work with early-stage startups and product founders to design a Go-To-Market (GTM) strategy. Our team has experience working with SaaS products, digital platforms, and service businesses, which allows us to help founders: Position their product correctly, Identify their target audience, Design acquisition channels, and Launch campaigns that create early traction. This helps startups enter the market with a clear growth roadmap instead of guessing marketing strategies.',
         answer: (
             <div className="space-y-4">
                 <p>Yes.</p>
@@ -68,6 +72,7 @@ const faqs = [
     },
     {
         question: 'Do you charge monthly or project-based pricing?',
+        schemaText: 'Our pricing structure depends on the type of work. One-time services include Website development, Landing page creation, Initial brand setup, and Marketing infrastructure setup. Monthly retainers include Performance marketing campaigns, Lead generation systems, Campaign optimization, and Continuous growth support. Ad spend is separate from agency fees, and campaigns are optimized regularly to improve performance.',
         answer: (
             <div className="space-y-4">
                 <p>Our pricing structure depends on the type of work.</p>
@@ -91,6 +96,7 @@ const faqs = [
     },
     {
         question: 'What happens if campaigns do not perform well?',
+        schemaText: 'We focus on long-term growth partnerships, not short-term billing. If a campaign significantly underperforms and the client is not satisfied with the results, we may reduce or waive our agency fees, depending on the situation. Our goal is to ensure clients feel confident that our incentives are aligned with their business growth and success.',
         answer: (
             <div className="space-y-4">
                 <p>We focus on long-term growth partnerships, not short-term billing.</p>
@@ -101,6 +107,7 @@ const faqs = [
     },
     {
         question: 'Do you provide reporting and campaign transparency?',
+        schemaText: 'Yes. Clients receive clear performance reports and campaign insights, which may include: Campaign performance metrics, Lead and sales tracking, Ad performance breakdown, and Optimization insights. For active campaign clients, we also provide regular updates and performance discussions to ensure campaigns are improving over time.',
         answer: (
             <div className="space-y-4">
                 <p>Yes.</p>
@@ -117,6 +124,7 @@ const faqs = [
     },
     {
         question: 'Do you help businesses generate leads or sales?',
+        schemaText: 'Our main focus is sales growth. While lead generation is part of the process, our strategy is built around converting those leads into paying customers. This is why we often build: Conversion-focused landing pages, Lead qualification systems, CRM and automation workflows, and Follow-up funnels. This ensures that leads are properly nurtured and converted into actual revenue.',
         answer: (
             <div className="space-y-4">
                 <p>Our main focus is <span className="font-bold text-black">sales growth</span>.</p>
@@ -134,6 +142,7 @@ const faqs = [
     },
     {
         question: 'Do you build websites and landing pages as part of your services?',
+        schemaText: 'Yes. Websites, landing pages, and digital assets are often part of our growth infrastructure. We create: Campaign-focused landing pages, Conversion-optimized websites, Lead capture forms and funnels, and Marketing automation integrations. These assets help ensure that traffic from marketing campaigns converts into real customers.',
         answer: (
             <div className="space-y-4">
                 <p>Yes.</p>
@@ -150,6 +159,7 @@ const faqs = [
     },
     {
         question: 'Do you work with gyms and fitness businesses?',
+        schemaText: 'Yes. We have worked extensively with fitness businesses and gyms. We are also developing a fitness SaaS platform called GymScribe, designed to help gym owners manage memberships and automate payment collection. The system includes: Member payment tracking, Automated reminders for pending payments, Dashboard for gym owners, and Future automated payment collection features. This allows gyms to improve revenue collection while reducing manual follow-ups.',
         answer: (
             <div className="space-y-4">
                 <p>Yes. We have worked extensively with fitness businesses and gyms.</p>
@@ -166,6 +176,7 @@ const faqs = [
     },
     {
         question: 'What is the Free Growth Audit?',
+        schemaText: 'The Free Growth Audit is a strategy session where we evaluate your businesss current marketing and customer acquisition system. During the audit, we review: Current marketing channels, Customer acquisition strategy, Website and conversion systems, Lead generation process, and Growth opportunities. At the end, you receive actionable insights and growth recommendations for improving your sales pipeline.',
         answer: (
             <div className="space-y-4">
                 <p>The Free Growth Audit is a strategy session where we evaluate your business’s current marketing and customer acquisition system.</p>
@@ -183,6 +194,7 @@ const faqs = [
     },
     {
         question: 'How do I get started with SalHurry?',
+        schemaText: 'The best way to start is with a Free Growth Audit. This helps us understand your business, growth goals, and current challenges before recommending a strategy. Once we identify the right approach, we design a structured growth plan to help you acquire more customers and scale your business.',
         answer: (
             <div className="space-y-4">
                 <p>The best way to start is with a <span className="font-bold text-[#A3E635] bg-black px-2 py-0.5 rounded-md">Free Growth Audit</span>.</p>
@@ -214,13 +226,7 @@ export default function DigitalMarketingFAQ() {
                             "name": faq.question,
                             "acceptedAnswer": {
                                 "@type": "Answer",
-                                "text": typeof faq.answer === 'string'
-                                    ? faq.answer
-                                    : faq.answer.props.children.map((child: any) => {
-                                        if (typeof child.props.children === 'string') return child.props.children;
-                                        if (Array.isArray(child.props.children)) return child.props.children.map((c: any) => typeof c === 'string' ? c : (c.props?.children || '')).join('');
-                                        return '';
-                                    }).join(' ')
+                                "text": faq.schemaText
                             }
                         }))
                     })
@@ -257,20 +263,16 @@ export default function DigitalMarketingFAQ() {
                             </div>
                         </button>
 
-                        <AnimatePresence>
-                            {openIndex === index && (
-                                <motion.div
-                                    initial={{ height: 0, opacity: 0 }}
-                                    animate={{ height: "auto", opacity: 1 }}
-                                    exit={{ height: 0, opacity: 0 }}
-                                    transition={{ duration: 0.3, ease: "easeInOut" }}
-                                >
-                                    <div className="p-6 pt-0 text-gray-600 leading-relaxed border-t border-gray-100/50 mt-2">
-                                        {faq.answer}
-                                    </div>
-                                </motion.div>
-                            )}
-                        </AnimatePresence>
+                        <motion.div
+                            initial={false}
+                            animate={{ height: openIndex === index ? "auto" : 0, opacity: openIndex === index ? 1 : 0 }}
+                            transition={{ duration: 0.3, ease: "easeInOut" }}
+                            className="overflow-hidden"
+                        >
+                            <div className="p-6 pt-0 text-gray-600 leading-relaxed border-t border-gray-100/50 mt-2">
+                                {faq.answer}
+                            </div>
+                        </motion.div>
                     </div>
                 ))}
             </div>
