@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 
-const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://salhurry.in';
+const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.salhurry.in';
 
 interface SEOProps {
     title: string;

@@ -7,7 +7,7 @@ const inter = Inter({
   variable: '--font-sans',
 });
 
-const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://salhurry.in';
+const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.salhurry.in';
 
 export const viewport = {
   themeColor: '#0A0A0A',

@@ -3,7 +3,7 @@ import { sanityClient } from '@/lib/sanity.client';
 import { allBlogsQuery, allCaseStudiesQuery } from '@/lib/sanity.queries';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-    const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://salhurry.in';
+    const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.salhurry.in';
 
     const routes = [
         '',
