@@ -6,14 +6,13 @@ import CTA from '@/components/cta';
 import ContactButton from '@/components/contact-button';
 import { Metadata } from 'next';
 import { Settings, Database, Server, Cog, Building2, Activity, Dumbbell, ShieldCheck, ArrowRight, Truck } from 'lucide-react';
+import { constructMetadata } from '@/lib/seo';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = constructMetadata({
     title: 'Custom ERP Solutions | SalHurry',
     description: 'Bespoke Enterprise Resource Planning software tailored for Gyms, Medical Clinics, Construction, and Fleet Management. Streamline your operations with SalHurry.',
-    alternates: {
-        canonical: '/services/custom-erp-solutions',
-    },
-};
+    path: '/services/custom-erp-solutions',
+});
 
 export default function CustomERPSolutionsPage() {
     return (

@@ -7,11 +7,13 @@ import Link from 'next/link';
 import Image from 'next/image';
 import HeroImages from './HeroImages';
 import ServicesContent from '@/components/services-content';
+import { constructMetadata } from '@/lib/seo';
 
-export const metadata = {
+export const metadata = constructMetadata({
     title: 'Our Services | SalHurry Growth Systems',
     description: 'Explore SalHurry\'s comprehensive growth services, from GTM Blueprint and Performance Marketing to Custom Digital Infrastructure and Automation.',
-};
+    path: '/services',
+});
 
 // Services data moved to ServicesContent component
 

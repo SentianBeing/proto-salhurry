@@ -5,11 +5,13 @@ import ScrollReveal from '@/components/scroll-reveal';
 import WhatsAppGenericMockup from '@/components/whatsapp-generic-mockup';
 import Link from 'next/link';
 import { MessageCircle, CalendarClock, ShieldCheck, Clock, ArrowRight, TrendingUp, MonitorSmartphone } from 'lucide-react';
+import { constructMetadata } from '@/lib/seo';
 
-export const metadata = {
+export const metadata = constructMetadata({
   title: 'How We Do Work | SalHurry Growth Systems',
   description: 'Complete transparency in our execution process spanning web development, corporate branding, and enterprise applications. No black boxes. Just visibility.',
-};
+  path: '/how-we-work',
+});
 
 export default function HowWeWorkPage() {
   return (
