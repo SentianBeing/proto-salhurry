@@ -197,7 +197,7 @@ export default function JonesGymCaseStudy() {
                       {feature.title}
                     </h3>
                     <p className={`text-[15px] leading-relaxed ${feature.descColor}`}>
-                      {feature.description || feature.desc}
+                      {feature.desc}
                     </p>
                   </div>
                 </div>
