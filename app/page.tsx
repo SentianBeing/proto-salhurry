@@ -32,8 +32,8 @@ export default async function Home() {
     '@context': 'https://schema.org',
     '@type': ['ProfessionalService', 'Organization'],
     name: 'SalHurry by Divegrid',
-    url: 'https://salhurry.in',
-    logo: 'https://salhurry.in/favicon/favicon-96x96.png',
+    url: 'https://www.salhurry.in',
+    logo: 'https://www.salhurry.in/favicon/favicon-96x96.png',
     description: 'We build growth systems for businesses that are serious about revenue. Expertise in Growth Strategy, GTM Architecture, Performance Marketing, and Web Development.',
     slogan: "Before We Spend a Single Rupee — We Figure Out If It's Worth Spending.",
     parentOrganization: {

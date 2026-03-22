@@ -20,7 +20,8 @@ export function constructMetadata({
     openGraph,
     twitter,
 }: SEOProps): Metadata {
-    const url = `${baseUrl}${path}`;
+    const normalizedPath = path === '/' ? '' : path;
+    const url = `${baseUrl}${normalizedPath}`;
 
     return {
         title,
