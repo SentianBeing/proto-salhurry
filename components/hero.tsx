@@ -25,7 +25,7 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
           className="text-base sm:text-lg text-gray-400 max-w-md lg:mt-4 leading-relaxed"
-        >We transform businesses through qualified leads, data-driven insights, and strategic growth systems — helping brands scale faster and unlock their true market potential.
+        >We transform businesses through qualified leads, data-driven insights, and strategic growth systems helping brands scale faster and unlock their true market potential.
         </motion.p>
       </div>
 

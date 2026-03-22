@@ -62,7 +62,7 @@ import { ContactModalProvider } from '@/context/contact-modal-context';
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${inter.variable}`}>
+    <html lang="en" className={`${inter.variable}`} suppressHydrationWarning>
       <body className="font-sans antialiased" suppressHydrationWarning>
         <ContactModalProvider>
           {children}

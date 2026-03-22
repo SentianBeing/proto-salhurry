@@ -4,6 +4,7 @@ import React from 'react';
 import Image from 'next/image';
 import { motion } from 'motion/react';
 import { ArrowRight } from 'lucide-react';
+import Link from 'next/link';
 
 export default function About() {
   return (
@@ -49,11 +50,11 @@ export default function About() {
             Why You Should<br />Choose <span className="text-[#A3E635] bg-color">Salhurry</span>
           </h2>
           <p className="text-gray-500 text-sm leading-relaxed mb-10 max-w-lg">
-            We proudly introduce ourselves as a digital creative agency committed to realizing our clients&apos; vision and mission through creative, innovative, and technology-based solutions in the digital world.
+            We introduce ourself as a Growth agency. Instead of just running ads, we build the entire system — strategy, campaign ideas, and execution — to drive consistent sales.”
           </p>
-          <button className="flex items-center gap-2 font-bold text-sm group">
+          <Link href="/about" className="inline-flex items-center gap-2 font-bold text-sm group">
             Learn more <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-          </button>
+          </Link>
         </div>
       </div>
     </section>

@@ -4,21 +4,23 @@ import Footer from '@/layouts/footer';
 import Partners from '@/components/partners';
 import CTA from '@/components/cta';
 import ContactButton from '@/components/contact-button';
-import FivePillars from '@/components/five-pillars';
 import DigitalMarketingFAQ from '@/components/digital-marketing-faq';
+import PerformanceProblem from '@/components/performance-problem';
+import HowWeWork from '@/components/how-we-work';
+import Industries from '@/components/industries';
+import ScrollReveal from '@/components/scroll-reveal';
 import Image from 'next/image';
-import Link from 'next/link';
 import { constructMetadata } from '@/lib/seo';
 import { Metadata } from 'next';
 import { Target, TrendingUp, BarChart3, Megaphone, ArrowRight, CheckCircle2, Zap, Users, Globe, ArrowUp } from 'lucide-react';
 
 export const metadata: Metadata = constructMetadata({
-  title: 'Data-Driven Digital Marketing Services in Kerala | SalHurry',
-  description: 'Data-driven performance marketing, SEO, and brand strategy services by SalHurry to build comprehensive growth engines for your business.',
-  path: '/services/digital-marketing',
+  title: 'High-ROI Performance Marketing Services in Kerala | SalHurry',
+  description: 'Data-driven performance marketing campaigns across Google Ads, Meta Ads, and LinkedIn Ads designed to maximize ROAS and scale your revenue.',
+  path: '/services/performance-marketing',
 });
 
-export default function DigitalMarketingPage() {
+export default function PerformanceMarketingPage() {
   return (
     <main className="min-h-screen bg-white">
       {/* JSON-LD Schema Markup for local SEO and Service definition */}
@@ -28,36 +30,36 @@ export default function DigitalMarketingPage() {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "Service",
-            "name": "Data-Driven Digital Marketing & SEO Services",
+            "name": "Performance Marketing Services",
             "provider": {
               "@type": "Organization",
               "name": "SalHurry"
             },
-            "description": "Comprehensive digital marketing systems including SEO, performance marketing, and funnel architecture designed for revenue growth in Kerala and the UAE.",
+            "description": "High-ROI performance marketing campaigns including Google Ads, Meta Ads, LinkedIn Ads, and conversion rate optimization tailored for revenue growth.",
             "areaServed": ["Kerala", "UAE", "Global"],
             "hasOfferCatalog": {
               "@type": "OfferCatalog",
-              "name": "Digital Marketing Services",
+              "name": "Performance Marketing Services",
               "itemListElement": [
                 {
                   "@type": "Offer",
                   "itemOffered": {
                     "@type": "Service",
-                    "name": "Performance Marketing"
+                    "name": "Google Ads Management"
                   }
                 },
                 {
                   "@type": "Offer",
                   "itemOffered": {
                     "@type": "Service",
-                    "name": "SEO & Content Strategy"
+                    "name": "Meta (Facebook & Instagram) Ads"
                   }
                 },
                 {
                   "@type": "Offer",
                   "itemOffered": {
                     "@type": "Service",
-                    "name": "Brand Strategy"
+                    "name": "LinkedIn Ads Strategies"
                   }
                 }
               ]
@@ -78,15 +80,16 @@ export default function DigitalMarketingPage() {
             {/* Left Content */}
             <div className="max-w-xl relative z-20 pb-12 lg:pb-0 pt-8 lg:pt-0">
               <span className="inline-block px-4 py-1.5 border border-[#A3E635]/50 text-[#A3E635] rounded-full text-[10px] tracking-[0.2em] font-medium uppercase mb-8 shadow-[0_0_15px_rgba(163,230,53,0.15)] bg-[#A3E635]/5">
-                DIGITAL MARKETING
+                PERFORMANCE MARKETING
               </span>
               <h1 className="text-5xl md:text-[5.5rem] font-semibold text-white mb-6 leading-[1.05] tracking-tight">
                 We Help <br />
                 Companies <br />
-                <span className="font-serif italic font-normal text-white">Grow Faster</span>
+                <span className="font-serif italic font-normal text-white">Scale Profitably</span>
               </h1>
               <p className="text-[15px] sm:text-[17px] text-gray-300 leading-[1.8] mb-12 max-w-sm font-light">
-                We help businesses generate qualified leads, convert more customers, and increase revenue through strategic SEO and digital marketing systems  </p>
+                We design and execute data-driven ad campaigns that turn your ad spend into measurable revenue. Maximize ROAS with targeted Meta, Google, and LinkedIn ads.
+              </p>
               <div className="flex flex-wrap gap-4">
                 <ContactButton
                   text="Get Started"
@@ -133,7 +136,7 @@ export default function DigitalMarketingPage() {
                       </div>
                     </div>
                     <div className="relative rounded-[24px] aspect-[4/5] bg-gray-900 overflow-hidden shadow-2xl">
-                      <Image unoptimized src="https://picsum.photos/400/500?random=11" alt="SalHurry data-driven digital marketing growth metrics showing 340% ROAS increase" fill className="object-cover" />
+                      <Image unoptimized src="https://picsum.photos/400/500?random=11" alt="SalHurry performance marketing growth metrics showing 340% ROAS increase" fill className="object-cover" />
                       <div className="absolute top-4 left-4 bg-[#A3E635] text-black text-[9px] font-bold px-2.5 py-1.5 rounded-full flex items-center gap-1 shadow-md z-10">
                         <ArrowUp className="w-2.5 h-2.5 stroke-[3]" /> 340% ROAS
                       </div>
@@ -159,7 +162,7 @@ export default function DigitalMarketingPage() {
                       </div>
                     </div>
                     <div className="relative rounded-[24px] aspect-[4/5] bg-gray-900 overflow-hidden shadow-2xl">
-                      <Image unoptimized src="https://picsum.photos/400/500?random=11" alt="Growth Metric chart for customer acquisition and conversion optimization by SalHurry" fill className="object-cover" />
+                      <Image unoptimized src="https://picsum.photos/400/500?random=11" alt="Growth Metric chart for customer acquisition via ads" fill className="object-cover" />
                       <div className="absolute top-4 left-4 bg-[#A3E635] text-black text-[9px] font-bold px-2.5 py-1.5 rounded-full flex items-center gap-1 shadow-md z-10">
                         <ArrowUp className="w-2.5 h-2.5 stroke-[3]" /> 340% ROAS
                       </div>
@@ -175,7 +178,7 @@ export default function DigitalMarketingPage() {
                   <div className="flex flex-col gap-4 sm:gap-6 animate-scroll-up-slow">
                     {/* Card Set 2 */}
                     <div className="relative rounded-[24px] aspect-[4/5] bg-gray-800 overflow-hidden shadow-2xl">
-                      <Image unoptimized src="https://picsum.photos/400/500?random=12" alt="Performance marketing dashboard showcasing conversion rate optimization and strategy by SalHurry" fill className="object-cover" />
+                      <Image unoptimized src="https://picsum.photos/400/500?random=12" alt="Performance marketing dashboard showcasing conversion rate optimization" fill className="object-cover" />
                     </div>
                     <div className="bg-black rounded-[24px] aspect-square flex items-center justify-center border border-white/5 relative overflow-hidden group shadow-2xl">
                       <Globe className="w-12 h-12 text-[#A3E635]" strokeWidth={1.5} />
@@ -183,7 +186,7 @@ export default function DigitalMarketingPage() {
                         <path id="circlePath" d="M 50, 50 m -36, 0 a 36,36 0 1,1 72,0 a 36,36 0 1,1 -72,0" fill="none" />
                         <text className="text-[10px] font-mono tracking-[0.16em] fill-white uppercase font-bold">
                           <textPath href="#circlePath" startOffset="0%">
-                            convert • grow • optimize • strategize •
+                            target • convert • optimize • scale •
                           </textPath>
                         </text>
                       </svg>
@@ -203,7 +206,7 @@ export default function DigitalMarketingPage() {
 
                     {/* Card Set 2 (Duplicated) */}
                     <div className="relative rounded-[24px] aspect-[4/5] bg-gray-800 overflow-hidden shadow-2xl">
-                      <Image unoptimized src="https://picsum.photos/400/500?random=12" alt="SEO ranking improvements and search engine optimization strategy graphic" fill className="object-cover" />
+                      <Image unoptimized src="https://picsum.photos/400/500?random=12" alt="Ads performance improvements and tracking strategy" fill className="object-cover" />
                     </div>
                     <div className="bg-black rounded-[24px] aspect-square flex items-center justify-center border border-white/5 relative overflow-hidden group shadow-2xl">
                       <Globe className="w-12 h-12 text-[#A3E635]" strokeWidth={1.5} />
@@ -211,7 +214,7 @@ export default function DigitalMarketingPage() {
                         <path id="circlePath" d="M 50, 50 m -36, 0 a 36,36 0 1,1 72,0 a 36,36 0 1,1 -72,0" fill="none" />
                         <text className="text-[10px] font-mono tracking-[0.16em] fill-white uppercase font-bold">
                           <textPath href="#circlePath" startOffset="0%">
-                            convert • grow • optimize • strategize •
+                            target • convert • optimize • scale •
                           </textPath>
                         </text>
                       </svg>
@@ -248,7 +251,7 @@ export default function DigitalMarketingPage() {
                       <p className="text-[10px] text-gray-500 font-medium leading-relaxed max-w-[80%] pb-8">Average increase in ROAS this month of our customers</p>
                     </div>
                     <div className="relative rounded-[24px] aspect-square bg-gray-900 overflow-hidden shadow-2xl">
-                      <Image unoptimized src="https://picsum.photos/400/400?random=14" alt="Client revenue growth chart from targeted SEO and content marketing campaigns" fill className="object-cover" />
+                      <Image unoptimized src="https://picsum.photos/400/400?random=14" alt="Client revenue growth chart from targeted performance marketing campaigns" fill className="object-cover" />
                       <div className="absolute top-4 right-4 bg-[#A3E635] text-black text-[9px] font-bold px-2.5 py-1.5 rounded-full flex items-center gap-1 shadow-md z-10">
                         <ArrowUp className="w-2.5 h-2.5 stroke-[3]" /> 340% ROAS
                       </div>
@@ -271,7 +274,7 @@ export default function DigitalMarketingPage() {
                       <p className="text-[10px] text-gray-500 font-medium leading-relaxed max-w-[80%] pb-8">Average increase in ROAS this month of our customers</p>
                     </div>
                     <div className="relative rounded-[24px] aspect-square bg-gray-900 overflow-hidden shadow-2xl">
-                      <Image unoptimized src="https://picsum.photos/400/400?random=14" alt="Digital marketing lead generation system architecture overview" fill className="object-cover" />
+                      <Image unoptimized src="https://picsum.photos/400/400?random=14" alt="Ads system architecture overview" fill className="object-cover" />
                       <div className="absolute top-4 right-4 bg-[#A3E635] text-black text-[9px] font-bold px-2.5 py-1.5 rounded-full flex items-center gap-1 shadow-md z-10">
                         <ArrowUp className="w-2.5 h-2.5 stroke-[3]" /> 340% ROAS
                       </div>
@@ -289,57 +292,62 @@ export default function DigitalMarketingPage() {
         </div>
       </div>
 
-      <Partners />
+      <ScrollReveal>
+        <PerformanceProblem />
+      </ScrollReveal>
+
+      <ScrollReveal>
+        <Partners />
+      </ScrollReveal>
 
       {/* Core Services Grid */}
-      <section className="py-24 px-6 md:px-12 max-w-7xl mx-auto">
-        <div className="text-center mb-16">
+      <ScrollReveal>
+        <section className="py-24 px-6 md:px-12 max-w-7xl mx-auto">
+          <div className="text-center mb-16">
           <span className="inline-block px-4 py-1 border border-gray-200 rounded-full text-[10px] uppercase tracking-widest text-gray-500 mb-6">
-            Our Expertise
+            Ad Platforms
           </span>
           <h2 className="text-4xl md:text-5xl font-bold text-[#1A1A1A] mb-6">
-            Comprehensive Growth Solutions
+            Where We Drive Revenue
           </h2>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {[
             {
-              title: 'Performance Marketing',
-              description: 'Data-driven campaigns across Google, Meta, and LinkedIn optimized for ROI.',
-              icon: Target,
-              href: '/services/performance-marketing'
+              title: 'Google Ads',
+              description: 'Capture high-intent search traffic and scale with Performance Max campaigns.',
+              icon: Target
             },
             {
-              title: 'SEO & Content',
-              description: 'Dominating search results through technical excellence and authority building.',
+              title: 'Meta Ads',
+              description: 'Leverage powerful algorithms on Facebook & Instagram for unmatched reach.',
               icon: TrendingUp
             },
             {
-              title: 'Analytics & Insights',
-              description: 'Deep-dive tracking to understand every touchpoint in your customer journey.',
+              title: 'LinkedIn Ads',
+              description: 'Target B2B decision-makers with precision and generate high-value leads.',
               icon: BarChart3
             },
             {
-              title: 'Brand Strategy',
-              description: 'Positioning your brand as the undisputed leader in your market category.',
+              title: 'Conversion Optimization',
+              description: 'Turn your landing pages into conversion machines to maximize ad efficiency.',
               icon: Megaphone
             }
-          ].map((service, idx) => {
-            const Wrapper = service.href ? Link : 'div';
-            return (
-              <Wrapper key={idx} href={service.href || '#'} className={`p-8 rounded-[32px] bg-[#F9FAFB] border border-gray-100 transition-all group ${service.href ? 'hover:border-[#A3E635] cursor-pointer block' : 'hover:border-[#A3E635]'}`}>
-                <div className="w-12 h-12 bg-white rounded-2xl flex items-center justify-center mb-6 shadow-sm group-hover:bg-[#A3E635] transition-colors">
-                  <service.icon className="w-6 h-6 text-black" />
-                </div>
-                <h3 className="text-xl font-bold mb-4">{service.title}</h3>
-                <p className="text-gray-500 text-sm leading-relaxed">{service.description}</p>
-              </Wrapper>
-            );
-          })}
+          ].map((service, idx) => (
+            <div key={idx} className="p-8 rounded-[32px] bg-[#F9FAFB] border border-gray-100 hover:border-[#A3E635] transition-all group">
+              <div className="w-12 h-12 bg-white rounded-2xl flex items-center justify-center mb-6 shadow-sm group-hover:bg-[#A3E635] transition-colors">
+                <service.icon className="w-6 h-6 text-black" />
+              </div>
+              <h3 className="text-xl font-bold mb-4">{service.title}</h3>
+              <p className="text-gray-500 text-sm leading-relaxed">{service.description}</p>
+            </div>
+          ))}
         </div>
       </section>
+      </ScrollReveal>
 
       {/* Growth Methodology Section */}
+      <ScrollReveal>
       <section className="bg-[#0A0A0A] py-24 px-6 md:px-12">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-20">
@@ -348,17 +356,17 @@ export default function DigitalMarketingPage() {
                 Our Methodology
               </span>
               <h2 className="text-4xl md:text-6xl font-bold text-white mb-8">
-                How We <span className="font-serif italic font-normal text-[#A3E635]">Scale</span> <br />Your Business
+                How We <span className="font-serif italic font-normal text-[#A3E635]">Maximize</span> <br />Your ROAS
               </h2>
               <p className="text-gray-400 text-lg leading-relaxed mb-8">
-                Our approach is rooted in data and driven by results. We follow a rigorous process to ensure every dollar spent contributes to your bottom line.
+                We believe in rigorous testing and rapid iteration. We build custom media buying strategies that adapt to market dynamics and outsmart your competitors.
               </p>
               <div className="space-y-4">
                 {[
-                  'Deep Market & Competitor Analysis',
-                  'Multi-Channel Funnel Architecture',
-                  'Continuous A/B Testing & Optimization',
-                  'Real-time Performance Reporting'
+                  'Creative Testing Frameworks',
+                  'Audience Segmentation & Targeting',
+                  'Advanced Attribution Tracking',
+                  'Frictionless Landing Page Funnels'
                 ].map((item, i) => (
                   <div key={i} className="flex items-center gap-3 text-white/80">
                     <CheckCircle2 className="w-5 h-5 text-[#A3E635]" />
@@ -382,18 +390,18 @@ export default function DigitalMarketingPage() {
             {[
               {
                 step: '01',
-                title: 'Audit & Strategy',
-                desc: 'We analyze your current performance and build a custom roadmap for growth.'
+                title: 'Data Onboarding',
+                desc: 'We set up precise tracking mechanisms to capture every single conversion event.'
               },
               {
                 step: '02',
-                title: 'Execution & Launch',
-                desc: 'Our experts deploy high-converting campaigns across the most relevant channels.'
+                title: 'Campaign Launch',
+                desc: 'We deploy multi-variant campaigns focusing first on the highest value prospects.'
               },
               {
                 step: '03',
-                title: 'Scale & Dominate',
-                desc: 'We double down on what works to maximize your market share and revenue.'
+                title: 'Optimize & Scale',
+                desc: 'We aggressively reallocate budget from underperforming ads into winning creatives.'
               }
             ].map((item, i) => (
               <div key={i} className="p-10 rounded-[40px] bg-white/5 border border-white/10 hover:border-[#A3E635] transition-all">
@@ -405,16 +413,19 @@ export default function DigitalMarketingPage() {
           </div>
         </div>
       </section>
+      </ScrollReveal>
+
 
       {/* Why Choose Us Section */}
+      <ScrollReveal>
       <section className="py-24 px-6 md:px-12 max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          <div className="grid grid-cols-2 gap-6">
+          <div className="grid grid-cols-2 gap-6 order-2 lg:order-1">
             {[
               { icon: Zap, label: 'Fast Execution', val: '24h' },
-              { icon: Users, label: 'Expert Team', val: '25+' },
-              { icon: Globe, label: 'Global Reach', val: '15+' },
-              { icon: BarChart3, label: 'ROI Focused', val: '4.5x' }
+              { icon: Users, label: 'Ad Experts', val: '25+' },
+              { icon: Globe, label: 'Ad Spend Managed', val: '$5M+' },
+              { icon: BarChart3, label: 'Average ROAS', val: '3.8x' }
             ].map((stat, i) => (
               <div key={i} className="p-8 rounded-[32px] bg-[#F9FAFB] border border-gray-100 text-center">
                 <div className="w-12 h-12 bg-white rounded-2xl flex items-center justify-center mb-4 mx-auto shadow-sm">
@@ -425,26 +436,40 @@ export default function DigitalMarketingPage() {
               </div>
             ))}
           </div>
-          <div>
+          <div className="order-1 lg:order-2">
             <span className="inline-block px-4 py-1 border border-gray-200 rounded-full text-[10px] uppercase tracking-widest text-gray-500 mb-6">
               Why SalHurry?
             </span>
             <h2 className="text-4xl md:text-5xl font-bold text-[#1A1A1A] mb-8">
-              We Don&apos;t Just Promise Results, We Deliver Them.
+              Performance Marketing That Pays For Itself.
             </h2>
             <p className="text-gray-500 text-lg leading-relaxed mb-8">
-              In a world of noise, we help your brand stand out. Our digital marketing strategies are built on a foundation of deep technical expertise and creative excellence.
+              We look beyond just clicks and impressions. Our goal is simple: maximize the return on every dollar you invest in advertising. Our team acts as an extension of your own growth division.
             </p>
             <button className="flex items-center gap-2 font-bold text-black border-b-2 border-[#A3E635] pb-1 hover:gap-4 transition-all">
-              Discover our data-driven digital marketing approach <ArrowRight className="w-5 h-5" />
+              Discover our data-driven performance approach <ArrowRight className="w-5 h-5" />
             </button>
           </div>
         </div>
       </section>
+      </ScrollReveal>
 
-      <FivePillars />
-      <DigitalMarketingFAQ />
-      <CTA />
+      <ScrollReveal>
+        <HowWeWork />
+      </ScrollReveal>
+
+      <ScrollReveal>
+        <Industries />
+      </ScrollReveal>
+      
+      <ScrollReveal>
+        <DigitalMarketingFAQ />
+      </ScrollReveal>
+      
+      <ScrollReveal>
+        <CTA />
+      </ScrollReveal>
+      
       <Footer />
     </main>
   );

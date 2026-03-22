@@ -9,9 +9,9 @@ import { useContactModal } from '@/context/contact-modal-context';
 
 const servicesList = [
   { name: 'Digital Marketing', href: '/services/digital-marketing' },
-  { name: 'Ai Video Production', href: '#' },
+  { name: 'Growth Strategy', href: '#' },
   { name: 'Web Development', href: '/services/web-development' },
-  { name: 'Custom ERP Solutions', href: '/services/custom-erp-solutions' }
+  { name: 'Branding and Digital Infrastructure', href: '/services/custom-erp-solutions' }
 ];
 
 const featuredServices = [

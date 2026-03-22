@@ -4,6 +4,7 @@ import React from 'react';
 import Image from 'next/image';
 import { motion } from 'motion/react';
 import { ArrowRight } from 'lucide-react';
+import Link from 'next/link';
 
 const defaultProjects = [
   {
@@ -12,7 +13,7 @@ const defaultProjects = [
     image: 'https://res.cloudinary.com/der2xk0cv/image/upload/v1772204480/rishi0_1_-AJivLpPK_bfnlgh.jpg',
     color: 'bg-[#F3F4F6]',
     btnColor: 'border border-gray-200 text-black',
-    slug: '#'
+    slug: '/projects/paperplane-wedding-studio'
   },
   {
     title: 'Jones Gym App',
@@ -102,9 +103,9 @@ export default function Projects({ initialCaseStudies = [] }: { initialCaseStudi
               <p className={`text-sm leading-relaxed ${project.descColor || 'text-gray-500'}`}>
                 {project.desc}
               </p>
-              <a href="/maintenance" className={`px-6 py-3 rounded-full font-bold text-xs flex items-center gap-2 w-fit hover:opacity-80 transition-all ${project.btnColor}`}>
+              <Link href={project.slug} className={`px-6 py-3 rounded-full font-bold text-xs flex items-center gap-2 w-fit hover:opacity-80 transition-all ${project.btnColor}`}>
                 Learn More <ArrowRight className="w-4 h-4" />
-              </a>
+              </Link>
             </div>
           </motion.div>
         ))}

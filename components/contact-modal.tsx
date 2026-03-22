@@ -148,9 +148,9 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                         >
                           <option value="">Select a service</option>
                           <option value="Digital Marketing">Digital Marketing</option>
-                          <option value="Branding">Branding</option>
+                          <option value="Branding and Digital Infrastructure">Branding and Digital Infrastructure</option>
                           <option value="Web Development">Web Development</option>
-                          <option value="Ai Video Production">Ai Video Production</option>
+                          <option value="Growth Strategy">Growth Strategy</option>
                           <option value="Ai Automation">Ai Automation</option>
                           <option value="Others">Others</option>
                         </select>

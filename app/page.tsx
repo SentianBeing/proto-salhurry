@@ -4,6 +4,7 @@ import Services from '@/components/services';
 import About from '@/components/about';
 import Process from '@/components/process';
 import Projects from '@/components/projects';
+import HomeIndustries from '@/components/home-industries';
 import Blog from '@/components/blog';
 import Testimonials from '@/components/testimonials';
 import Partners from '@/components/partners';
@@ -67,6 +68,7 @@ export default async function Home() {
         <Services />
         <About />
         <Process />
+        <HomeIndustries />
         <Projects initialCaseStudies={allCaseStudies.slice(0, 4)} />
         <Suspense fallback={<div className="py-12 bg-[#0A0A0A] text-center text-gray-500">Loading Latest Insights...</div>}>
           <Blog initialPosts={latestBlogs} />

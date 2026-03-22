@@ -10,13 +10,13 @@ export default function Process() {
     <section className="px-6 md:px-12 max-w-7xl mx-auto py-24">
       <div className="text-center mb-16">
         <span className="inline-block px-4 py-1 border border-gray-200 rounded-full text-[10px] uppercase tracking-widest text-gray-500 mb-6">
-          How it works?
+          How We Work
         </span>
         <h2 className="text-4xl md:text-5xl font-bold text-[#1A1A1A] mb-6">
           How Do We Work?
         </h2>
         <p className="text-gray-500 max-w-2xl mx-auto text-sm leading-relaxed">
-          We strive to create extraordinary experiences, increase brand awareness, expand target audience reach, and optimize overall business results.
+          Our approach focuses on building structured growth systems that help businesses acquire customers and scale effectively.
         </p>
       </div>
 
@@ -24,9 +24,9 @@ export default function Process() {
         <div className="md:col-span-4 bg-[#1A1A1A] p-10 rounded-[40px] text-white flex flex-col justify-between min-h-[350px]">
           <div>
             <span className="text-4xl font-bold text-[#A3E635] block mb-6">01</span>
-            <h3 className="text-2xl font-bold mb-4 leading-tight">Smart digital<br />marketing strategy</h3>
+            <h3 className="text-2xl font-bold mb-4 leading-tight">Discovery</h3>
             <p className="text-sm text-gray-400 leading-relaxed">
-              Overall, we leverage technological intelligence and understanding of customer behavior to achieve marketing goals more efficiently.
+              We begin by understanding your business, market, and current growth challenges. This step focuses on identifying your goals, customers, and existing marketing efforts.
             </p>
           </div>
           <button className="bg-[#A3E635] text-black px-6 py-3 rounded-full font-bold text-xs flex items-center gap-2 w-fit hover:bg-white transition-all">
@@ -53,18 +53,18 @@ export default function Process() {
         {[
           {
             num: '02',
-            title: 'Best web and app developers',
-            desc: 'We are able to create great user experiences, intuitive interfaces, and have the ability to integrate advanced features to add significant value.'
+            title: 'Market & Opportunity Analysis',
+            desc: 'We analyze the competitive landscape and identify opportunities for growth. This includes evaluating market demand, competitor strategies, and potential customer segments.'
           },
           {
             num: '03',
-            title: 'Visualization of user-appealing designs',
-            desc: 'A user-appealing design can create a mesmerizing experience and motivate users to continue using and interacting with the product.'
+            title: 'Growth Strategy Blueprint',
+            desc: 'Based on our findings, we design a structured growth plan. This blueprint defines positioning, campaign ideas, acquisition channels, and the roadmap for execution.'
           },
           {
             num: '04',
-            title: 'Quick and friendly service',
-            desc: 'Quick and friendly service also includes the ability to respond and handle complaints or problems quickly, ensuring customers feel valued.'
+            title: 'Campaign Launch & Optimization',
+            desc: 'We implement the strategy by launching targeted marketing campaigns across the selected channels. Campaign performance is continuously monitored and optimized to improve results and increase efficiency over time.'
           }
         ].map((item, i) => (
           <div key={i} className="bg-[#1A1A1A] p-10 rounded-[40px] text-white flex flex-col justify-between min-h-[350px]">

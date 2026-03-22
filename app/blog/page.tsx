@@ -3,9 +3,7 @@ import Footer from '@/layouts/footer';
 import Blog from '@/components/blog';
 import { sanityClient } from '@/lib/sanity.client';
 import { allBlogsQuery } from '@/lib/sanity.queries';
-import Antigravity from '@/components/antigravity';
 import BlogSearch from '@/components/blog-search';
-import ExploreMoreButton from '@/components/explore-more-button';
 import { Suspense } from 'react';
 
 import { constructMetadata } from '@/lib/seo';
@@ -18,66 +16,52 @@ export const metadata: Metadata = constructMetadata({
 });
 
 export const dynamic = 'force-dynamic'; // Always fetch fresh data from Sanity
+export const revalidate = 0; // Disable caching
 
 export default async function BlogListingPage() {
-    const blogs = await sanityClient.fetch(allBlogsQuery);
+    const blogs = await sanityClient.fetch(allBlogsQuery, {}, { cache: 'no-store' });
 
     return (
         <main className="min-h-screen bg-white">
             <div className="relative bg-[#0A0A0A] overflow-hidden">
-                {/* Neon Smudge Effect */}
-                <div className="absolute top-[-10%] left-[-10%] w-[60%] h-[60%] bg-[#2D3321] blur-[120px] rounded-full opacity-40 pointer-events-none"></div>
-                <div className="absolute bottom-[20%] right-[-5%] w-[40%] h-[40%] bg-[#1A1C18] blur-[100px] rounded-full opacity-30 pointer-events-none"></div>
-
-                <Antigravity
-                    count={300}
-                    magnetRadius={6}
-                    ringRadius={7}
-                    waveSpeed={0.4}
-                    waveAmplitude={1}
-                    particleSize={1.5}
-                    lerpSpeed={0.05}
-                    color="#a3e635"
-                    autoAnimate
-                    particleVariance={1}
-                    rotationSpeed={0}
-                    depthFactor={1}
-                    pulseSpeed={3}
-                    particleShape="capsule"
-                    fieldStrength={10}
-                />
-
-                <div className="relative z-10 flex flex-col min-h-[500px] pointer-events-none">
-                    <div className="pointer-events-auto">
+                {/* Subtle base gradient for depth instead of smudges */}
+                <div className="absolute inset-0 bg-gradient-to-br from-gray-900/50 via-[#0A0A0A] to-[#0A0A0A] pointer-events-none"></div>
+                
+                <div className="relative z-10 flex flex-col min-h-[500px] sm:min-h-[600px]">
+                    <div>
                         <Navbar />
                     </div>
 
-                    <div className="flex-1 flex flex-col justify-end pb-16 px-4 sm:px-6 md:px-12 max-w-7xl w-full mx-auto relative mt-12 sm:mt-20">
-                        <div className="max-w-3xl">
-                            <span className="inline-block px-4 py-1.5 border border-[#A3E635]/50 text-[#A3E635] rounded-full text-[10px] tracking-[0.2em] font-medium uppercase mb-8 shadow-[0_0_15px_rgba(163,230,53,0.15)] bg-[#A3E635]/5 pointer-events-auto">
-                                THE BLOG
+                    <div className="flex-1 flex flex-col justify-center items-center py-16 px-4 sm:px-6 md:px-12 w-full mx-auto">
+                        <div className="max-w-4xl text-center flex flex-col items-center">
+                            <span className="inline-block px-4 py-1.5 border border-[#A3E635]/30 text-[#A3E635] rounded-full text-xs tracking-widest font-medium uppercase mb-8 shadow-sm bg-[#A3E635]/10">
+                                The Blog
                             </span>
-                            <h1 className="text-5xl md:text-[4.5rem] font-semibold text-white mb-8 leading-[1.05] tracking-tight pointer-events-auto w-fit">
-                                Insights at the Intersection of <br />
+                            
+                            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold text-white mb-8 leading-[1.1] tracking-tight">
+                                Insights at the Intersection of <br className="hidden md:block" />
                                 <span className="font-serif italic font-normal text-white">Tech, Marketing & Sales</span>
                             </h1>
+                            
+                            <p className="text-gray-400 text-lg md:text-xl max-w-2xl mb-12 leading-relaxed font-light">
+                                Discover the latest articles, growth strategies, and industry trends curated by the SalHurry team to help you scale.
+                            </p>
 
-                            <div className="pointer-events-auto inline-block w-full max-w-md">
+                            <div className="w-full max-w-2xl mx-auto">
                                 <BlogSearch />
                             </div>
                         </div>
-
-                        {/* Explore More Button positioned at bottom right */}
-                        <ExploreMoreButton />
                     </div>
                 </div>
             </div>
 
-            {/* Reusing the existing Blog component but hiding the "All Post" button */}
-            <div className="-mt-12 bg-white pb-20" id="blog-grid">
-                <Suspense fallback={<div className="py-24 text-center text-gray-400 font-medium">Loading posts...</div>}>
-                    <Blog initialPosts={blogs} hideAllPostButton={true} variant="transparent-light" />
-                </Suspense>
+            {/* Grid Section */}
+            <div className="bg-white pb-24 pt-16 border-t border-gray-100" id="blog-grid">
+                <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+                    <Suspense fallback={<div className="py-24 text-center text-gray-400 font-medium">Loading posts...</div>}>
+                        <Blog initialPosts={blogs} hideAllPostButton={true} variant="transparent-light" />
+                    </Suspense>
+                </div>
             </div>
 
             <Footer />

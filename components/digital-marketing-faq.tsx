@@ -202,6 +202,31 @@ export default function DigitalMarketingFAQ() {
 
     return (
         <section className="py-24 px-6 md:px-12 max-w-4xl mx-auto">
+            {/* JSON-LD Schema for Crawler Readability */}
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{
+                    __html: JSON.stringify({
+                        "@context": "https://schema.org",
+                        "@type": "FAQPage",
+                        "mainEntity": faqs.map(faq => ({
+                            "@type": "Question",
+                            "name": faq.question,
+                            "acceptedAnswer": {
+                                "@type": "Answer",
+                                "text": typeof faq.answer === 'string'
+                                    ? faq.answer
+                                    : faq.answer.props.children.map((child: any) => {
+                                        if (typeof child.props.children === 'string') return child.props.children;
+                                        if (Array.isArray(child.props.children)) return child.props.children.map((c: any) => typeof c === 'string' ? c : (c.props?.children || '')).join('');
+                                        return '';
+                                    }).join(' ')
+                            }
+                        }))
+                    })
+                }}
+            />
+
             <div className="text-center mb-16">
                 <span className="inline-block px-4 py-1 border border-gray-200 rounded-full text-[10px] uppercase tracking-widest text-[#A3E635] font-bold mb-6 bg-gray-50">
                     FAQ

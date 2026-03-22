@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@custom-variant hover (&:hover);
+
 body {
   @apply bg-[#1A1A1A];
 }

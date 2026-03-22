@@ -4,7 +4,7 @@ import React from 'react';
 import { useContactModal } from '@/context/contact-modal-context';
 
 interface ContactButtonProps {
-    text: string;
+    text: React.ReactNode;
     className?: string;
 }
 
