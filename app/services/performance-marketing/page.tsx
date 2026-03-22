@@ -423,8 +423,8 @@ export default function PerformanceMarketingPage() {
           <div className="grid grid-cols-2 gap-6 order-2 lg:order-1">
             {[
               { icon: Zap, label: 'Fast Execution', val: '24h' },
-              { icon: Users, label: 'Ad Experts', val: '25+' },
-              { icon: Globe, label: 'Ad Spend Managed', val: '$5M+' },
+              { icon: Users, label: 'Campaigns Executed', val: '100+' },
+              { icon: Globe, label: 'Industries Served', val: '15+' },
               { icon: BarChart3, label: 'Average ROAS', val: '3.8x' }
             ].map((stat, i) => (
               <div key={i} className="p-8 rounded-[32px] bg-[#F9FAFB] border border-gray-100 text-center">
