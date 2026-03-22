@@ -15,11 +15,10 @@ export const metadata: Metadata = constructMetadata({
     path: '/blog',
 });
 
-export const dynamic = 'force-dynamic'; // Always fetch fresh data from Sanity
-export const revalidate = 0; // Disable caching
+export const revalidate = 60; // Revalidate the blog periodically instead of forcing dynamic
 
 export default async function BlogListingPage() {
-    const blogs = await sanityClient.fetch(allBlogsQuery, {}, { cache: 'no-store' });
+    const blogs = await sanityClient.fetch(allBlogsQuery);
 
     return (
         <main className="min-h-screen bg-white">

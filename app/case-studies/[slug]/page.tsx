@@ -4,9 +4,14 @@ import { PortableText } from '@portabletext/react';
 import Navbar from '@/layouts/navbar';
 import Footer from '@/layouts/footer';
 import { sanityClient } from '@/lib/sanity.client';
-import { caseStudyBySlugQuery } from '@/lib/sanity.queries';
+import { caseStudyBySlugQuery, allCaseStudiesQuery } from '@/lib/sanity.queries';
 
-export const revalidate = 60; // Revalidate every 60 seconds
+export async function generateStaticParams() {
+    const caseStudies = await sanityClient.fetch(allCaseStudiesQuery);
+    return caseStudies.map((cs: any) => ({
+        slug: cs.slug,
+    }));
+}
 
 type Props = {
     params: Promise<{ slug: string }>;

@@ -5,9 +5,14 @@ import Navbar from '@/layouts/navbar';
 import Footer from '@/layouts/footer';
 import BlogAudioPlayer from '@/components/blog-audio-player';
 import { sanityClient } from '@/lib/sanity.client';
-import { blogBySlugQuery } from '@/lib/sanity.queries';
+import { blogBySlugQuery, allBlogsQuery } from '@/lib/sanity.queries';
 
-export const revalidate = 60; // Revalidate every 60 seconds
+export async function generateStaticParams() {
+    const blogs = await sanityClient.fetch(allBlogsQuery);
+    return blogs.map((blog: any) => ({
+        slug: blog.slug,
+    }));
+}
 
 type Props = {
     params: Promise<{ slug: string }>;
