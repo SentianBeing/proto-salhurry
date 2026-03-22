@@ -59,11 +59,30 @@ export const metadata: Metadata = {
 };
 
 import { ContactModalProvider } from '@/context/contact-modal-context';
+import Script from 'next/script';
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${inter.variable}`} suppressHydrationWarning>
       <body className="font-sans antialiased" suppressHydrationWarning>
+        <Script
+          strategy="afterInteractive"
+          src={'https://www.googletagmanager.com/gtag/js?id=G-JVG2H8DSJT'}
+        />
+        <Script
+          id="google-analytics"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-JVG2H8DSJT', {
+                page_path: window.location.pathname,
+              });
+            `,
+          }}
+        />
         <ContactModalProvider>
           {children}
         </ContactModalProvider>
