@@ -65,7 +65,7 @@ export default function Blog({
                 Latest Insight Updates
               </h2>
               <p className="text-gray-400 text-sm leading-relaxed">
-                Follow our blog for specific topics, be it in science, technology, tips and tricks, etc. We always provide updated news and current trends.
+                Real talk on growth, sales, and marketing — written for Kerala businesses who are tired of generic advice.
               </p>
             </div>
             {!hideAllPostButton && (
