@@ -8,13 +8,13 @@ import Link from 'next/link';
 const services = [
   {
     title: 'Growth Strategy & GTM Architecture',
-    description: 'We design structured go-to-market systems, positioning frameworks, offer engineering, funnel mapping, and revenue roadmaps that give businesses clarity and direction before execution begins.',
+    description: "There's one thing we check before touching your marketing budget. Most agencies skip it entirely. It's the reason some businesses scale and others stall.",
     icon: Target,
     color: 'bg-[#2D2D2D]',
     iconColor: 'text-[#A3E635]',
     textColor: 'text-white',
     descColor: 'text-gray-400',
-    link: '/services'
+    link: '/services/growth-strategy'
   },
   {
     title: 'Performance Marketing & Lead Generation',

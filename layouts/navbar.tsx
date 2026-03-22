@@ -9,7 +9,7 @@ import { useContactModal } from '@/context/contact-modal-context';
 
 const servicesList = [
   { name: 'Digital Marketing', href: '/services/digital-marketing' },
-  { name: 'Growth Strategy', href: '#' },
+  { name: 'Growth Strategy', href: '/services/growth-strategy' },
   { name: 'Web Development', href: '/services/web-development' },
   { name: 'Branding and Digital Infrastructure', href: '/services/custom-erp-solutions' }
 ];

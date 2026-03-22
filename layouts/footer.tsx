@@ -22,7 +22,7 @@ export default function Footer() {
               </div>
             </Link>
             <p className="text-gray-400 text-sm leading-relaxed max-w-xs">
-              We are digital magicians, turning ideas into compelling designs.
+              We build growth systems for businesses that are serious about revenue.
             </p>
           </div>
 
