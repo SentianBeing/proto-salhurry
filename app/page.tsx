@@ -30,19 +30,39 @@ export default async function Home() {
 
   const jsonLd = {
     '@context': 'https://schema.org',
-    '@type': ['Organization', 'LocalBusiness'],
-    name: 'SalHurry',
+    '@type': ['ProfessionalService', 'Organization'],
+    name: 'SalHurry by Divegrid',
     url: 'https://salhurry.in',
+    logo: 'https://salhurry.in/favicon/favicon-96x96.png',
+    description: 'We build growth systems for businesses that are serious about revenue. Expertise in Growth Strategy, GTM Architecture, Performance Marketing, and Web Development.',
+    slogan: "Before We Spend a Single Rupee — We Figure Out If It's Worth Spending.",
     parentOrganization: {
       '@type': 'Organization',
       name: 'Divegrid Pvt Ltd',
+    },
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: 'JS Arcade, MC Rd, Kilimanoor',
+      addressLocality: 'Trivandrum',
+      addressRegion: 'Kerala',
+      addressCountry: 'IN'
+    },
+    contactPoint: {
+      '@type': 'ContactPoint',
+      telephone: '+91 62826 87001',
+      contactType: 'customer service',
+      email: 'info@salhurry.in'
     },
     areaServed: [
       { '@type': 'AdministrativeArea', name: 'Kerala' },
       { '@type': 'Country', name: 'India' },
       { '@type': 'Country', name: 'UAE' },
-      { '@type': 'City', name: 'Dubai' },
-      { '@type': 'City', name: 'Abu Dhabi' },
+      { '@type': 'Country', name: 'Germany' }
+    ],
+    makesOffer: [
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Growth Strategy & GTM Consulting' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Performance Marketing & Lead Generation' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Custom Web & Application Development' } }
     ],
     sameAs: [
       'https://www.linkedin.com/company/salhurryconnect/posts/?feedView=all',
