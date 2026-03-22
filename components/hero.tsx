@@ -82,7 +82,7 @@ export default function Hero() {
               </div>
               <div>
                 <p className="opacity-60 text-[8px] sm:text-[10px] uppercase mb-0.5 sm:mb-1">Let&apos;s Talk</p>
-                <p className="font-medium text-[10px] sm:text-sm">salhurry@gmail.com</p>
+                <p className="font-medium text-[10px] sm:text-sm">info@salhurry.in</p>
               </div>
             </div>
           </motion.div>

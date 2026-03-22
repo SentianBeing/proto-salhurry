@@ -23,7 +23,7 @@ const defaultProjects = [
     textColor: 'text-white',
     descColor: 'text-gray-400',
     btnColor: 'bg-[#A3E635] text-black',
-    slug: '#'
+    slug: '/projects/jones-gym'
   },
   {
     title: 'Sigma Sands',

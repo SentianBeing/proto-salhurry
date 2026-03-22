@@ -4,6 +4,7 @@ import React from 'react';
 import Image from 'next/image';
 import { motion } from 'motion/react';
 import { Play, ArrowRight } from 'lucide-react';
+import Link from 'next/link';
 
 export default function Process() {
   return (
@@ -29,9 +30,9 @@ export default function Process() {
               We begin by understanding your business, market, and current growth challenges. This step focuses on identifying your goals, customers, and existing marketing efforts.
             </p>
           </div>
-          <button className="bg-[#A3E635] text-black px-6 py-3 rounded-full font-bold text-xs flex items-center gap-2 w-fit hover:bg-white transition-all">
+          <Link href="/how-we-work" className="bg-[#A3E635] text-black px-6 py-3 rounded-full font-bold text-xs flex items-center gap-2 w-fit hover:bg-white transition-all">
             Learn More <ArrowRight className="w-4 h-4" />
-          </button>
+          </Link>
         </div>
 
         <div className="md:col-span-8 relative rounded-[30px] sm:rounded-[40px] overflow-hidden group min-h-[250px] sm:min-h-[350px]">
@@ -75,9 +76,9 @@ export default function Process() {
                 {item.desc}
               </p>
             </div>
-            <button className="border border-white/20 text-white px-6 py-3 rounded-full font-bold text-xs flex items-center gap-2 w-fit hover:bg-white hover:text-black transition-all">
+            <Link href="/how-we-work" className="border border-white/20 text-white px-6 py-3 rounded-full font-bold text-xs flex items-center gap-2 w-fit hover:bg-white hover:text-black transition-all">
               Learn More <ArrowRight className="w-4 h-4" />
-            </button>
+            </Link>
           </div>
         ))}
       </div>
