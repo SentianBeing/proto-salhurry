@@ -73,7 +73,7 @@ export default function Projects({ initialCaseStudies = [] }: { initialCaseStudi
           Our Creative Digital Projects
         </h2>
         <p className="text-gray-500 max-w-2xl mx-auto text-sm leading-relaxed">
-          Every project we work on is an opportunity to demonstrate our dedication to creating creative solutions that have a positive impact and meet our clients&apos; business needs.
+          Each of these started with a phone call from a business that needed more than just a website or an ad campaign. Here&apos;s what happened next.
         </p>
       </div>
 
