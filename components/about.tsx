@@ -27,7 +27,7 @@ export default function About() {
             viewport={{ once: true }}
             className="absolute -bottom-8 -right-2 sm:bottom-[-40px] sm:right-0 bg-[#1A1A1A] p-6 sm:p-8 rounded-[24px] sm:rounded-[32px] text-white w-[240px] sm:w-[280px] shadow-2xl z-10"
           >
-            <h3 className="text-3xl sm:text-4xl font-bold mb-1 sm:mb-2">530<span className="text-[#A3E635]">+</span></h3>
+            <h3 className="text-3xl sm:text-4xl font-bold mb-1 sm:mb-2">100<span className="text-[#A3E635]">+</span></h3>
             <p className="text-[10px] text-gray-400 uppercase tracking-wider mb-4 sm:mb-6">Trusted by our clients</p>
             <div className="flex items-center -space-x-2 sm:-space-x-3">
               {[1, 2, 3, 4].map((i) => (
