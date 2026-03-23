@@ -308,12 +308,11 @@ export default function PaperplaneCaseStudy() {
               ))}
             </div>
 
-            {/* Media Block 3: Instagram Mockup */}
             <div className="mb-24 flex flex-col items-center">
               <span className="text-center block text-gray-400 text-sm mb-6 italic">Premium editorial Instagram positioning reaching 20k+ targeted followers.</span>
               <div className="relative w-full max-w-[400px] aspect-[3/4] sm:aspect-[9/16]">
                 <Image 
-                  src="https://res.cloudinary.com/der2xk0cv/image/upload/v1774192432/IMG_0393-portrait_ajkah3.png" 
+                  src="https://res.cloudinary.com/der2xk0cv/image/upload/v1774250029/IMG_0394_1_-portrait_jkpfpt.png" 
                   alt="Paperplane Wedding Studio Instagram Mockup showing premium branding and 20k+ followers" 
                   fill 
                   className="object-contain drop-shadow-2xl"

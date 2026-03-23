@@ -41,7 +41,7 @@ export default function Footer() {
             <h4 className="font-bold mb-6 text-sm">Other links</h4>
             <ul className="space-y-4 text-sm text-gray-400">
               <li><Link href="/careers" className="hover:text-[#A3E635] transition-colors">Careers</Link></li>
-              <li><Link href="#" className="hover:text-[#A3E635] transition-colors">Parent Company</Link></li>
+              <li><Link href="https://divegrid.in" target="_blank" rel="noopener noreferrer" className="hover:text-[#A3E635] transition-colors">Parent Company</Link></li>
               <li><Link href="/legal" className="hover:text-[#A3E635] transition-colors">Privacy Policy</Link></li>
               <li><Link href="/legal" className="hover:text-[#A3E635] transition-colors">Terms of Service</Link></li>
             </ul>

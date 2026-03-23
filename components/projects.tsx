@@ -67,10 +67,10 @@ export default function Projects({ initialCaseStudies = [] }: { initialCaseStudi
     <section className="px-6 md:px-12 max-w-7xl mx-auto py-24">
       <div className="text-center mb-16">
         <span className="inline-block px-4 py-1 border border-gray-200 rounded-full text-[10px] uppercase tracking-widest text-gray-500 mb-6">
-          Projects
+          Case Studies
         </span>
         <h2 className="text-4xl md:text-5xl font-bold text-[#1A1A1A] mb-6">
-          Our Creative Digital Projects
+          Recent Case Studies
         </h2>
         <p className="text-gray-500 max-w-2xl mx-auto text-sm leading-relaxed">
           Each of these started with a phone call from a business that needed more than just a website or an ad campaign. Here&apos;s what happened next.

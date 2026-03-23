@@ -161,66 +161,6 @@ export default function ContactView() {
               </div>
             </ScrollReveal>
 
-            {/* Dotted Map Element */}
-            <ScrollReveal delay={0.2}>
-              <div className="bg-[#1A1A1A] border border-white/5 rounded-3xl relative overflow-hidden h-[240px] sm:h-[300px] w-full flex items-center justify-center group p-0">
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_40%,#1A1A1A_100%)] z-10 pointer-events-none" />
-                <DottedMap<MyMarker>
-                  markers={mapMarkers}
-                  dotColor="rgba(255, 255, 255, 0.15)"
-                  markerColor="#A3E635"
-                  className="z-0"
-                  renderMarkerOverlay={({ marker, x, y, r, index }) => {
-                    const { countryCode, label } = marker.overlay;
-                    const href = `https://flagcdn.com/w80/${countryCode}.webp`;
-
-                    const clipId = `${id}-flag-clip-${index}`.replace(/:/g, "-");
-                    const imgR = r * 0.75;
-
-                    const fontSize = r * 0.9;
-                    const pillH = r * 1.5;
-                    const pillW = label.length * (fontSize * 0.62) + r * 1.4;
-                    const pillX = x + r + r * 0.6;
-                    const pillY = y - pillH / 2;
-
-                    return (
-                      <g style={{ pointerEvents: "none" }}>
-                        <clipPath id={clipId}>
-                          <circle cx={x} cy={y} r={imgR} />
-                        </clipPath>
-
-                        <image
-                          href={href}
-                          x={x - imgR}
-                          y={y - imgR}
-                          width={imgR * 2}
-                          height={imgR * 2}
-                          preserveAspectRatio="xMidYMid slice"
-                          clipPath={`url(#${clipId})`}
-                        />
-
-                        <rect
-                          x={pillX}
-                          y={pillY}
-                          width={pillW}
-                          height={pillH}
-                          rx={pillH / 2}
-                          fill="rgba(0,0,0,0.55)"
-                        />
-                        <text
-                          x={pillX + r * 0.7}
-                          y={y + fontSize * 0.35}
-                          fontSize={fontSize}
-                          fill="white"
-                        >
-                          {label}
-                        </text>
-                      </g>
-                    );
-                  }}
-                />
-              </div>
-            </ScrollReveal>
           </div>
 
           {/* Right Column: Animated Beam Form Container */}
@@ -344,6 +284,69 @@ export default function ContactView() {
             </div>
           </ScrollReveal>
         </div>
+      </div>
+      
+      {/* Full Width Dotted Map Element */}
+      <div className="max-w-7xl mx-auto px-6 pb-24 md:pb-32 -mt-12 md:-mt-16">
+        <ScrollReveal delay={0.3}>
+          <div className="bg-[#1A1A1A] border border-white/5 rounded-[40px] relative overflow-hidden h-[400px] sm:h-[500px] lg:h-[600px] w-full flex items-center justify-center group p-0 shadow-2xl">
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_40%,#1A1A1A_100%)] z-10 pointer-events-none" />
+            <DottedMap<MyMarker>
+              markers={mapMarkers}
+              dotColor="rgba(255, 255, 255, 0.15)"
+              markerColor="#A3E635"
+              className="z-0"
+              renderMarkerOverlay={({ marker, x, y, r, index }) => {
+                const { countryCode, label } = marker.overlay;
+                const href = `https://flagcdn.com/w80/${countryCode}.webp`;
+
+                const clipId = `${id}-flag-clip-${index}`.replace(/:/g, "-");
+                const imgR = r * 0.75;
+
+                const fontSize = r * 0.9;
+                const pillH = r * 1.5;
+                const pillW = label.length * (fontSize * 0.62) + r * 1.4;
+                const pillX = x + r + r * 0.6;
+                const pillY = y - pillH / 2;
+
+                return (
+                  <g style={{ pointerEvents: "none" }}>
+                    <clipPath id={clipId}>
+                      <circle cx={x} cy={y} r={imgR} />
+                    </clipPath>
+
+                    <image
+                      href={href}
+                      x={x - imgR}
+                      y={y - imgR}
+                      width={imgR * 2}
+                      height={imgR * 2}
+                      preserveAspectRatio="xMidYMid slice"
+                      clipPath={`url(#${clipId})`}
+                    />
+
+                    <rect
+                      x={pillX}
+                      y={pillY}
+                      width={pillW}
+                      height={pillH}
+                      rx={pillH / 2}
+                      fill="rgba(0,0,0,0.55)"
+                    />
+                    <text
+                      x={pillX + r * 0.7}
+                      y={y + fontSize * 0.35}
+                      fontSize={fontSize}
+                      fill="white"
+                    >
+                      {label}
+                    </text>
+                  </g>
+                );
+              }}
+            />
+          </div>
+        </ScrollReveal>
       </div>
 
       <Footer />

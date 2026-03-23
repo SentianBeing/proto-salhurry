@@ -304,154 +304,154 @@ export default function PerformanceMarketingPage() {
       <ScrollReveal>
         <section className="py-24 px-6 md:px-12 max-w-7xl mx-auto">
           <div className="text-center mb-16">
-          <span className="inline-block px-4 py-1 border border-gray-200 rounded-full text-[10px] uppercase tracking-widest text-gray-500 mb-6">
-            Ad Platforms
-          </span>
-          <h2 className="text-4xl md:text-5xl font-bold text-[#1A1A1A] mb-6">
-            Where We Drive Revenue
-          </h2>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {[
-            {
-              title: 'Google Ads',
-              description: 'Capture high-intent search traffic and scale with Performance Max campaigns.',
-              icon: Target
-            },
-            {
-              title: 'Meta Ads',
-              description: 'Leverage powerful algorithms on Facebook & Instagram for unmatched reach.',
-              icon: TrendingUp
-            },
-            {
-              title: 'LinkedIn Ads',
-              description: 'Target B2B decision-makers with precision and generate high-value leads.',
-              icon: BarChart3
-            },
-            {
-              title: 'Conversion Optimization',
-              description: 'Turn your landing pages into conversion machines to maximize ad efficiency.',
-              icon: Megaphone
-            }
-          ].map((service, idx) => (
-            <div key={idx} className="p-8 rounded-[32px] bg-[#F9FAFB] border border-gray-100 hover:border-[#A3E635] transition-all group">
-              <div className="w-12 h-12 bg-white rounded-2xl flex items-center justify-center mb-6 shadow-sm group-hover:bg-[#A3E635] transition-colors">
-                <service.icon className="w-6 h-6 text-black" />
+            <span className="inline-block px-4 py-1 border border-gray-200 rounded-full text-[10px] uppercase tracking-widest text-gray-500 mb-6">
+              Ad Platforms
+            </span>
+            <h2 className="text-4xl md:text-5xl font-bold text-[#1A1A1A] mb-6">
+              Where We Drive Revenue
+            </h2>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {[
+              {
+                title: 'Google Ads',
+                description: 'Capture high-intent search traffic and scale with Performance Max campaigns.',
+                icon: Target
+              },
+              {
+                title: 'Meta Ads',
+                description: 'Leverage powerful algorithms on Facebook & Instagram for unmatched reach.',
+                icon: TrendingUp
+              },
+              {
+                title: 'LinkedIn Ads',
+                description: 'Target B2B decision-makers with precision and generate high-value leads.',
+                icon: BarChart3
+              },
+              {
+                title: 'Conversion Optimization',
+                description: 'Turn your landing pages into conversion machines to maximize ad efficiency.',
+                icon: Megaphone
+              }
+            ].map((service, idx) => (
+              <div key={idx} className="p-8 rounded-[32px] bg-[#F9FAFB] border border-gray-100 hover:border-[#A3E635] transition-all group">
+                <div className="w-12 h-12 bg-white rounded-2xl flex items-center justify-center mb-6 shadow-sm group-hover:bg-[#A3E635] transition-colors">
+                  <service.icon className="w-6 h-6 text-black" />
+                </div>
+                <h3 className="text-xl font-bold mb-4">{service.title}</h3>
+                <p className="text-gray-500 text-sm leading-relaxed">{service.description}</p>
               </div>
-              <h3 className="text-xl font-bold mb-4">{service.title}</h3>
-              <p className="text-gray-500 text-sm leading-relaxed">{service.description}</p>
-            </div>
-          ))}
-        </div>
-      </section>
+            ))}
+          </div>
+        </section>
       </ScrollReveal>
 
       {/* Growth Methodology Section */}
       <ScrollReveal>
-      <section className="bg-[#0A0A0A] py-24 px-6 md:px-12">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-20">
-            <div>
-              <span className="inline-block px-4 py-1 border border-white/10 rounded-full text-[10px] uppercase tracking-widest text-[#A3E635] mb-6">
-                Our Methodology
-              </span>
-              <h2 className="text-4xl md:text-6xl font-bold text-white mb-8">
-                How We <span className="font-serif italic font-normal text-[#A3E635]">Maximize</span> <br />Your ROAS
-              </h2>
-              <p className="text-gray-400 text-lg leading-relaxed mb-8">
-                We believe in rigorous testing and rapid iteration. We build custom media buying strategies that adapt to market dynamics and outsmart your competitors.
-              </p>
-              <div className="space-y-4">
-                {[
-                  'Creative Testing Frameworks',
-                  'Audience Segmentation & Targeting',
-                  'Advanced Attribution Tracking',
-                  'Frictionless Landing Page Funnels'
-                ].map((item, i) => (
-                  <div key={i} className="flex items-center gap-3 text-white/80">
-                    <CheckCircle2 className="w-5 h-5 text-[#A3E635]" />
-                    <span>{item}</span>
-                  </div>
-                ))}
+        <section className="bg-[#0A0A0A] py-24 px-6 md:px-12">
+          <div className="max-w-7xl mx-auto">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-20">
+              <div>
+                <span className="inline-block px-4 py-1 border border-white/10 rounded-full text-[10px] uppercase tracking-widest text-[#A3E635] mb-6">
+                  Our Methodology
+                </span>
+                <h2 className="text-4xl md:text-6xl font-bold text-white mb-8">
+                  How We <span className="font-serif italic font-normal text-[#A3E635]">Maximize</span> <br />Your ROAS
+                </h2>
+                <p className="text-gray-400 text-lg leading-relaxed mb-8">
+                  We believe in rigorous testing and rapid iteration. We build custom media buying strategies that adapt to market dynamics and outsmart your competitors.
+                </p>
+                <div className="space-y-4">
+                  {[
+                    'Creative Testing Frameworks',
+                    'Audience Segmentation & Targeting',
+                    'Advanced Attribution Tracking',
+                    'Frictionless Landing Page Funnels'
+                  ].map((item, i) => (
+                    <div key={i} className="flex items-center gap-3 text-white/80">
+                      <CheckCircle2 className="w-5 h-5 text-[#A3E635]" />
+                      <span>{item}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <div className="relative h-[400px] md:h-[600px] rounded-[40px] overflow-hidden">
+                <Image
+                  src="/images/megaphone-marketing-salhurry.webp"
+                  alt="Salhurry megaphone digital marketing and growth scaling strategies"
+                  fill
+                  className="object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
               </div>
             </div>
-            <div className="relative h-[400px] md:h-[600px] rounded-[40px] overflow-hidden">
-              <Image
-                src="/images/megaphone-marketing-salhurry.webp"
-                alt="Salhurry megaphone digital marketing and growth scaling strategies"
-                fill
-                className="object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-            </div>
-          </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              {
-                step: '01',
-                title: 'Data Onboarding',
-                desc: 'We set up precise tracking mechanisms to capture every single conversion event.'
-              },
-              {
-                step: '02',
-                title: 'Campaign Launch',
-                desc: 'We deploy multi-variant campaigns focusing first on the highest value prospects.'
-              },
-              {
-                step: '03',
-                title: 'Optimize & Scale',
-                desc: 'We aggressively reallocate budget from underperforming ads into winning creatives.'
-              }
-            ].map((item, i) => (
-              <div key={i} className="p-10 rounded-[40px] bg-white/5 border border-white/10 hover:border-[#A3E635] transition-all">
-                <span className="text-4xl font-bold text-[#A3E635] block mb-6">{item.step}</span>
-                <h3 className="text-2xl font-bold text-white mb-4">{item.title}</h3>
-                <p className="text-gray-400 text-sm leading-relaxed">{item.desc}</p>
-              </div>
-            ))}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {[
+                {
+                  step: '01',
+                  title: 'Data Onboarding',
+                  desc: 'We set up precise tracking mechanisms to capture every single conversion event.'
+                },
+                {
+                  step: '02',
+                  title: 'Campaign Launch',
+                  desc: 'We deploy multi-variant campaigns focusing first on the highest value prospects.'
+                },
+                {
+                  step: '03',
+                  title: 'Optimize & Scale',
+                  desc: 'We aggressively reallocate budget from underperforming ads into winning creatives.'
+                }
+              ].map((item, i) => (
+                <div key={i} className="p-10 rounded-[40px] bg-white/5 border border-white/10 hover:border-[#A3E635] transition-all">
+                  <span className="text-4xl font-bold text-[#A3E635] block mb-6">{item.step}</span>
+                  <h3 className="text-2xl font-bold text-white mb-4">{item.title}</h3>
+                  <p className="text-gray-400 text-sm leading-relaxed">{item.desc}</p>
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
       </ScrollReveal>
 
 
       {/* Why Choose Us Section */}
       <ScrollReveal>
-      <section className="py-24 px-6 md:px-12 max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          <div className="grid grid-cols-2 gap-6 order-2 lg:order-1">
-            {[
-              { icon: Zap, label: 'Fast Execution', val: '24h' },
-              { icon: Users, label: 'Campaigns Executed', val: '100+' },
-              { icon: Globe, label: 'Industries Served', val: '15+' },
-              { icon: BarChart3, label: 'Average ROAS', val: '3.8x' }
-            ].map((stat, i) => (
-              <div key={i} className="p-8 rounded-[32px] bg-[#F9FAFB] border border-gray-100 text-center">
-                <div className="w-12 h-12 bg-white rounded-2xl flex items-center justify-center mb-4 mx-auto shadow-sm">
-                  <stat.icon className="w-6 h-6 text-[#A3E635]" />
+        <section className="py-24 px-6 md:px-12 max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div className="grid grid-cols-2 gap-6 order-2 lg:order-1">
+              {[
+                { icon: Zap, label: 'Fast Execution', val: '24h' },
+                { icon: Users, label: 'Campaigns Executed', val: '100+' },
+                { icon: Globe, label: 'Industries Served', val: '15+' },
+                { icon: BarChart3, label: 'Average ROAS', val: '3.8x' }
+              ].map((stat, i) => (
+                <div key={i} className="p-8 rounded-[32px] bg-[#F9FAFB] border border-gray-100 text-center">
+                  <div className="w-12 h-12 bg-white rounded-2xl flex items-center justify-center mb-4 mx-auto shadow-sm">
+                    <stat.icon className="w-6 h-6 text-[#A3E635]" />
+                  </div>
+                  <h4 className="text-3xl font-bold mb-1">{stat.val}</h4>
+                  <p className="text-[10px] uppercase tracking-widest text-gray-400">{stat.label}</p>
                 </div>
-                <h4 className="text-3xl font-bold mb-1">{stat.val}</h4>
-                <p className="text-[10px] uppercase tracking-widest text-gray-400">{stat.label}</p>
-              </div>
-            ))}
+              ))}
+            </div>
+            <div className="order-1 lg:order-2">
+              <span className="inline-block px-4 py-1 border border-gray-200 rounded-full text-[10px] uppercase tracking-widest text-gray-500 mb-6">
+                Why SalHurry?
+              </span>
+              <h2 className="text-4xl md:text-5xl font-bold text-[#1A1A1A] mb-8">
+                Performance Marketing That Pays For Itself.
+              </h2>
+              <p className="text-gray-500 text-lg leading-relaxed mb-8">
+                We look beyond just clicks and impressions. Our goal is simple: maximize the return on every dollar you invest in advertising. Our team acts as an extension of your own growth division.
+              </p>
+              <button className="flex items-center gap-2 font-bold text-black border-b-2 border-[#A3E635] pb-1 hover:gap-4 transition-all">
+                Discover our data-driven performance approach <ArrowRight className="w-5 h-5" />
+              </button>
+            </div>
           </div>
-          <div className="order-1 lg:order-2">
-            <span className="inline-block px-4 py-1 border border-gray-200 rounded-full text-[10px] uppercase tracking-widest text-gray-500 mb-6">
-              Why SalHurry?
-            </span>
-            <h2 className="text-4xl md:text-5xl font-bold text-[#1A1A1A] mb-8">
-              Performance Marketing That Pays For Itself.
-            </h2>
-            <p className="text-gray-500 text-lg leading-relaxed mb-8">
-              We look beyond just clicks and impressions. Our goal is simple: maximize the return on every dollar you invest in advertising. Our team acts as an extension of your own growth division.
-            </p>
-            <button className="flex items-center gap-2 font-bold text-black border-b-2 border-[#A3E635] pb-1 hover:gap-4 transition-all">
-              Discover our data-driven performance approach <ArrowRight className="w-5 h-5" />
-            </button>
-          </div>
-        </div>
-      </section>
+        </section>
       </ScrollReveal>
 
       <ScrollReveal>
@@ -461,15 +461,15 @@ export default function PerformanceMarketingPage() {
       <ScrollReveal>
         <Industries />
       </ScrollReveal>
-      
+
       <ScrollReveal>
         <DigitalMarketingFAQ />
       </ScrollReveal>
-      
+
       <ScrollReveal>
         <CTA />
       </ScrollReveal>
-      
+
       <Footer />
     </main>
   );
