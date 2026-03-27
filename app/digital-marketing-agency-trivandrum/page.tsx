@@ -512,7 +512,7 @@ export default function DigitalMarketingTrivandrumPage() {
                    },
                    {
                      q: "How do I get started with SalHurry for my Trivandrum business?",
-                     a: "The best way to start is with a free growth audit. This is a no-obligation strategy conversation where we review your current marketing, your goals, and your biggest growth opportunities. Call or WhatsApp us on +91 62826 87001, or email info@salhurry.in. We are based in Kilimanoor, Trivandrum and available Monday to Sunday 8 AM to 8 PM."
+                     a: "The best way to start is with a free growth audit. This is a no-obligation strategy conversation where we review your current marketing, your goals, and your biggest growth opportunities. Call or WhatsApp us on <a href='https://wa.me/916282687001' class='text-black font-bold hover:underline'>+91 62826 87001</a>, or email <a href='mailto:info@salhurry.in' class='text-black font-bold hover:underline'>info@salhurry.in</a>. We are based in Kilimanoor, Trivandrum and available Monday to Sunday 8 AM to 8 PM."
                    },
                    {
                      q: "Do you offer social media marketing for Trivandrum businesses?",
@@ -525,7 +525,7 @@ export default function DigitalMarketingTrivandrumPage() {
                  ].map((faq, i) => (
                    <div key={i} className="bg-gray-50 rounded-2xl p-6 sm:p-8">
                       <h3 className="text-xl font-bold text-black mb-4">{faq.q}</h3>
-                      <p className="text-gray-600 leading-relaxed text-sm">{faq.a}</p>
+                      <p className="text-gray-600 leading-relaxed text-sm" dangerouslySetInnerHTML={{ __html: faq.a }} />
                    </div>
                  ))}
               </div>
@@ -557,7 +557,7 @@ export default function DigitalMarketingTrivandrumPage() {
              <span className="hidden sm:inline">•</span>
              <span>Available Mon-Sun, 8AM-8PM IST</span>
              <span className="hidden sm:inline">•</span>
-             <span>info@salhurry.in</span>
+             <a href="mailto:info@salhurry.in" className="hover:underline">info@salhurry.in</a>
           </div>
         </div>
       </section>

@@ -55,7 +55,7 @@ export default function Footer() {
                 MC Rd, Kilimanoor, Trivandrum
               </li>
               <li>Phone: +91 62826 87001, +91 9746133532</li>
-              <li>info@salhurry.in</li>
+              <li><a href="mailto:info@salhurry.in" className="hover:text-[#A3E635] transition-colors">info@salhurry.in</a></li>
             </ul>
           </div>
         </div>

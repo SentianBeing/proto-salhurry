@@ -134,7 +134,7 @@ export default function ContactView() {
                   </div>
                   <div>
                     <h3 className="text-sm text-gray-400 uppercase tracking-widest font-bold mb-1">General Inquiries</h3>
-                    <p className="text-white font-medium text-lg">info@salhurry.in</p>
+                    <a href="mailto:info@salhurry.in" className="text-white font-medium text-lg hover:text-[#A3E635] transition-colors">info@salhurry.in</a>
                   </div>
                 </div>
 
