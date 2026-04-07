@@ -10,7 +10,7 @@ import { constructMetadata } from '@/lib/seo';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = constructMetadata({
-    title: 'Growth Marketing & SEO Blog: Insights & Strategies | SalHurry',
+    title: 'Blogs',
     description: 'Explore the latest articles, insights, and industry trends on growth marketing, SEO, and web development curated by the SalHurry team.',
     path: '/blog',
 });
@@ -26,27 +26,26 @@ export default async function BlogListingPage() {
                 {/* Subtle base gradient for depth instead of smudges */}
                 <div className="absolute inset-0 bg-gradient-to-br from-gray-900/50 via-[#0A0A0A] to-[#0A0A0A] pointer-events-none"></div>
                 
-                <div className="relative z-10 flex flex-col min-h-[500px] sm:min-h-[600px]">
+                <div className="relative z-10 flex flex-col min-h-[400px] sm:min-h-[500px]">
                     <div>
                         <Navbar />
                     </div>
 
-                    <div className="flex-1 flex flex-col justify-center items-center py-16 px-4 sm:px-6 md:px-12 w-full mx-auto">
-                        <div className="max-w-4xl text-center flex flex-col items-center">
-                            <span className="inline-block px-4 py-1.5 border border-[#A3E635]/30 text-[#A3E635] rounded-full text-xs tracking-widest font-medium uppercase mb-8 shadow-sm bg-[#A3E635]/10">
+                    <div className="flex-1 flex flex-col justify-center py-16 px-6 md:px-12 w-full mx-auto max-w-[1400px]">
+                        <div className="max-w-4xl flex flex-col items-start">
+                            <span className="inline-block px-4 py-1.5 border border-[#A3E635]/30 text-[#A3E635] rounded-full text-xs tracking-widest font-medium uppercase mb-6 shadow-sm bg-[#A3E635]/10">
                                 The Blog
                             </span>
                             
-                            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold text-white mb-8 leading-[1.1] tracking-tight">
-                                Insights at the Intersection of <br className="hidden md:block" />
-                                <span className="font-serif italic font-normal text-white">Tech, Marketing & Sales</span>
+                            <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold text-white mb-6 leading-[1.1] tracking-tight">
+                                Blogs<span className="text-[#A3E635]">.</span>
                             </h1>
                             
-                            <p className="text-gray-400 text-lg md:text-xl max-w-2xl mb-12 leading-relaxed font-light">
+                            <p className="text-gray-400 text-lg md:text-xl max-w-2xl mb-10 leading-relaxed font-light">
                                 Discover the latest articles, growth strategies, and industry trends curated by the SalHurry team to help you scale.
                             </p>
 
-                            <div className="w-full max-w-2xl mx-auto">
+                            <div className="w-full max-w-2xl">
                                 <BlogSearch />
                             </div>
                         </div>

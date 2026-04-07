@@ -10,7 +10,7 @@ import ServicesContent from '@/components/services-content';
 import { constructMetadata } from '@/lib/seo';
 
 export const metadata = constructMetadata({
-    title: 'Our Services | SalHurry Growth Systems',
+    title: 'Our Services',
     description: 'Explore SalHurry\'s comprehensive growth services, from GTM Blueprint and Performance Marketing to Custom Digital Infrastructure and Automation.',
     path: '/services',
 });

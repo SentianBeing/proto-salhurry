@@ -201,6 +201,17 @@ export default function ContactView() {
                       </div>
 
                       <div>
+                        <label className="block text-[10px] uppercase tracking-widest text-gray-400 font-bold mb-1.5 ml-1">Email Address *</label>
+                        <input
+                          required
+                          name="email"
+                          type="email"
+                          placeholder="john@example.com"
+                          className="w-full px-4 py-3 sm:px-5 sm:py-4 bg-gray-50 text-black border border-gray-200 rounded-2xl text-[14px] sm:text-[15px] focus:outline-none focus:border-[#A3E635] focus:bg-white transition-all shadow-sm"
+                        />
+                      </div>
+
+                      <div>
                         <label className="block text-[10px] uppercase tracking-widest text-gray-400 font-bold mb-1.5 ml-1">Phone Number *</label>
                         <input
                           required

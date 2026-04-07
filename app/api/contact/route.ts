@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { Resend } from 'resend';
+import { getContactAutoReplyTemplate } from '@/lib/email-templates';
 export async function POST(req: NextRequest) {
   try {
     const resendApiKey = process.env.RESEND_API_KEY;
@@ -11,13 +12,14 @@ export async function POST(req: NextRequest) {
 
     const formData = await req.formData();
     const name = formData.get('name') as string;
+    const email = formData.get('email') as string;
     const phone = formData.get('phone') as string;
     const projectType = formData.get('projectType') as string;
     const message = formData.get('message') as string;
     const file = formData.get('file') as File | null;
 
     // Server-side validation
-    if (!name || !phone || !projectType) {
+    if (!name || !email || !phone || !projectType) {
       return NextResponse.json({ error: 'Missing required fields' }, { status: 400 });
     }
 
@@ -51,12 +53,13 @@ export async function POST(req: NextRequest) {
       });
     }
 
-    const emailPayload: any = {
-      from: process.env.EMAIL_FROM || 'onboarding@resend.dev',
-      to: process.env.EMAIL_TO || 'karthikdude0022@gmail.com',
+    const internalEmailPayload: any = {
+      from: process.env.EMAIL_FROM || 'SalHurry <no-reply@salhurry.in>',
+      to: process.env.EMAIL_TO || 'info@salhurry.in',
       subject: `New Contact Form Submission: ${projectType} from ${name}`,
       text: `
         Name: ${name}
+        Email: ${email}
         Phone: ${phone}
         Project Type: ${projectType}
         Message: ${message || 'No message provided'}
@@ -64,17 +67,32 @@ export async function POST(req: NextRequest) {
     };
 
     if (attachments.length > 0) {
-      emailPayload.attachments = attachments;
+      internalEmailPayload.attachments = attachments;
     }
 
-    const { data, error } = await resend.emails.send(emailPayload);
+    const autoReplyPayload: any = {
+      from: process.env.EMAIL_FROM || 'SalHurry <no-reply@salhurry.in>',
+      to: email,
+      subject: 'Thank you for reaching out to SalHurry',
+      html: getContactAutoReplyTemplate(name, projectType),
+    };
 
-    if (error) {
-      console.error('Resend error:', error);
-      return NextResponse.json({ error: error.message }, { status: 500 });
+    const [internalResult, autoReplyResult] = await Promise.all([
+      resend.emails.send(internalEmailPayload),
+      resend.emails.send(autoReplyPayload)
+    ]);
+
+    if (internalResult.error) {
+      console.error('Resend internal error:', internalResult.error);
+      return NextResponse.json({ error: internalResult.error.message }, { status: 500 });
+    }
+    
+    if (autoReplyResult.error) {
+      console.error('Resend auto-reply error:', autoReplyResult.error);
+      // We still mark it as success to the user so they aren't blocked from submitting just because auto-reply failed
     }
 
-    console.log('Resend Delivery Success:', data);
+    console.log('Resend Delivery Success');
 
     return NextResponse.json({ success: true });
   } catch (err: any) {

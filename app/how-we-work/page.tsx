@@ -8,7 +8,7 @@ import { MessageCircle, CalendarClock, ShieldCheck, Clock, ArrowRight, TrendingU
 import { constructMetadata } from '@/lib/seo';
 
 export const metadata = constructMetadata({
-  title: 'How We Do Work | SalHurry Growth Systems',
+  title: 'How We Work',
   description: 'Complete transparency in our execution process spanning web development, corporate branding, and enterprise applications. No black boxes. Just visibility.',
   path: '/how-we-work',
 });

@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import { motion } from 'motion/react';
 import { Plus, Minus } from 'lucide-react';
+import Script from 'next/script';
 
 const faqs = [
     {
@@ -215,7 +216,8 @@ export default function DigitalMarketingFAQ() {
     return (
         <section className="py-24 px-6 md:px-12 max-w-4xl mx-auto">
             {/* JSON-LD Schema for Crawler Readability */}
-            <script
+            <Script
+                id="faq-schema"
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{
                     __html: JSON.stringify({

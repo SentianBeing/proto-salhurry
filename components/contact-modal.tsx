@@ -129,6 +129,17 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                       </div>
 
                       <div>
+                        <label className="block text-[10px] uppercase tracking-widest text-gray-400 font-bold mb-1.5 ml-1">Email Address *</label>
+                        <input
+                          required
+                          name="email"
+                          type="email"
+                          placeholder="john@example.com"
+                          className="w-full px-5 py-3 bg-gray-50 border border-gray-100 rounded-2xl text-sm focus:outline-none focus:border-[#A3E635] transition-colors"
+                        />
+                      </div>
+
+                      <div>
                         <label className="block text-[10px] uppercase tracking-widest text-gray-400 font-bold mb-1.5 ml-1">Phone Number *</label>
                         <input
                           required

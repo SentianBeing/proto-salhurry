@@ -7,9 +7,10 @@ import { Metadata } from 'next';
 import { Target, Lightbulb, Shield, Zap, Users, MapPin, CheckCircle2, ArrowRight } from 'lucide-react';
 
 import { constructMetadata } from '@/lib/seo';
+import DigitalMarketingFAQ from '@/components/digital-marketing-faq';
 
 export const metadata: Metadata = constructMetadata({
-  title: 'About SalHurry: High-Growth Architects in Kerala & UAE',
+  title: 'About Us',
   description: 'Learn about SalHurry, a strategy-first growth platform based in Trivandrum, Kerala. We help businesses in Kerala and UAE build scalable growth systems.',
   path: '/about',
 });
@@ -240,6 +241,8 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
+
+      <DigitalMarketingFAQ />
 
       <Footer />
     </main>

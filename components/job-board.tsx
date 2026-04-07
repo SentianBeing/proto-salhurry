@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Search, MapPin, Clock, ExternalLink, X, Upload, Briefcase, ChevronRight } from 'lucide-react';
+import { Search, MapPin, Clock, ExternalLink, X, Upload, Briefcase, ChevronRight, CheckCircle2 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 
 const jobsData = [
@@ -90,6 +90,19 @@ export default function JobBoard() {
     const [showInternshipsOnly, setShowInternshipsOnly] = useState(false);
     const [selectedJob, setSelectedJob] = useState<any>(null);
     const [showAppModal, setShowAppModal] = useState(false);
+    const [attachedFileName, setAttachedFileName] = useState('');
+    const [isSubmitted, setIsSubmitted] = useState(false);
+    const [isSubmitting, setIsSubmitting] = useState(false);
+
+    const handleCloseModal = () => {
+        setSelectedJob(null);
+        setShowAppModal(false);
+        setTimeout(() => {
+            setIsSubmitted(false);
+            setAttachedFileName('');
+            setIsSubmitting(false);
+        }, 300);
+    };
 
     // Filter Jobs
     const filteredJobs = jobsData.filter((job) => {
@@ -205,7 +218,7 @@ export default function JobBoard() {
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: 1 }}
                                 exit={{ opacity: 0 }}
-                                onClick={() => { setSelectedJob(null); setShowAppModal(false); }}
+                                onClick={handleCloseModal}
                                 className="absolute inset-0 bg-black/40 backdrop-blur-sm"
                             ></motion.div>
 
@@ -224,7 +237,7 @@ export default function JobBoard() {
                                             <span className="flex items-center gap-1"><Clock className="w-4 h-4" /> {selectedJob.type}</span>
                                         </div>
                                     </div>
-                                    <button onClick={() => { setSelectedJob(null); setShowAppModal(false); }} className="p-2 bg-gray-100 rounded-full hover:bg-gray-200 transition-colors">
+                                    <button onClick={handleCloseModal} className="p-2 bg-gray-100 rounded-full hover:bg-gray-200 transition-colors">
                                         <X className="w-5 h-5 text-gray-600" />
                                     </button>
                                 </div>
@@ -269,9 +282,28 @@ export default function JobBoard() {
                                         </>
                                     ) : (
                                         <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }}>
+                                            {isSubmitted ? (
+                                                <div className="flex flex-col items-center justify-center py-12 text-center">
+                                                    <div className="w-16 h-16 bg-[#A3E635]/20 text-[#A3E635] rounded-full flex items-center justify-center mb-6">
+                                                        <CheckCircle2 className="w-8 h-8" />
+                                                    </div>
+                                                    <h3 className="text-2xl font-bold mb-4">Application Received!</h3>
+                                                    <p className="text-gray-500 max-w-sm mx-auto leading-relaxed mb-8">
+                                                        Thank you for your interest in joining us. We will review your application and get back to you shortly.
+                                                    </p>
+                                                    <button 
+                                                        onClick={handleCloseModal}
+                                                        className="bg-[#1A1A1A] text-white px-8 py-3.5 rounded-full font-bold text-sm hover:bg-black transition-colors"
+                                                    >
+                                                        Done
+                                                    </button>
+                                                </div>
+                                            ) : (
+                                            <>
                                             <h3 className="text-2xl font-bold mb-6">Application: {selectedJob.title}</h3>
                                             <form className="space-y-5" onSubmit={async (e) => {
                                                 e.preventDefault();
+                                                setIsSubmitting(true);
                                                 const form = e.target as HTMLFormElement;
                                                 const formData = new FormData(form);
                                                 formData.append('role', selectedJob.title);
@@ -283,46 +315,68 @@ export default function JobBoard() {
                                                     });
 
                                                     if (res.ok) {
-                                                        alert("Application Submitted Successfully!");
                                                         form.reset();
-                                                        setSelectedJob(null);
-                                                        setShowAppModal(false);
+                                                        setIsSubmitted(true);
                                                     } else {
                                                         const data = await res.json();
                                                         alert("Error: " + data.error);
                                                     }
                                                 } catch (err) {
                                                     alert("Failed to submit application. Please try again.");
+                                                } finally {
+                                                    setIsSubmitting(false);
                                                 }
                                             }}>
                                                 <div>
                                                     <label className="block text-sm font-medium text-gray-700 mb-1">Full Name *</label>
-                                                    <input type="text" name="name" required className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-2xl outline-none focus:ring-2 focus:ring-[#A3E635] transition-all" placeholder="John Doe" />
+                                                    <input type="text" name="name" required className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-2xl outline-none focus:ring-2 focus:ring-[#A3E635] transition-all" placeholder="John Doe" disabled={isSubmitting} />
+                                                </div>
+                                                <div>
+                                                    <label className="block text-sm font-medium text-gray-700 mb-1">Email Address *</label>
+                                                    <input type="email" name="email" required className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-2xl outline-none focus:ring-2 focus:ring-[#A3E635] transition-all" placeholder="john@example.com" disabled={isSubmitting} />
                                                 </div>
                                                 <div>
                                                     <label className="block text-sm font-medium text-gray-700 mb-1">Phone Number *</label>
-                                                    <input type="tel" name="phone" required className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-2xl outline-none focus:ring-2 focus:ring-[#A3E635] transition-all" placeholder="+91 9876543210" />
+                                                    <input type="tel" name="phone" required className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-2xl outline-none focus:ring-2 focus:ring-[#A3E635] transition-all" placeholder="+91 9876543210" disabled={isSubmitting} />
                                                 </div>
                                                 <div>
                                                     <label className="block text-sm font-medium text-gray-700 mb-1">Resume / CV (PDF/DOCX) *</label>
                                                     <div className="relative">
-                                                        <input type="file" name="file" required className="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10" accept=".pdf,.doc,.docx" />
+                                                        <input 
+                                                            type="file" 
+                                                            name="file" 
+                                                            required 
+                                                            className="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10" 
+                                                            accept=".pdf,.doc,.docx" 
+                                                            disabled={isSubmitting}
+                                                            onChange={(e) => {
+                                                                if (e.target.files && e.target.files.length > 0) {
+                                                                    setAttachedFileName(e.target.files[0].name);
+                                                                } else {
+                                                                    setAttachedFileName('');
+                                                                }
+                                                            }}
+                                                        />
                                                         <div className="w-full px-4 py-6 bg-gray-50 border-2 border-dashed border-gray-300 rounded-2xl flex flex-col items-center justify-center text-gray-500 group hover:border-[#A3E635] hover:bg-[#A3E635]/5 transition-all">
                                                             <Upload className="w-6 h-6 mb-2 text-gray-400 group-hover:text-[#A3E635]" />
-                                                            <span className="text-sm font-medium group-hover:text-black">Click to upload or drag and drop</span>
+                                                            <span className="text-sm font-medium group-hover:text-black">
+                                                                {attachedFileName ? <span className="text-[#A3E635] font-bold">Attached: {attachedFileName}</span> : 'Click to upload or drag and drop'}
+                                                            </span>
                                                         </div>
                                                     </div>
                                                 </div>
 
                                                 <div className="mt-8 flex justify-between items-center border-t border-gray-100 pt-6">
-                                                    <button type="button" onClick={() => setShowAppModal(false)} className="text-gray-500 font-medium text-sm hover:text-black transition-colors">
+                                                    <button type="button" onClick={() => setShowAppModal(false)} className="text-gray-500 font-medium text-sm hover:text-black transition-colors" disabled={isSubmitting}>
                                                         Back to details
                                                     </button>
-                                                    <button type="submit" className="bg-[#1A1A1A] text-white px-8 py-4 rounded-full font-bold text-sm hover:bg-black transition-colors">
-                                                        Submit Application
+                                                    <button type="submit" className="bg-[#1A1A1A] text-white px-8 py-4 rounded-full font-bold text-sm hover:bg-black transition-colors flex items-center justify-center opacity-100 disabled:opacity-50" disabled={isSubmitting}>
+                                                        {isSubmitting ? 'Submitting...' : 'Submit Application'}
                                                     </button>
                                                 </div>
                                             </form>
+                                            </>
+                                            )}
                                         </motion.div>
                                     )}
                                 </div>

@@ -56,9 +56,9 @@ export default function Navbar() {
           onMouseEnter={() => setIsServicesHovered(true)}
           onMouseLeave={() => setIsServicesHovered(false)}
         >
-          <button className="flex items-center gap-1 hover:text-white transition-colors cursor-pointer">
+          <Link href="/services" className="flex items-center gap-1 hover:text-white transition-colors cursor-pointer">
             Services <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${isServicesHovered ? 'rotate-180' : ''}`} />
-          </button>
+          </Link>
 
           {/* Mega Dropdown */}
           <AnimatePresence>
@@ -143,7 +143,7 @@ export default function Navbar() {
           >
             <Link href="/" className="text-lg font-medium" onClick={() => setIsMenuOpen(false)}>Home</Link>
             <div className="flex flex-col gap-4">
-              <p className="text-sm font-bold text-gray-400 uppercase tracking-widest">Services</p>
+              <Link href="/services" className="text-sm font-bold text-gray-400 uppercase tracking-widest hover:text-black transition-colors" onClick={() => setIsMenuOpen(false)}>Services</Link>
               {servicesList.map(s => (
                 <Link key={s.name} href={s.href} className="text-lg font-medium text-gray-600 pl-4" onClick={() => setIsMenuOpen(false)}>{s.name}</Link>
               ))}
