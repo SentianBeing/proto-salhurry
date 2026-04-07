@@ -6,32 +6,32 @@ import { motion, AnimatePresence } from 'motion/react';
 const pillars = [
     {
         id: 0,
-        label: 'Product-Market Fit',
-        desc: 'Assessing your product and audience alignment to ensure scalable, long-term growth.',
+        label: 'Audience & Data',
+        desc: 'Understanding your users deeply using data (behavior, interests, intent) to make smarter decisions.\n\n👉 Everything starts with knowing who and why',
         angle: -90, // Top
     },
     {
         id: 1,
-        label: 'Site Experience',
-        desc: 'Taking a peak under the hood to understand whether your website operates as an engine for conversions.',
+        label: 'Content & Attention',
+        desc: 'Creating high-impact content that captures and holds attention (short-form video, hooks, storytelling).\n\n👉 Attention is the new currency',
         angle: -18, // Top Right
     },
     {
         id: 2,
-        label: 'Acquisition',
-        desc: 'Driving highly targeted, revenue-generating traffic through multi-channel performance marketing.',
+        label: 'Distribution & Channels',
+        desc: 'Getting your content in front of the right people via platforms (Instagram, Google, LinkedIn, communities).\n\n👉 Even great content fails without distribution',
         angle: 54, // Bottom Right
     },
     {
         id: 3,
-        label: 'Lifecycle',
-        desc: 'Retaining customers and maximizing lifetime value through personalized email and SMS retention loops.',
+        label: 'Conversion Systems',
+        desc: 'Turning visitors into leads/customers using landing pages, funnels, UX, and strong offers.\n\n👉 Traffic ≠ revenue, conversion does',
         angle: 126, // Bottom Left
     },
     {
         id: 4,
-        label: 'Reporting & Analytics',
-        desc: 'Measuring everything that matters to iterate confidently and improve ROI drastically.',
+        label: 'Retention & Lifecycle',
+        desc: 'Keeping users engaged and turning them into repeat customers through follow-ups, communities, and value loops.\n\n👉 Real money is made after the first conversion',
         angle: 198, // Top Left
     }
 ];
@@ -91,7 +91,7 @@ export default function FivePillars() {
                 {/* Central Core Text */}
                 <div className="absolute z-20 text-center pointer-events-none">
                     <h3 className="text-[#A3E635] text-xl font-medium tracking-wide">The 5 Pillars</h3>
-                    <p className="text-white text-lg">of Ecommerce</p>
+                    <p className="text-white text-lg">of Digital Marketing</p>
                 </div>
 
                 {/* Concentric Dashed Rings */}
@@ -131,10 +131,11 @@ export default function FivePillars() {
                         return (
                             <div
                                 key={pillar.id}
-                                className="absolute flex items-center justify-center -translate-x-1/2 -translate-y-1/2"
+                                className="absolute flex items-center justify-center -translate-x-1/2 -translate-y-1/2 cursor-pointer"
                                 style={{ left: x, top: y }}
-                                onMouseEnter={() => setHoveredNode(pillar.id)}
-                                onMouseLeave={() => setHoveredNode(null)}
+                                onMouseEnter={() => !isMobile && setHoveredNode(pillar.id)}
+                                onMouseLeave={() => !isMobile && setHoveredNode(null)}
+                                onClick={() => isMobile && setHoveredNode(isHovered ? null : pillar.id)}
                             >
                                 {/* Node Label */}
                                 <div
@@ -175,7 +176,7 @@ export default function FivePillars() {
                                                 transform: isMobile ? 'translateX(-50%)' : 'none'
                                             }}
                                         >
-                                            <p className="text-gray-300 text-[11px] md:text-xs leading-relaxed font-light">
+                                            <p className="text-gray-300 text-[11px] md:text-xs leading-relaxed font-light whitespace-pre-wrap">
                                                 {pillar.desc}
                                             </p>
                                         </motion.div>
