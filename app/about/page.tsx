@@ -165,19 +165,19 @@ export default function AboutPage() {
             <div className="relative h-[500px] rounded-[40px] overflow-hidden">
               <Image
                 src="/images/Salhurry-divegrid-peoples.jpeg"
-                alt="Salhurry team, DiveGrid team, DiveGrid CEO and leadership"
-                title="Salhurry and DiveGrid Founders and Team"
+                alt="Salhurry team, DiveGrid team, DiveGrid leadership"
+                title="Salhurry and DiveGrid Team"
                 fill
                 className="object-cover"
               />
             </div>
             <div>
-              <h2 className="text-4xl md:text-5xl font-bold text-[#1A1A1A] mb-8">Our Leadership</h2>
+              <h2 className="text-4xl md:text-5xl font-bold text-[#1A1A1A] mb-8">Our Team</h2>
               <p className="text-gray-500 text-lg leading-relaxed mb-8">
-                SalHurry is led by <span className="text-black font-bold">Kasinathan, Karthik DS</span> and <span className="text-black font-bold">Akhijith Raj</span>, co-founders and growth architects under <Link href="https://divegrid.in" target="_blank" rel="noopener noreferrer" className="text-black font-bold hover:text-[#A3E635] transition-colors">DiveGrid Private Limited</Link>.
+                SalHurry is driven by a passionate team of growth architects and domain experts under <Link href="https://divegrid.in" target="_blank" rel="noopener noreferrer" className="text-black font-bold hover:text-[#A3E635] transition-colors">DiveGrid Private Limited</Link>.
               </p>
               <p className="text-gray-500 text-lg leading-relaxed mb-8">
-                With experience leading operations, strategy, and execution teams across multiple industries, the founders bring structured thinking and performance discipline into every engagement.
+                With experience leading operations, strategy, and execution teams across multiple industries, our core team brings structured thinking and performance discipline into every engagement.
               </p>
               <div className="p-8 bg-white rounded-[32px] border border-gray-100">
                 <p className="text-gray-600 italic">

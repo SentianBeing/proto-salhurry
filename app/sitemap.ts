@@ -26,6 +26,15 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         priority: route === '' ? 1 : 0.8,
     }));
 
+    const localRoutes = [
+        '/web-development-company-kerala',
+    ].map((route) => ({
+        url: `${baseUrl}${route}`,
+        lastModified: new Date(),
+        changeFrequency: 'monthly' as const,
+        priority: 0.8,
+    }));
+
     const [blogs, caseStudies] = await Promise.all([
         sanityClient.fetch(allBlogsQuery),
         sanityClient.fetch(allCaseStudiesQuery)
@@ -45,5 +54,5 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         priority: 0.7,
     }));
 
-    return [...routes, ...blogRoutes, ...caseStudyRoutes];
+    return [...routes, ...localRoutes, ...blogRoutes, ...caseStudyRoutes];
 }
