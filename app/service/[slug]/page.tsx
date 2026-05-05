@@ -19,6 +19,8 @@ const IconMap: Record<string, any> = {
   Target, TrendingUp, BarChart3, Megaphone, Zap, Users, Globe, Code, Laptop, Smartphone, PenTool, Search, Clock, Award, Shield
 };
 
+export const revalidate = 0; // Disable Next.js caching for this route so it always shows the latest Sanity updates instantly.
+
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const resolvedParams = await params;
   const pageData = await sanityClient.fetch(servicePageBySlugQuery, { slug: resolvedParams.slug });
