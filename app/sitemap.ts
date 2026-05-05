@@ -1,38 +1,16 @@
 import { MetadataRoute } from 'next';
 import { sanityClient } from '@/lib/sanity.client';
 import { allBlogsQuery, allCaseStudiesQuery } from '@/lib/sanity.queries';
+import { staticRoutes } from '@/lib/routes';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.salhurry.in';
 
-    const routes = [
-        '',
-        '/about',
-        '/blog',
-        '/careers',
-        '/case-studies',
-        '/contact',
-        '/how-we-work',
-        '/services',
-        '/services/digital-marketing',
-        '/services/growth-strategy',
-        '/services/performance-marketing',
-        '/services/web-development',
-        '/digital-marketing-agency-trivandrum',
-    ].map((route) => ({
-        url: `${baseUrl}${route}`,
+    const routes = staticRoutes.map((route) => ({
+        url: `${baseUrl}${route.path}`,
         lastModified: new Date(),
         changeFrequency: 'weekly' as const,
-        priority: route === '' ? 1 : 0.8,
-    }));
-
-    const localRoutes = [
-        '/web-development-company-kerala',
-    ].map((route) => ({
-        url: `${baseUrl}${route}`,
-        lastModified: new Date(),
-        changeFrequency: 'monthly' as const,
-        priority: 0.8,
+        priority: route.path === '/' ? 1 : 0.8,
     }));
 
     const [blogs, caseStudies] = await Promise.all([
@@ -54,5 +32,5 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         priority: 0.7,
     }));
 
-    return [...routes, ...localRoutes, ...blogRoutes, ...caseStudyRoutes];
+    return [...routes, ...blogRoutes, ...caseStudyRoutes];
 }

@@ -80,3 +80,23 @@ export const caseStudyBySlugQuery = groq`
     "seoImage": seoImage.asset->url
   }
 `;
+
+export const servicePageBySlugQuery = groq`
+  *[_type == "servicePage" && slug.current == $slug][0] {
+    _id,
+    title,
+    "slug": slug.current,
+    seoTitle,
+    seoDescription,
+    hero,
+    coreServices,
+    methodology {
+      ...,
+      "imageUrl": image.asset->url
+    },
+    whyChooseUs,
+    showFivePillars,
+    showFaq,
+    showCta
+  }
+`;
