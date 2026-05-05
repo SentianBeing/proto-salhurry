@@ -100,3 +100,12 @@ export const servicePageBySlugQuery = groq`
     showCta
   }
 `;
+
+export const allServicePagesQuery = groq`
+  *[_type == "servicePage"] | order(_createdAt desc) {
+    _id,
+    title,
+    "slug": slug.current,
+    _updatedAt
+  }
+`;

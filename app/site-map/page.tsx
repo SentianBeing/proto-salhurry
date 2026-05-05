@@ -7,7 +7,7 @@ import { Target, Zap, LayoutGrid, FileText, ArrowRight, Briefcase } from 'lucide
 
 import { constructMetadata } from '@/lib/seo';
 import { sanityClient } from '@/lib/sanity.client';
-import { allBlogsQuery, allCaseStudiesQuery } from '@/lib/sanity.queries';
+import { allBlogsQuery, allCaseStudiesQuery, allServicePagesQuery } from '@/lib/sanity.queries';
 import { staticRoutes } from '@/lib/routes';
 
 export const metadata: Metadata = constructMetadata({
@@ -20,13 +20,15 @@ export const metadata: Metadata = constructMetadata({
 export const revalidate = 60; // 60 seconds
 
 export default async function SitemapPage() {
-  const [blogs, caseStudies] = await Promise.all([
+  const [blogs, caseStudies, dynamicServices] = await Promise.all([
     sanityClient.fetch(allBlogsQuery).catch(() => []),
-    sanityClient.fetch(allCaseStudiesQuery).catch(() => [])
+    sanityClient.fetch(allCaseStudiesQuery).catch(() => []),
+    sanityClient.fetch(allServicePagesQuery).catch(() => [])
   ]);
 
   const safeBlogs = blogs || [];
   const safeCaseStudies = caseStudies || [];
+  const safeDynamicServices = dynamicServices || [];
 
   const mainPages = staticRoutes.filter(r => ['/', '/about', '/how-we-work', '/contact'].includes(r.path));
   const servicePages = staticRoutes.filter(r => r.path.startsWith('/services') || r.path.includes('company') || r.path.includes('agency'));
@@ -42,6 +44,11 @@ export default async function SitemapPage() {
     title: blog.title
   }));
 
+  const dynamicRegionalServices = safeDynamicServices.map((service: any) => ({
+    path: `/service/${service.slug}`,
+    title: service.title
+  }));
+
   const sections = [
     {
       title: 'Main Pages',
@@ -52,6 +59,11 @@ export default async function SitemapPage() {
       title: 'Our Services',
       icon: Zap,
       links: servicePages
+    },
+    {
+      title: 'Regional Services',
+      icon: Zap,
+      links: dynamicRegionalServices
     },
     {
       title: 'Company & Resources',

@@ -1,6 +1,6 @@
 import { MetadataRoute } from 'next';
 import { sanityClient } from '@/lib/sanity.client';
-import { allBlogsQuery, allCaseStudiesQuery } from '@/lib/sanity.queries';
+import { allBlogsQuery, allCaseStudiesQuery, allServicePagesQuery } from '@/lib/sanity.queries';
 import { staticRoutes } from '@/lib/routes';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
@@ -13,9 +13,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         priority: route.path === '/' ? 1 : 0.8,
     }));
 
-    const [blogs, caseStudies] = await Promise.all([
-        sanityClient.fetch(allBlogsQuery),
-        sanityClient.fetch(allCaseStudiesQuery)
+    const [blogs, caseStudies, servicePages] = await Promise.all([
+        sanityClient.fetch(allBlogsQuery).catch(() => []),
+        sanityClient.fetch(allCaseStudiesQuery).catch(() => []),
+        sanityClient.fetch(allServicePagesQuery).catch(() => [])
     ]);
 
     const blogRoutes = blogs.map((blog: any) => ({
@@ -32,5 +33,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         priority: 0.7,
     }));
 
-    return [...routes, ...blogRoutes, ...caseStudyRoutes];
+    const serviceRoutes = servicePages.map((service: any) => ({
+        url: `${baseUrl}/service/${service.slug}`,
+        lastModified: service._updatedAt ? new Date(service._updatedAt) : new Date(),
+        changeFrequency: 'weekly' as const,
+        priority: 0.9,
+    }));
+
+    return [...routes, ...blogRoutes, ...caseStudyRoutes, ...serviceRoutes];
 }
