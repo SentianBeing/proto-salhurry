@@ -183,6 +183,21 @@ export default defineType({
         },
       ],
     }),
+    // Split Image Text Section
+    defineField({
+      name: 'splitSection',
+      title: 'Split Image & Text Section (Before Five Pillars)',
+      type: 'object',
+      group: 'content',
+      fields: [
+        { name: 'tagline', title: 'Tagline', type: 'string' },
+        { name: 'headline', title: 'Headline', type: 'string' },
+        { name: 'description', title: 'Description', type: 'text' },
+        { name: 'image', title: 'Side Image', type: 'image', options: { hotspot: true } },
+        { name: 'buttonText', title: 'Button Text', type: 'string' },
+        { name: 'buttonLink', title: 'Button Link', type: 'string' }
+      ]
+    }),
     // Toggles
     defineField({
       name: 'showFivePillars',

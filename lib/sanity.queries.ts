@@ -95,6 +95,10 @@ export const servicePageBySlugQuery = groq`
       "imageUrl": image.asset->url
     },
     whyChooseUs,
+    splitSection {
+      ...,
+      "imageUrl": image.asset->url
+    },
     showFivePillars,
     showFaq,
     showCta

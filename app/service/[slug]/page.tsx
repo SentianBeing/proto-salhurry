@@ -6,6 +6,8 @@ import CTA from '@/components/cta';
 import ContactButton from '@/components/contact-button';
 import FivePillars from '@/components/five-pillars';
 import DigitalMarketingFAQ from '@/components/digital-marketing-faq';
+import Blog from '@/components/blog';
+import { Suspense } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
@@ -13,7 +15,7 @@ import { Metadata } from 'next';
 import { Target, TrendingUp, BarChart3, Megaphone, ArrowRight, CheckCircle2, Zap, Users, Globe, ArrowUp, Code, Laptop, Smartphone, PenTool, Search, Clock, Award, Shield } from 'lucide-react';
 
 import { sanityClient } from '@/lib/sanity.client';
-import { servicePageBySlugQuery } from '@/lib/sanity.queries';
+import { servicePageBySlugQuery, latestBlogsQuery } from '@/lib/sanity.queries';
 
 const IconMap: Record<string, any> = {
   Target, TrendingUp, BarChart3, Megaphone, Zap, Users, Globe, Code, Laptop, Smartphone, PenTool, Search, Clock, Award, Shield
@@ -37,13 +39,16 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
 export default async function ServicePage({ params }: { params: Promise<{ slug: string }> }) {
   const resolvedParams = await params;
-  const pageData = await sanityClient.fetch(servicePageBySlugQuery, { slug: resolvedParams.slug });
+  const [pageData, latestBlogs] = await Promise.all([
+    sanityClient.fetch(servicePageBySlugQuery, { slug: resolvedParams.slug }),
+    sanityClient.fetch(latestBlogsQuery, { limit: 3 }).catch(() => [])
+  ]);
   
   if (!pageData) {
     notFound();
   }
 
-  const { hero, coreServices, methodology, whyChooseUs, showFivePillars, showFaq, showCta } = pageData;
+  const { hero, coreServices, methodology, whyChooseUs, splitSection, showFivePillars, showFaq, showCta } = pageData;
 
   return (
     <main className="min-h-screen bg-white">
@@ -413,8 +418,52 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
         </section>
       )}
 
+      {/* Split Image & Text Section */}
+      {splitSection && (
+        <section className="bg-[#F9FAFB] py-24 px-6 md:px-12">
+          <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div className="order-2 lg:order-1">
+              {splitSection.tagline && (
+                <span className="inline-block px-4 py-1 border border-gray-200 rounded-full text-[10px] uppercase tracking-widest text-gray-500 mb-6">
+                  {splitSection.tagline}
+                </span>
+              )}
+              <h2 className="text-4xl md:text-5xl font-bold text-[#1A1A1A] mb-8 whitespace-pre-line">
+                {splitSection.headline}
+              </h2>
+              <p className="text-gray-500 text-lg leading-relaxed mb-8">
+                {splitSection.description}
+              </p>
+              {splitSection.buttonText && (
+                <Link href={splitSection.buttonLink || '#'} className="inline-flex items-center gap-2 font-bold text-black border-b-2 border-[#A3E635] pb-1 hover:gap-4 transition-all">
+                  {splitSection.buttonText} <ArrowRight className="w-5 h-5" />
+                </Link>
+              )}
+            </div>
+            <div className="order-1 lg:order-2">
+              <div className="relative h-[400px] md:h-[500px] rounded-[40px] overflow-hidden shadow-2xl">
+                <Image
+                  src={splitSection.imageUrl || "https://picsum.photos/800/1000"}
+                  alt={splitSection.headline || "Section Image"}
+                  fill
+                  className="object-cover"
+                />
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
+
       {showFivePillars && <FivePillars />}
       {showFaq && <DigitalMarketingFAQ />}
+      
+      {/* Blog Section */}
+      {latestBlogs && latestBlogs.length > 0 && (
+        <Suspense fallback={<div className="py-12 bg-[#0A0A0A] text-center text-gray-500">Loading Latest Insights...</div>}>
+          <Blog initialPosts={latestBlogs} />
+        </Suspense>
+      )}
+
       {showCta && <CTA />}
       <Footer />
     </main>
