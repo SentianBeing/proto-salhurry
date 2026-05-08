@@ -22,12 +22,12 @@ export default async function PortfolioPage() {
   return (
     <main className="min-h-screen bg-white">
       {/* Header Section */}
-      <div className="relative bg-[#0A0A0A] overflow-hidden pt-32 pb-24 md:pt-40 md:pb-32 px-6 rounded-b-[40px] md:rounded-b-[80px]">
+      <div className="relative bg-[#0A0A0A] overflow-hidden pb-24 px-6 rounded-b-[40px] md:rounded-b-[80px]">
         {/* Neon Smudge Effect */}
         <div className="absolute top-[-10%] left-[-10%] w-[60%] h-[60%] bg-[#A3E635] blur-[150px] opacity-10 pointer-events-none rounded-full"></div>
         <Navbar />
         
-        <div className="max-w-4xl mx-auto relative z-10 text-center">
+        <div className="max-w-4xl mx-auto relative z-10 text-center pt-12">
           <span className="inline-block px-4 py-1.5 border border-[#A3E635]/30 text-[#A3E635] bg-[#A3E635]/10 rounded-full text-[10px] tracking-[0.2em] uppercase mb-8 font-bold backdrop-blur-sm">
             Our Work
           </span>

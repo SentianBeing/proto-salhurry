@@ -43,10 +43,10 @@ export default function PaperplaneCaseStudy() {
       />
       
       {/* SECTION 1 — Hero */}
-      <div className="relative bg-[#0A0A0A] overflow-hidden pt-32 pb-24 md:pt-40 md:pb-32 px-6">
+      <div className="relative bg-[#0A0A0A] overflow-hidden pb-24 px-6">
         <Navbar />
         
-        <div className="max-w-7xl mx-auto relative z-10 flex flex-col items-center text-center">
+        <div className="max-w-7xl mx-auto relative z-10 flex flex-col items-center text-center pt-12">
           <ScrollReveal>
             <span className="inline-block px-4 py-1.5 border border-white/20 text-gray-300 rounded-full text-[10px] tracking-[0.2em] uppercase mb-8 font-medium">
               Case Study · Wedding & Events

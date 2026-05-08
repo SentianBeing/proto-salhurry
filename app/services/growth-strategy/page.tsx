@@ -35,7 +35,7 @@ export default function GrowthStrategyPage() {
       />
       
       {/* SECTION 1 — Hero */}
-      <div className="relative bg-[#0A0A0A] overflow-hidden pt-32 pb-24 md:pt-48 md:pb-32 px-6">
+      <div className="relative bg-[#0A0A0A] overflow-hidden pb-24 px-6">
         <Navbar />
         
         <div className="absolute inset-0 z-0">
@@ -43,7 +43,7 @@ export default function GrowthStrategyPage() {
           <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-white opacity-[0.02] rounded-full blur-[100px]"></div>
         </div>
 
-        <div className="max-w-6xl mx-auto relative z-10 flex flex-col items-center text-center">
+        <div className="max-w-6xl mx-auto relative z-10 flex flex-col items-center text-center pt-12">
           <ScrollReveal>
             <span className="inline-block px-5 py-2 border border-[#A3E635]/30 text-[#A3E635] bg-[#A3E635]/10 rounded-full text-[10px] sm:text-xs tracking-[0.2em] uppercase mb-8 font-bold backdrop-blur-sm shadow-sm">
               Growth Strategy & GTM · Trivandrum, Kerala
