@@ -88,6 +88,7 @@ export const servicePageBySlugQuery = groq`
     "slug": slug.current,
     seoTitle,
     seoDescription,
+    schemaMarkup,
     hero,
     coreServices,
     methodology {

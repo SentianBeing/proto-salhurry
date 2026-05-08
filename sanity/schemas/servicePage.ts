@@ -40,6 +40,13 @@ export default defineType({
       type: 'text',
       group: 'seo',
     }),
+    defineField({
+      name: 'schemaMarkup',
+      title: 'Schema Markup (JSON-LD)',
+      description: 'Paste your custom JSON-LD schema markup here. It will be added to the head of the page.',
+      type: 'text',
+      group: 'seo',
+    }),
     // Hero Section
     defineField({
       name: 'hero',

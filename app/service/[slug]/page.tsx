@@ -53,21 +53,28 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
   return (
     <main className="min-h-screen bg-white">
       {/* JSON-LD Schema Markup */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Service",
-            "name": pageData.title,
-            "provider": {
-              "@type": "Organization",
-              "name": "SalHurry"
-            },
-            "description": pageData.seoDescription,
-          }),
-        }}
-      />
+      {pageData.schemaMarkup ? (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: pageData.schemaMarkup }}
+        />
+      ) : (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Service",
+              "name": pageData.title,
+              "provider": {
+                "@type": "Organization",
+                "name": "SalHurry"
+              },
+              "description": pageData.seoDescription,
+            }),
+          }}
+        />
+      )}
 
       {/* Hero Section */}
       <div className="relative bg-[#0A0A0A] overflow-hidden pb-24">
