@@ -26,17 +26,33 @@ export default function AboutPage() {
         <Navbar />
 
         <div className="px-6 md:px-12 max-w-7xl mx-auto pt-20">
-          <div className="max-w-3xl">
-            <span className="inline-block px-4 py-1.5 border border-[#A3E635]/50 text-[#A3E635] rounded-full text-[10px] tracking-[0.2em] font-medium uppercase mb-8 shadow-[0_0_15px_rgba(163,230,53,0.15)] bg-[#A3E635]/5">
-              ABOUT SALHURRY
-            </span>
-            <h1 className="text-5xl md:text-[5.5rem] font-semibold text-white mb-6 leading-[1.05] tracking-tight">
-              We Architect <br />
-              <span className="font-serif italic font-normal text-white">Growth Systems</span>
-            </h1>
-            <p className="text-[15px] sm:text-[17px] text-gray-300 leading-[1.8] mb-12 max-w-sm font-light">
-              SalHurry is a strategy-first growth platform based in Trivandrum, Kerala. We work with ambitious businesses across Kerala and the UAE to build structured, scalable growth systems.
-            </p>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            {/* Left Content */}
+            <div className="max-w-3xl relative z-10">
+              <span className="inline-block px-4 py-1.5 border border-[#A3E635]/50 text-[#A3E635] rounded-full text-[10px] tracking-[0.2em] font-medium uppercase mb-8 shadow-[0_0_15px_rgba(163,230,53,0.15)] bg-[#A3E635]/5">
+                ABOUT SALHURRY
+              </span>
+              <h1 className="text-5xl md:text-[5.5rem] font-semibold text-white mb-6 leading-[1.05] tracking-tight">
+                We Architect <br />
+                <span className="font-serif italic font-normal text-white">Growth Systems</span>
+              </h1>
+              <p className="text-[15px] sm:text-[17px] text-gray-300 leading-[1.8] mb-12 max-w-sm font-light">
+                SalHurry is a strategy-first growth platform based in Trivandrum, Kerala. We work with ambitious businesses across Kerala and the UAE to build structured, scalable growth systems.
+              </p>
+            </div>
+
+            {/* Right Video */}
+            <div className="relative w-full max-w-xl mx-auto lg:ml-auto z-10 rounded-[40px] overflow-hidden shadow-[0_0_50px_rgba(163,230,53,0.15)] border border-white/5 bg-[#1A1A1A]">
+              <video 
+                src="https://res.cloudinary.com/der2xk0cv/video/upload/v1778259917/aboutsa_dswbm4.mp4"
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="w-full h-auto block"
+              />
+              <div className="absolute inset-0 bg-gradient-to-tr from-[#0A0A0A]/40 via-transparent to-transparent pointer-events-none"></div>
+            </div>
           </div>
         </div>
       </div>
@@ -46,7 +62,7 @@ export default function AboutPage() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <div className="relative h-[400px] md:h-[600px] rounded-[40px] overflow-hidden shadow-2xl">
             <Image
-              src="https://picsum.photos/seed/about-team/800/1000"
+              src="https://res.cloudinary.com/der2xk0cv/image/upload/v1778256187/salhurry-about_lsaqd0.jpg"
               alt="SalHurry Growth Engineering Team"
               fill
               className="object-cover"

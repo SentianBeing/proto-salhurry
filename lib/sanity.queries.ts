@@ -113,3 +113,44 @@ export const allServicePagesQuery = groq`
     _updatedAt
   }
 `;
+
+export const allPortfolioQuery = groq`
+  *[_type == "portfolio"] | order(_createdAt desc) {
+    _id,
+    title,
+    "slug": slug.current,
+    clientName,
+    location,
+    services,
+    tags,
+    "coverImage": coverImage.asset->url
+  }
+`;
+
+export const portfolioBySlugQuery = groq`
+  *[_type == "portfolio" && slug.current == $slug][0] {
+    _id,
+    title,
+    "slug": slug.current,
+    clientName,
+    location,
+    services,
+    tags,
+    "heroImage": heroImage.asset->url,
+    "galleryImages": galleryImages[].asset->url,
+    liveLink,
+    contextTitle,
+    contextDescription,
+    featuresSectionTitle,
+    featuresDescription,
+    features,
+    impactTitle,
+    impactDescription,
+    impactStats,
+    ctaTitle,
+    ctaDescription,
+    seoTitle,
+    seoDescription,
+    "seoImage": seoImage.asset->url
+  }
+`;
