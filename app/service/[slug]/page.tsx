@@ -98,10 +98,16 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                 </p>
               )}
               <div className="flex flex-wrap gap-4">
-                <ContactButton
-                  text={hero?.buttonText || "Get Started"}
-                  className="border border-[#A3E635]/80 shadow-[0_0_20px_rgba(163,230,53,0.2)] bg-black/50 backdrop-blur-md text-white px-8 py-3.5 rounded-full font-medium hover:bg-[#A3E635]/10 mt-2 transition-all flex items-center gap-2"
-                />
+                {(!hero?.buttonAction || hero?.buttonAction === 'enquiry_modal') ? (
+                  <ContactButton
+                    text={hero?.buttonText || "Get Started"}
+                    className="border border-[#A3E635]/80 shadow-[0_0_20px_rgba(163,230,53,0.2)] bg-black/50 backdrop-blur-md text-white px-8 py-3.5 rounded-full font-medium hover:bg-[#A3E635]/10 mt-2 transition-all flex items-center gap-2"
+                  />
+                ) : (
+                  <button className="border border-[#A3E635]/80 shadow-[0_0_20px_rgba(163,230,53,0.2)] bg-black/50 backdrop-blur-md text-white px-8 py-3.5 rounded-full font-medium hover:bg-[#A3E635]/10 mt-2 transition-all flex items-center gap-2">
+                    {hero?.buttonText || "Get Started"}
+                  </button>
+                )}
               </div>
             </div>
 
@@ -409,9 +415,20 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                 {whyChooseUs.description}
               </p>
               {whyChooseUs.buttonText && (
-                <button className="flex items-center gap-2 font-bold text-black border-b-2 border-[#A3E635] pb-1 hover:gap-4 transition-all">
-                  {whyChooseUs.buttonText} <ArrowRight className="w-5 h-5" />
-                </button>
+                (!whyChooseUs.buttonAction || whyChooseUs.buttonAction === 'enquiry_modal') ? (
+                  <ContactButton
+                    text={
+                      <>
+                        {whyChooseUs.buttonText} <ArrowRight className="w-5 h-5" />
+                      </>
+                    }
+                    className="flex items-center gap-2 font-bold text-black border-b-2 border-[#A3E635] pb-1 hover:gap-4 transition-all"
+                  />
+                ) : (
+                  <button className="flex items-center gap-2 font-bold text-black border-b-2 border-[#A3E635] pb-1 hover:gap-4 transition-all">
+                    {whyChooseUs.buttonText} <ArrowRight className="w-5 h-5" />
+                  </button>
+                )
               )}
             </div>
           </div>
@@ -435,9 +452,20 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                 {splitSection.description}
               </p>
               {splitSection.buttonText && (
-                <Link href={splitSection.buttonLink || '#'} className="inline-flex items-center gap-2 font-bold text-black border-b-2 border-[#A3E635] pb-1 hover:gap-4 transition-all">
-                  {splitSection.buttonText} <ArrowRight className="w-5 h-5" />
-                </Link>
+                (!splitSection.buttonAction || splitSection.buttonAction === 'enquiry_modal') ? (
+                  <ContactButton
+                    text={
+                      <>
+                        {splitSection.buttonText} <ArrowRight className="w-5 h-5" />
+                      </>
+                    }
+                    className="inline-flex items-center gap-2 font-bold text-black border-b-2 border-[#A3E635] pb-1 hover:gap-4 transition-all"
+                  />
+                ) : (
+                  <Link href={splitSection.buttonLink || '#'} className="inline-flex items-center gap-2 font-bold text-black border-b-2 border-[#A3E635] pb-1 hover:gap-4 transition-all">
+                    {splitSection.buttonText} <ArrowRight className="w-5 h-5" />
+                  </Link>
+                )
               )}
             </div>
             <div className="order-1 lg:order-2">

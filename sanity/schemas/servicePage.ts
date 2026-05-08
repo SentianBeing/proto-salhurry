@@ -52,6 +52,17 @@ export default defineType({
         { name: 'headlineItalic', title: 'Italic Headline Part (e.g. Grow Faster)', type: 'string' },
         { name: 'description', title: 'Description', type: 'text' },
         { name: 'buttonText', title: 'Button Text', type: 'string', initialValue: 'Get Started' },
+        {
+          name: 'buttonAction',
+          title: 'Button Action',
+          type: 'string',
+          options: {
+            list: [
+              { title: 'Enquiry Modal Popup', value: 'enquiry_modal' }
+            ],
+          },
+          initialValue: 'enquiry_modal'
+        },
       ],
     }),
     // Core Services Grid
@@ -152,6 +163,17 @@ export default defineType({
         { name: 'description', title: 'Description', type: 'text' },
         { name: 'buttonText', title: 'Button Text', type: 'string' },
         {
+          name: 'buttonAction',
+          title: 'Button Action',
+          type: 'string',
+          options: {
+            list: [
+              { title: 'Enquiry Modal Popup', value: 'enquiry_modal' }
+            ],
+          },
+          initialValue: 'enquiry_modal'
+        },
+        {
           name: 'stats',
           title: 'Stats Grid',
           type: 'array',
@@ -195,7 +217,18 @@ export default defineType({
         { name: 'description', title: 'Description', type: 'text' },
         { name: 'image', title: 'Side Image', type: 'image', options: { hotspot: true } },
         { name: 'buttonText', title: 'Button Text', type: 'string' },
-        { name: 'buttonLink', title: 'Button Link', type: 'string' }
+        {
+          name: 'buttonAction',
+          title: 'Button Action',
+          type: 'string',
+          options: {
+            list: [
+              { title: 'Enquiry Modal Popup', value: 'enquiry_modal' }
+            ],
+          },
+          initialValue: 'enquiry_modal'
+        },
+        { name: 'buttonLink', title: 'Button Link', type: 'string', hidden: ({ parent }) => parent?.buttonAction === 'enquiry_modal' }
       ]
     }),
     // Toggles
