@@ -4,6 +4,7 @@ import { PortableText } from '@portabletext/react';
 import Navbar from '@/layouts/navbar';
 import Footer from '@/layouts/footer';
 import BlogAudioPlayer from '@/components/blog-audio-player';
+import FloatingShareButton from '@/components/floating-share-button';
 import { sanityClient } from '@/lib/sanity.client';
 import { blogBySlugQuery, allBlogsQuery } from '@/lib/sanity.queries';
 import { constructMetadata } from '@/lib/seo';
@@ -86,7 +87,7 @@ const portableTextComponents = {
   marks: {
     strong: ({ children }: any) => <strong className="font-bold text-black">{children}</strong>,
     link: ({ children, value }: any) => (
-      <a href={value.href} className="text-[#A3E635] hover:underline font-medium" target="_blank" rel="noopener noreferrer">
+      <a href={value.href} className="text-blue-600 hover:text-blue-800 underline font-medium" target="_blank" rel="noopener noreferrer">
         {children}
       </a>
     ),
@@ -191,6 +192,7 @@ export default async function BlogDetailPage({ params }: Props) {
         </div>
       </article>
 
+      <FloatingShareButton />
       <Footer />
     </main>
   );
