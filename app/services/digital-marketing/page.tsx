@@ -87,11 +87,17 @@ export default function DigitalMarketingPage() {
               </h1>
               <p className="text-[15px] sm:text-[17px] text-gray-300 leading-[1.8] mb-12 max-w-sm font-light">
                 We help businesses generate qualified leads, convert more customers, and increase revenue through strategic SEO and digital marketing systems  </p>
-              <div className="flex flex-wrap gap-4">
+              <div className="flex flex-wrap gap-4 items-center">
                 <ContactButton
                   text="Get Started"
-                  className="border border-[#A3E635]/80 shadow-[0_0_20px_rgba(163,230,53,0.2)] bg-black/50 backdrop-blur-md text-white px-8 py-3.5 rounded-full font-medium hover:bg-[#A3E635]/10 mt-2 transition-all flex items-center gap-2"
+                  className="border border-[#A3E635]/80 shadow-[0_0_20px_rgba(163,230,53,0.2)] bg-black/50 backdrop-blur-md text-white px-8 py-3.5 rounded-full font-medium hover:bg-[#A3E635]/10 mt-2 transition-all flex items-center gap-2 cursor-pointer"
                 />
+                <Link
+                  href="/packages"
+                  className="bg-[#A3E635] text-black px-8 py-3.5 rounded-full font-bold text-sm hover:bg-white hover:scale-105 mt-2 transition-all flex items-center gap-2 shadow-lg"
+                >
+                  View Marketing Packages <ArrowRight className="w-4 h-4" />
+                </Link>
               </div>
             </div>
 
@@ -439,6 +445,29 @@ export default function DigitalMarketingPage() {
               Discover our data-driven digital marketing approach <ArrowRight className="w-5 h-5" />
             </button>
           </div>
+        </div>
+      </section>
+
+      {/* PACKAGES SPOTLIGHT BANNER SECTION */}
+      <section className="py-16 px-6 md:px-12 max-w-7xl mx-auto">
+        <div className="bg-[#1A1A1A] text-white border-2 border-[#A3E635] rounded-[40px] p-8 sm:p-12 shadow-2xl relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-8">
+          <div className="space-y-3 max-w-2xl">
+            <span className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-[#A3E635]/20 text-[#A3E635] text-xs font-bold uppercase tracking-wider">
+              Transparent Pricing & Tiers
+            </span>
+            <h3 className="text-2xl sm:text-4xl font-bold text-white">
+              Explore Our Digital Marketing Packages
+            </h3>
+            <p className="text-gray-300 text-sm leading-relaxed font-light">
+              From Starter (₹9,999/mo) to Business Growth (₹19,999/mo) and Premium Brand (₹29,999/mo) — find the perfect execution tier or build your custom package with live lead forecasting.
+            </p>
+          </div>
+          <Link
+            href="/packages"
+            className="bg-[#A3E635] text-black px-8 py-4 rounded-full font-bold text-sm hover:bg-white hover:scale-105 transition-all shadow-xl shrink-0 flex items-center gap-2"
+          >
+            View All Tiers & Custom Builder <ArrowRight className="w-4 h-4" />
+          </Link>
         </div>
       </section>
 

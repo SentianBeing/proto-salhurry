@@ -8,6 +8,7 @@ import { Target, Lightbulb, Shield, Zap, Users, MapPin, CheckCircle2, ArrowRight
 
 import { constructMetadata } from '@/lib/seo';
 import DigitalMarketingFAQ from '@/components/digital-marketing-faq';
+import ContactButton from '@/components/contact-button';
 
 export const metadata: Metadata = constructMetadata({
   title: 'About Us',
@@ -237,9 +238,10 @@ export default function AboutPage() {
             <div>
               <h2 className="text-4xl md:text-6xl font-bold mb-8">SalHurry is designed for you.</h2>
               <p className="text-lg font-medium opacity-80 mb-8">If you are looking for structured GTM systems, revenue-focused marketing, and clear execution pathways.</p>
-              <button className="bg-black text-white px-8 py-4 rounded-full font-bold hover:bg-white hover:text-black transition-all flex items-center gap-2">
-                Start Your Journey <ArrowRight className="w-5 h-5" />
-              </button>
+              <ContactButton
+                text={<>Start Your Journey <ArrowRight className="w-5 h-5" /></>}
+                className="bg-black text-white px-8 py-4 rounded-full font-bold hover:bg-white hover:text-black transition-all flex items-center gap-2 cursor-pointer shadow-xl"
+              />
             </div>
             <div className="space-y-4">
               {[

@@ -117,7 +117,7 @@ export default function Navbar() {
 
       <div className="flex items-center gap-4">
         <button
-          onClick={openModal}
+          onClick={() => openModal()}
           className="hidden md:block px-6 py-2 border border-white/20 text-white rounded-full text-sm font-medium hover:bg-white hover:text-black transition-all"
         >
           Contact Us
@@ -139,7 +139,7 @@ export default function Navbar() {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className="absolute top-full left-0 right-0 bg-white border-b border-gray-100 p-6 flex flex-col gap-6 md:hidden shadow-xl"
+            className="absolute top-full left-0 right-0 bg-white border-b border-gray-100 p-6 flex flex-col gap-6 md:hidden shadow-xl text-black"
           >
             <Link href="/" className="text-lg font-medium" onClick={() => setIsMenuOpen(false)}>Home</Link>
             <div className="flex flex-col gap-4">
