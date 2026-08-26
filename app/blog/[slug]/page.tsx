@@ -6,191 +6,212 @@ import Footer from '@/layouts/footer';
 import BlogAudioPlayer from '@/components/blog-audio-player';
 import { sanityClient } from '@/lib/sanity.client';
 import { blogBySlugQuery, allBlogsQuery } from '@/lib/sanity.queries';
+import { constructMetadata } from '@/lib/seo';
 
 export async function generateStaticParams() {
-    const blogs = await sanityClient.fetch(allBlogsQuery);
-    return blogs.map((blog: any) => ({
-        slug: blog.slug,
-    }));
+  const blogs = await sanityClient.fetch(allBlogsQuery);
+  return blogs.map((blog: any) => ({
+    slug: blog.slug,
+  }));
 }
 
 type Props = {
-    params: Promise<{ slug: string }>;
+  params: Promise<{ slug: string }>;
 };
 
-import { constructMetadata } from '@/lib/seo';
-
 export async function generateMetadata({ params }: Props) {
-    const { slug } = await params;
-    if (!slug) return { title: 'Not Found' };
+  const { slug } = await params;
+  if (!slug) return { title: 'Not Found' };
 
-    const blog = await sanityClient.fetch(blogBySlugQuery, { slug });
-    if (!blog) return { title: 'Not Found' };
+  const blog = await sanityClient.fetch(blogBySlugQuery, { slug });
+  if (!blog) return { title: 'Not Found' };
 
-    return constructMetadata({
-        title: blog.seoTitle || `${blog.title} | SalHurry Blog`,
-        description: blog.seoDescription || blog.excerpt || 'Read our latest blog post on SalHurry.',
-        path: `/blog/${slug}`,
-        openGraph: {
-            images: [
-                {
-                    url: blog.seoImage || blog.coverImage || '/images/og-image.jpg',
-                    width: 1200,
-                    height: 630,
-                    alt: blog.title,
-                }
-            ],
-        },
-    });
+  return constructMetadata({
+    title: blog.seoTitle || `${blog.title} | SalHurry Blog`,
+    description: blog.seoDescription || blog.excerpt || 'Read our latest blog post on SalHurry.',
+    path: `/blog/${slug}`,
+    openGraph: {
+      images: [
+        {
+          url: blog.seoImage || blog.coverImage || '/images/og-image.jpg',
+          width: 1200,
+          height: 630,
+          alt: blog.title,
+        }
+      ],
+    },
+  });
 }
 
 // Portable Text custom components mapping existing typography styles
 const portableTextComponents = {
-    types: {
-        image: ({ value }: any) => (
-            <div className="relative w-full h-[400px] md:h-[600px] rounded-3xl overflow-hidden my-12">
-                <Image
-                    src={value.asset.url || value.url}
-                    alt={value.alt || 'SalHurry Blog Image'}
-                    fill
-                    className="object-cover"
-                />
+  types: {
+    image: ({ value }: any) => {
+      const imageUrl = value.asset?.url || value.url;
+      if (!imageUrl) return null;
+      return (
+        <figure className="my-10 text-center">
+          <div className="relative w-full max-w-4xl mx-auto rounded-3xl overflow-hidden shadow-xl bg-[#0A0A0A] flex items-center justify-center p-3 sm:p-5">
+            {/* Ambient Blurred Backdrop for vertical & custom aspect ratios */}
+            <div className="absolute inset-0 overflow-hidden pointer-events-none">
+              <img
+                src={imageUrl}
+                alt=""
+                className="w-full h-full object-cover blur-2xl opacity-35 scale-110"
+              />
             </div>
-        ),
+            {/* 100% Uncropped Responsive Image */}
+            <img
+              src={imageUrl}
+              alt={value.alt || 'SalHurry Blog Image'}
+              className="relative z-10 w-auto h-auto max-w-full max-h-[75vh] object-contain rounded-2xl mx-auto shadow-md"
+            />
+          </div>
+          {value.caption && (
+            <figcaption className="text-xs text-gray-500 mt-3 font-medium">
+              {value.caption}
+            </figcaption>
+          )}
+        </figure>
+      );
     },
-    block: {
-        h1: ({ children }: any) => <h1 className="text-4xl md:text-5xl font-bold text-[#1A1A1A] mt-12 mb-6">{children}</h1>,
-        h2: ({ children }: any) => <h2 className="text-3xl md:text-4xl font-bold text-[#1A1A1A] mt-12 mb-6">{children}</h2>,
-        h3: ({ children }: any) => <h3 className="text-2xl md:text-3xl font-bold text-[#1A1A1A] mt-10 mb-4">{children}</h3>,
-        normal: ({ children }: any) => <p className="text-gray-500 text-lg leading-relaxed mb-6">{children}</p>,
-        blockquote: ({ children }: any) => (
-            <blockquote className="border-l-4 border-[#A3E635] pl-6 py-2 my-8 text-xl italic text-gray-700 bg-gray-50 rounded-r-2xl">
-                {children}
-            </blockquote>
-        ),
-    },
-    list: {
-        bullet: ({ children }: any) => <ul className="list-disc list-inside text-gray-500 text-lg leading-relaxed mb-6 space-y-2">{children}</ul>,
-        number: ({ children }: any) => <ol className="list-decimal list-inside text-gray-500 text-lg leading-relaxed mb-6 space-y-2">{children}</ol>,
-    },
-    listItem: {
-        bullet: ({ children }: any) => <li>{children}</li>,
-    },
-    marks: {
-        strong: ({ children }: any) => <strong className="font-bold text-black">{children}</strong>,
-        link: ({ children, value }: any) => (
-            <a href={value.href} className="text-[#A3E635] hover:underline font-medium" target="_blank" rel="noopener noreferrer">
-                {children}
-            </a>
-        ),
-    },
+  },
+  block: {
+    h1: ({ children }: any) => <h1 className="text-4xl md:text-5xl font-bold text-[#1A1A1A] mt-12 mb-6">{children}</h1>,
+    h2: ({ children }: any) => <h2 className="text-3xl md:text-4xl font-bold text-[#1A1A1A] mt-12 mb-6">{children}</h2>,
+    h3: ({ children }: any) => <h3 className="text-2xl md:text-3xl font-bold text-[#1A1A1A] mt-10 mb-4">{children}</h3>,
+    normal: ({ children }: any) => <p className="text-gray-500 text-lg leading-relaxed mb-6">{children}</p>,
+    blockquote: ({ children }: any) => (
+      <blockquote className="border-l-4 border-[#A3E635] pl-6 py-2 my-8 text-xl italic text-gray-700 bg-gray-50 rounded-r-2xl">
+        {children}
+      </blockquote>
+    ),
+  },
+  list: {
+    bullet: ({ children }: any) => <ul className="list-disc list-inside text-gray-500 text-lg leading-relaxed mb-6 space-y-2">{children}</ul>,
+    number: ({ children }: any) => <ol className="list-decimal list-inside text-gray-500 text-lg leading-relaxed mb-6 space-y-2">{children}</ol>,
+  },
+  listItem: {
+    bullet: ({ children }: any) => <li>{children}</li>,
+  },
+  marks: {
+    strong: ({ children }: any) => <strong className="font-bold text-black">{children}</strong>,
+    link: ({ children, value }: any) => (
+      <a href={value.href} className="text-[#A3E635] hover:underline font-medium" target="_blank" rel="noopener noreferrer">
+        {children}
+      </a>
+    ),
+  },
 };
 
 function extractTextFromBlocks(blocks: any[]): string {
-    if (!blocks || !Array.isArray(blocks)) return '';
-    return blocks
-        .map(block => {
-            if (block._type !== 'block' || !block.children) {
-                return '';
-            }
-            return block.children.map((child: any) => child.text).join('');
-        })
-        .join('.\n');
+  if (!blocks || !Array.isArray(blocks)) return '';
+  return blocks
+    .map(block => {
+      if (block._type !== 'block' || !block.children) {
+        return '';
+      }
+      return block.children.map((child: any) => child.text).join('');
+    })
+    .join('.\n');
 }
 
 export default async function BlogDetailPage({ params }: Props) {
-    const { slug } = await params;
-    if (!slug) notFound();
+  const { slug } = await params;
+  if (!slug) notFound();
 
-    const blog = await sanityClient.fetch(blogBySlugQuery, { slug });
+  const blog = await sanityClient.fetch(blogBySlugQuery, { slug });
 
-    if (!blog) {
-        notFound();
-    }
+  if (!blog) {
+    notFound();
+  }
 
-    const plainTextContent = extractTextFromBlocks(blog.content) || blog.excerpt || '';
+  const plainTextContent = extractTextFromBlocks(blog.content) || blog.excerpt || '';
 
-    return (
-        <main className="min-h-screen bg-white">
-            <div className="bg-[#0A0A0A]">
-                <Navbar />
+  return (
+    <main className="min-h-screen bg-white">
+      <div className="bg-[#0A0A0A]">
+        <Navbar />
+      </div>
+
+      <article className="pb-24">
+        {/* Cover Headers */}
+        <div className="bg-[#0A0A0A] pt-20 pb-32 px-6 md:px-12 text-center relative overflow-hidden">
+          {/* Ambient Glow */}
+          <div className="absolute top-[-10%] left-[-10%] w-[60%] h-[60%] bg-[#2D3321] blur-[120px] rounded-full opacity-40 pointer-events-none" />
+
+          <div className="max-w-4xl mx-auto relative z-10">
+            <div className="flex flex-wrap items-center justify-center gap-4 mb-6">
+              <span className="text-[#A3E635] font-medium tracking-widest uppercase text-sm">
+                {new Date(blog.publishedAt).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
+              </span>
+              {blog.categories?.map((cat: any) => (
+                <span key={cat.slug} className="px-3 py-1 bg-white/10 rounded-full text-xs text-white uppercase tracking-widest">
+                  {cat.title}
+                </span>
+              ))}
             </div>
 
-            <article className="pb-24">
-                {/* Cover Headers */}
-                <div className="bg-[#0A0A0A] pt-20 pb-32 px-6 md:px-12 text-center relative overflow-hidden">
-                    {/* Extracted the same Neon blobs from other pages for consistency */}
-                    <div className="absolute top-[-10%] left-[-10%] w-[60%] h-[60%] bg-[#2D3321] blur-[120px] rounded-full opacity-40 pointer-events-none"></div>
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight mb-8">
+              {blog.title}
+            </h1>
+          </div>
+        </div>
 
-                    <div className="max-w-4xl mx-auto relative z-10">
-                        <div className="flex flex-wrap items-center justify-center gap-4 mb-6">
-                            <span className="text-[#A3E635] font-medium tracking-widest uppercase text-sm">
-                                {new Date(blog.publishedAt).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
-                            </span>
-                            {blog.categories?.map((cat: any) => (
-                                <span key={cat.slug} className="px-3 py-1 bg-white/10 rounded-full text-xs text-white uppercase tracking-widest">
-                                    {cat.title}
-                                </span>
-                            ))}
-                        </div>
+        {/* Content Wrapper */}
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 md:px-12 -mt-20 relative z-20">
+          {/* Cover Image with Ambient Backdrop & 100% Uncropped Display */}
+          {blog.coverImage && (
+            <div className="relative w-full rounded-[32px] sm:rounded-[40px] overflow-hidden shadow-2xl mb-16 bg-[#0A0A0A] flex items-center justify-center p-3 sm:p-6 min-h-[300px] sm:min-h-[450px]">
+              {/* Ambient blurred background glow */}
+              <div className="absolute inset-0 overflow-hidden pointer-events-none">
+                <img
+                  src={blog.coverImage}
+                  alt=""
+                  className="w-full h-full object-cover blur-3xl opacity-40 scale-110"
+                />
+              </div>
+              {/* Main uncropped image */}
+              <img
+                src={blog.coverImage}
+                alt={blog.title}
+                className="relative z-10 w-auto h-auto max-w-full max-h-[80vh] object-contain rounded-[24px] sm:rounded-[32px] mx-auto shadow-2xl"
+              />
+            </div>
+          )}
 
-                        <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight mb-8">
-                            {blog.title}
-                        </h1>
+          {/* Audio Player Toolbar */}
+          {plainTextContent && (
+            <BlogAudioPlayer text={plainTextContent} />
+          )}
 
-                        {/* Audio Player was moved below cover image */}
+          {/* Portable Text Content */}
+          <div className="prose prose-lg max-w-none">
+            {blog.content ? (
+              <PortableText value={blog.content} components={portableTextComponents} />
+            ) : (
+              <p className="text-gray-500 text-lg leading-relaxed">{blog.excerpt}</p>
+            )}
+          </div>
 
-                        {/* Author section moved to the bottom */}
-                    </div>
+          {/* Author Section */}
+          {blog.author && (
+            <div className="mt-16 pt-10 border-t border-gray-100 flex items-center gap-5">
+              {blog.author.image && (
+                <div className="w-16 h-16 rounded-full overflow-hidden relative shrink-0">
+                  <Image src={blog.author.image} alt={blog.author.name} fill className="object-cover" />
                 </div>
+              )}
+              <div>
+                <p className="text-black font-bold text-xl">{blog.author.name}</p>
+                <p className="text-gray-500 mt-1">{blog.author.role}</p>
+              </div>
+            </div>
+          )}
+        </div>
+      </article>
 
-                {/* Content Wrapper */}
-                <div className="max-w-4xl mx-auto px-6 md:px-12 -mt-20 relative z-20">
-                    {/* Cover Image */}
-                    {blog.coverImage && (
-                        <div className="relative w-full h-[400px] md:h-[600px] rounded-[40px] overflow-hidden shadow-2xl mb-16">
-                            <Image
-                                src={blog.coverImage}
-                                alt={blog.title}
-                                fill
-                                className="object-cover"
-                                priority
-                            />
-                        </div>
-                    )}
-
-                    {/* Audio Player Toolbar */}
-                    {plainTextContent && (
-                        <BlogAudioPlayer text={plainTextContent} />
-                    )}
-
-                    {/* Portable Text Content */}
-                    <div className="prose prose-lg max-w-none">
-                        {blog.content ? (
-                            <PortableText value={blog.content} components={portableTextComponents} />
-                        ) : (
-                            <p className="text-gray-500 text-lg leading-relaxed">{blog.excerpt}</p>
-                        )}
-                    </div>
-
-                    {/* Author Section */}
-                    {blog.author && (
-                        <div className="mt-16 pt-10 border-t border-gray-100 flex items-center gap-5">
-                            {blog.author.image && (
-                                <div className="w-16 h-16 rounded-full overflow-hidden relative shrink-0">
-                                    <Image src={blog.author.image} alt={blog.author.name} fill className="object-cover" />
-                                </div>
-                            )}
-                            <div>
-                                <p className="text-black font-bold text-xl">{blog.author.name}</p>
-                                <p className="text-gray-500 mt-1">{blog.author.role}</p>
-                            </div>
-                        </div>
-                    )}
-                </div>
-            </article>
-
-            <Footer />
-        </main>
-    );
+      <Footer />
+    </main>
+  );
 }

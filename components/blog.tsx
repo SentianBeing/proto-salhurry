@@ -79,15 +79,15 @@ export default function Blog({
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {posts.map((post, i) => (
             <div key={post.slug || i} className="group cursor-pointer">
-              <Link href={post.slug} className="block relative h-[350px] sm:h-[400px] rounded-[30px] sm:rounded-[40px] overflow-hidden mb-6 sm:mb-8">
+              <Link href={post.slug} className="block relative h-[350px] sm:h-[400px] rounded-[30px] sm:rounded-[40px] overflow-hidden mb-6 sm:mb-8 bg-[#0A0A0A]">
                 <Image
                   src={post.image}
                   alt={post.title}
                   fill
-                  className="object-cover transition-transform duration-700 group-hover:scale-110"
+                  className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
                   referrerPolicy="no-referrer"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent"></div>
 
                 <div className="absolute bottom-6 left-6 right-6">
                   <span className="inline-block px-3 py-1 bg-white/20 backdrop-blur-md border border-white/10 rounded-full text-[10px] uppercase tracking-widest text-white mb-4">
