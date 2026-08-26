@@ -5,51 +5,101 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 
+/**
+ * Calculates accurate reading time based on total wordcount in Sanity PortableText body content or excerpt.
+ * Standard average reading speed: 200 words per minute.
+ */
+export function calculateReadTime(content?: any[], excerpt?: string): string {
+  let totalWords = 0;
+
+  if (content && Array.isArray(content) && content.length > 0) {
+    content.forEach((block: any) => {
+      if (block._type === 'block' && Array.isArray(block.children)) {
+        block.children.forEach((child: any) => {
+          if (child.text && typeof child.text === 'string') {
+            const words = child.text.trim().split(/\s+/).filter(Boolean);
+            totalWords += words.length;
+          }
+        });
+      }
+    });
+  }
+
+  if (totalWords === 0 && excerpt && typeof excerpt === 'string') {
+    const words = excerpt.trim().split(/\s+/).filter(Boolean);
+    totalWords = words.length * 7;
+  }
+
+  if (totalWords === 0) {
+    return '3 min read';
+  }
+
+  const minutes = Math.max(1, Math.ceil(totalWords / 200));
+  return `${minutes} min read`;
+}
+
 export default function Blog({
   initialPosts = [],
   hideAllPostButton = false,
   variant = 'default'
 }: {
-  initialPosts?: any[],
-  hideAllPostButton?: boolean,
-  variant?: 'default' | 'transparent-light'
+  initialPosts?: any[];
+  hideAllPostButton?: boolean;
+  variant?: 'default' | 'transparent-light';
 }) {
-  // If no blog posts exist from Sanity, use these fallbacks for visual testing
+  // Fallbacks for visual layout demonstration
   const fallbackPosts = [
     {
-      title: '5 things you should know in Figma',
-      desc: 'As a UI/UX designer, of course you shouldn&apos;t be unaware of these 5 things...',
-      tag: 'Design',
-      image: 'https://picsum.photos/600/800?random=50',
+      title: 'AEO vs. SEO: Differences, Overlap & Optimization Strategies',
+      desc: 'Okay; it\'s time to settle this never ending debate and put this conversation to rest. Is AEO just SEO? Semantics aside, I put together an exact breakdown of both AEO...',
+      tag: 'SEO Strategy',
+      date: 'Jul 28, 2025',
+      readTime: '7 min read',
+      image: 'https://picsum.photos/600/400?random=50',
       slug: '#'
     },
     {
-      title: 'Building best practice for skill',
-      desc: 'Do you feel like your skills are lacking? Let&apos;s find out how to improve your skill...',
-      tag: 'Skill',
-      image: 'https://picsum.photos/600/800?random=51',
+      title: 'How to Appear in ChatGPT & Monitor Your Brand\'s Performance',
+      desc: 'Once upon a time, winning on Google was endgame. Now, the internet\'s favorite know-it-all, ChatGPT, is deciding which brands get mentioned (and which get ghosted). You can\'t bribe this beast...',
+      tag: 'AI Marketing',
+      date: 'Sep 30, 2025',
+      readTime: '9 min read',
+      image: 'https://picsum.photos/600/400?random=51',
       slug: '#'
     },
     {
-      title: 'Front end developer guide',
-      desc: 'As a beginner, you should know the first steps when becoming a front end deve...',
-      tag: 'Developer',
-      image: 'https://picsum.photos/600/800?random=52',
+      title: 'Building High-Converting Paid Ad Funnels for Local & Regional Brands',
+      desc: 'Discover the exact step-by-step framework we use at SalHurry to build structured multi-channel campaigns that convert cold traffic into qualified sales inquiries...',
+      tag: 'Performance Ads',
+      date: 'Oct 14, 2025',
+      readTime: '6 min read',
+      image: 'https://picsum.photos/600/400?random=52',
       slug: '#'
     }
   ];
 
-  const posts = initialPosts.length > 0
-    ? initialPosts.map((post) => ({
-      title: post.title,
-      desc: post.excerpt,
-      tag: post.categories?.[0]?.title || 'Blog',
-      image: post.coverImage || 'https://picsum.photos/600/800?random=50',
-      slug: `/blog/${post.slug?.current || post.slug}`
-    }))
-    : fallbackPosts;
+  const posts =
+    initialPosts.length > 0
+      ? initialPosts.map((post) => {
+          const readTimeStr = calculateReadTime(post.content, post.excerpt);
+          return {
+            title: post.title,
+            desc: post.excerpt,
+            tag: post.categories?.[0]?.title || 'Blog',
+            date: post.publishedAt
+              ? new Date(post.publishedAt).toLocaleDateString('en-US', {
+                  month: 'short',
+                  day: 'numeric',
+                  year: 'numeric'
+                })
+              : 'Recent',
+            readTime: readTimeStr,
+            image: post.coverImage || 'https://picsum.photos/600/400?random=50',
+            slug: `/blog/${post.slug?.current || post.slug}`
+          };
+        })
+      : fallbackPosts;
 
-  // Render logic for different variants
   const isTransparent = variant === 'transparent-light';
 
   return (
@@ -64,44 +114,64 @@ export default function Blog({
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white leading-tight mb-4 sm:mb-6">
                 Latest Insight Updates
               </h2>
-              <p className="text-gray-400 text-sm leading-relaxed">
-                Real talk on growth, sales, and marketing — written for Kerala businesses who are tired of generic advice.
+              <p className="text-gray-400 text-sm leading-relaxed font-light">
+                Real talk on growth, sales, and marketing — written for Kerala and UAE businesses ready to scale.
               </p>
             </div>
             {!hideAllPostButton && (
-              <Link href="/blog" className="bg-[#A3E635] text-black px-8 py-3 rounded-full font-bold text-xs flex items-center gap-2 hover:bg-white transition-all w-fit shrink-0">
-                All Post <ArrowRight className="w-4 h-4" />
+              <Link
+                href="/blog"
+                className="bg-[#A3E635] text-black px-8 py-3.5 rounded-full font-bold text-xs flex items-center gap-2 hover:bg-white transition-all w-fit shrink-0 shadow-lg"
+              >
+                All Posts <ArrowRight className="w-4 h-4" />
               </Link>
             )}
           </div>
         )}
 
+        {/* Blog Cards Grid matching exact layout reference */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {posts.map((post, i) => (
-            <div key={post.slug || i} className="group cursor-pointer">
-              <Link href={post.slug} className="block relative h-[350px] sm:h-[400px] rounded-[30px] sm:rounded-[40px] overflow-hidden mb-6 sm:mb-8 bg-[#0A0A0A]">
-                <Image
-                  src={post.image}
-                  alt={post.title}
-                  fill
-                  className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
-                  referrerPolicy="no-referrer"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent"></div>
+            <div key={post.slug || i} className="group flex">
+              <Link
+                href={post.slug}
+                className={`flex flex-col w-full rounded-[24px] sm:rounded-[28px] overflow-hidden transition-all duration-300 border ${
+                  isTransparent
+                    ? 'bg-[#1F1F1F] border-gray-800 hover:border-gray-600 text-white shadow-xl hover:-translate-y-1'
+                    : 'bg-[#222222] border-gray-800 hover:border-[#A3E635] text-white shadow-2xl hover:-translate-y-1'
+                }`}
+              >
+                {/* TOP LANDSCAPE THUMBNAIL (ASPECT 16:9 / IDEAL BANNER HEIGHT) */}
+                <div className="relative w-full aspect-[16/9] overflow-hidden bg-[#121212] shrink-0">
+                  <Image
+                    src={post.image}
+                    alt={post.title}
+                    fill
+                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                    referrerPolicy="no-referrer"
+                  />
+                </div>
 
-                <div className="absolute bottom-6 left-6 right-6">
-                  <span className="inline-block px-3 py-1 bg-white/20 backdrop-blur-md border border-white/10 rounded-full text-[10px] uppercase tracking-widest text-white mb-4">
-                    {post.tag}
-                  </span>
-                  <h3 className="text-xl font-bold text-white mb-3 leading-tight group-hover:text-[#A3E635] transition-colors line-clamp-2">
-                    {post.title}
-                  </h3>
-                  <p className="text-xs text-gray-300 leading-relaxed line-clamp-2 mb-4 opacity-90">
-                    {post.desc}
-                  </p>
-                  <span className="flex items-center gap-2 text-white text-xs font-bold group/btn">
-                    Read Article <ArrowRight className="w-3 h-3 group-hover/btn:translate-x-1 transition-transform" />
-                  </span>
+                {/* BOTTOM CONTENT AREA (MATCHING REFERENCE IMAGE) */}
+                <div className="p-6 sm:p-7 flex flex-col justify-between flex-1 space-y-4">
+                  <div className="space-y-3">
+                    {/* Title */}
+                    <h3 className="text-xl sm:text-2xl font-bold leading-snug text-white group-hover:text-[#A3E635] transition-colors line-clamp-2">
+                      {post.title}
+                    </h3>
+
+                    {/* Excerpt */}
+                    <p className="text-xs sm:text-sm text-gray-400 font-light leading-relaxed line-clamp-3">
+                      {post.desc}
+                    </p>
+                  </div>
+
+                  {/* Footer Row (Date | Read Time calculated dynamically from content wordcount) */}
+                  <div className="flex items-center gap-3 text-xs text-gray-400 font-medium pt-3 border-t border-white/10">
+                    <span>{post.date}</span>
+                    <span className="text-gray-600">|</span>
+                    <span>{post.readTime}</span>
+                  </div>
                 </div>
               </Link>
             </div>
