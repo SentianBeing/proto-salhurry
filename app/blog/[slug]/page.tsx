@@ -51,22 +51,11 @@ const portableTextComponents = {
       if (!imageUrl) return null;
       return (
         <figure className="my-10 text-center">
-          <div className="relative w-full max-w-4xl mx-auto rounded-3xl overflow-hidden shadow-xl bg-[#0A0A0A] flex items-center justify-center p-3 sm:p-5">
-            {/* Ambient Blurred Backdrop for vertical & custom aspect ratios */}
-            <div className="absolute inset-0 overflow-hidden pointer-events-none">
-              <img
-                src={imageUrl}
-                alt=""
-                className="w-full h-full object-cover blur-2xl opacity-35 scale-110"
-              />
-            </div>
-            {/* 100% Uncropped Responsive Image */}
-            <img
-              src={imageUrl}
-              alt={value.alt || 'SalHurry Blog Image'}
-              className="relative z-10 w-auto h-auto max-w-full max-h-[75vh] object-contain rounded-2xl mx-auto shadow-md"
-            />
-          </div>
+          <img
+            src={imageUrl}
+            alt={value.alt || 'SalHurry Blog Image'}
+            className="w-full h-auto max-h-[750px] object-contain rounded-2xl sm:rounded-3xl shadow-lg mx-auto"
+          />
           {value.caption && (
             <figcaption className="text-xs text-gray-500 mt-3 font-medium">
               {value.caption}
@@ -160,22 +149,13 @@ export default async function BlogDetailPage({ params }: Props) {
 
         {/* Content Wrapper */}
         <div className="max-w-4xl mx-auto px-4 sm:px-6 md:px-12 -mt-20 relative z-20">
-          {/* Cover Image with Ambient Backdrop & 100% Uncropped Display */}
+          {/* Clean Cover Image Without Black Frame or Padding */}
           {blog.coverImage && (
-            <div className="relative w-full rounded-[32px] sm:rounded-[40px] overflow-hidden shadow-2xl mb-16 bg-[#0A0A0A] flex items-center justify-center p-3 sm:p-6 min-h-[300px] sm:min-h-[450px]">
-              {/* Ambient blurred background glow */}
-              <div className="absolute inset-0 overflow-hidden pointer-events-none">
-                <img
-                  src={blog.coverImage}
-                  alt=""
-                  className="w-full h-full object-cover blur-3xl opacity-40 scale-110"
-                />
-              </div>
-              {/* Main uncropped image */}
+            <div className="w-full flex justify-center mb-16">
               <img
                 src={blog.coverImage}
                 alt={blog.title}
-                className="relative z-10 w-auto h-auto max-w-full max-h-[80vh] object-contain rounded-[24px] sm:rounded-[32px] mx-auto shadow-2xl"
+                className="w-full h-auto max-h-[750px] object-contain rounded-[28px] sm:rounded-[36px] shadow-2xl mx-auto"
               />
             </div>
           )}
