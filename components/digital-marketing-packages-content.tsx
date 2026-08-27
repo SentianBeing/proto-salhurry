@@ -96,7 +96,7 @@ const packagesData: PackageTier[] = [
     highlights: [
       'Both Platforms: Meta Ads + Google Ads Management',
       '8–10 social media creatives per month',
-      '4 reels / short videos per month',
+      '2 reels / short videos per month',
       'Basic on-page SEO + monthly optimization',
       'Minor website maintenance (content updates & small fixes)',
       'Monthly performance report + strategy call'
@@ -104,7 +104,7 @@ const packagesData: PackageTier[] = [
     features: {
       adPlatforms: '2 Platforms (Meta Ads + Google Ads)',
       creatives: '8–10 social media creatives per month',
-      videos: '4 reels / short videos per month',
+      videos: '2 reels / short videos per month',
       seo: 'Basic on-page SEO + monthly optimization',
       websiteMaintenance: 'Minor website updates & maintenance',
       landingPage: '—',
@@ -161,7 +161,7 @@ const faqs = [
   },
   {
     question: 'What is the key difference between Starter (₹9,999) and Business Growth (₹19,999)?',
-    answer: 'Starter focuses on 1 platform (Meta OR Google) with 4 static posters and no video. Business Growth expands your reach to BOTH Google and Meta, doubles static creatives (8–10), adds 4 video reels per month, includes basic on-page SEO + website maintenance, and includes a monthly strategy call.'
+    answer: 'Starter focuses on 1 platform (Meta OR Google) with 4 static posters and no video. Business Growth expands your reach to BOTH Google and Meta, doubles static creatives (8–10), adds 2 video reels per month, includes basic on-page SEO + website maintenance, and includes a monthly strategy call.'
   },
   {
     question: 'Are there any long-term contract locks or setup fees?',
@@ -212,7 +212,7 @@ export default function DigitalMarketingPackagesContent() {
             </p>
 
             {/* Quick Value Badges */}
-            <div className="flex flex-wrap justify-center gap-3 sm:gap-6 text-xs sm:text-sm text-gray-300 font-medium mb-10">
+            <div className="flex flex-wrap justify-center gap-3 sm:gap-6 text-xs sm:text-sm text-gray-300 font-medium mb-4">
               <span className="flex items-center gap-2 bg-white/5 border border-white/10 px-3.5 py-1.5 rounded-full">
                 <ShieldCheck className="w-4 h-4 text-[#A3E635]" /> 100% Client-Owned Ad Accounts
               </span>
@@ -222,34 +222,6 @@ export default function DigitalMarketingPackagesContent() {
               <span className="flex items-center gap-2 bg-white/5 border border-white/10 px-3.5 py-1.5 rounded-full">
                 <TrendingUp className="w-4 h-4 text-[#A3E635]" /> Flexible Month-to-Month Terms
               </span>
-            </div>
-
-            {/* View Mode Toggle Buttons */}
-            <div className="inline-flex flex-wrap justify-center p-1.5 bg-[#1A1A1A] border border-white/10 rounded-full text-xs sm:text-sm font-medium gap-1">
-              <button
-                onClick={() => setViewMode('cards')}
-                className={`flex items-center gap-2 px-4 sm:px-5 py-2.5 rounded-full transition-all ${
-                  viewMode === 'cards' ? 'bg-[#A3E635] text-black font-bold shadow-lg' : 'text-gray-400 hover:text-white'
-                }`}
-              >
-                <Layers className="w-4 h-4" /> Package Tiers
-              </button>
-              <button
-                onClick={() => setViewMode('customizer')}
-                className={`flex items-center gap-2 px-4 sm:px-5 py-2.5 rounded-full transition-all ${
-                  viewMode === 'customizer' ? 'bg-[#A3E635] text-black font-bold shadow-lg' : 'text-gray-400 hover:text-white'
-                }`}
-              >
-                <Sliders className="w-4 h-4" /> Custom Builder & Lead Estimator
-              </button>
-              <button
-                onClick={() => setViewMode('comparison')}
-                className={`flex items-center gap-2 px-4 sm:px-5 py-2.5 rounded-full transition-all ${
-                  viewMode === 'comparison' ? 'bg-[#A3E635] text-black font-bold shadow-lg' : 'text-gray-400 hover:text-white'
-                }`}
-              >
-                <PieChart className="w-4 h-4" /> Side-by-Side Matrix
-              </button>
             </div>
           </motion.div>
         </div>
@@ -325,7 +297,7 @@ export default function DigitalMarketingPackagesContent() {
                 <span>Meta + Google Ads</span>
               </span>
               <span className="bg-white border border-gray-200 px-3 py-1.5 rounded-lg flex items-center gap-1.5 font-medium shadow-sm">
-                <Check className="w-3.5 h-3.5 text-[#A3E635]" /> 8–10 Creatives + 4 Video Reels
+                <Check className="w-3.5 h-3.5 text-[#A3E635]" /> 8–10 Creatives + 2 Video Reels
               </span>
               <span className="bg-white border border-gray-200 px-3 py-1.5 rounded-lg flex items-center gap-1.5 font-medium shadow-sm">
                 <Check className="w-3.5 h-3.5 text-[#A3E635]" /> On-Page SEO + Website Upkeep
@@ -335,10 +307,40 @@ export default function DigitalMarketingPackagesContent() {
         </div>
       </section>
 
+      {/* VIEW MODE PILL SELECTOR (Single master control positioned above content) */}
+      <div className="px-4 sm:px-6 max-w-7xl mx-auto mb-8 text-center">
+        <div className="inline-flex flex-col sm:flex-row justify-center p-1.5 bg-[#1A1A1A] border border-white/10 rounded-[28px] sm:rounded-full text-xs sm:text-sm font-medium gap-1 shadow-2xl">
+          <button
+            onClick={() => setViewMode('cards')}
+            className={`flex items-center justify-center gap-2 px-4 sm:px-5 py-2.5 rounded-full transition-all ${
+              viewMode === 'cards' ? 'bg-[#A3E635] text-black font-bold shadow-lg' : 'text-gray-400 hover:text-white'
+            }`}
+          >
+            <Layers className="w-4 h-4" /> Package Tiers
+          </button>
+          <button
+            onClick={() => setViewMode('customizer')}
+            className={`flex items-center justify-center gap-2 px-4 sm:px-5 py-2.5 rounded-full transition-all ${
+              viewMode === 'customizer' ? 'bg-[#A3E635] text-black font-bold shadow-lg' : 'text-gray-400 hover:text-white'
+            }`}
+          >
+            <Sliders className="w-4 h-4" /> Custom Builder & Lead Estimator
+          </button>
+          <button
+            onClick={() => setViewMode('comparison')}
+            className={`flex items-center justify-center gap-2 px-4 sm:px-5 py-2.5 rounded-full transition-all ${
+              viewMode === 'comparison' ? 'bg-[#A3E635] text-black font-bold shadow-lg' : 'text-gray-400 hover:text-white'
+            }`}
+          >
+            <PieChart className="w-4 h-4" /> Side-by-Side Matrix
+          </button>
+        </div>
+      </div>
+
       {/* VIEW MODE 1: TIER CARDS GRID (LIGHT THEME WITH CONTRAST POPPED RECOMMENDED CARD) */}
       {viewMode === 'cards' && (
         <section className="px-4 sm:px-6 md:px-12 max-w-7xl mx-auto mb-24">
-          {/* Mobile Tier Tabs */}
+          {/* Mobile Tier Filter Tabs (All Packages, Starter, Business Growth, Premium Brand) */}
           <div className="flex sm:hidden overflow-x-auto gap-2 pb-4 mb-6 scrollbar-none">
             <button
               onClick={() => setActiveTab('all')}
@@ -515,6 +517,7 @@ export default function DigitalMarketingPackagesContent() {
       {/* VIEW MODE 2: COMPARISON MATRIX TABLE (WITH BRAND LOGO ICONS) */}
       {viewMode === 'comparison' && (
         <section className="px-4 sm:px-6 md:px-12 max-w-7xl mx-auto mb-24">
+
           <div className="text-center mb-8">
             <h2 className="text-3xl font-bold text-gray-900 mb-2">Side-by-Side Package Comparison</h2>
             <p className="text-gray-600 text-sm">Compare features across all 3 tiers at a glance</p>
@@ -567,7 +570,7 @@ export default function DigitalMarketingPackagesContent() {
                 <tr>
                   <td className="p-5 font-semibold text-gray-900">Reels / Short Videos</td>
                   <td className="p-5 text-center text-gray-400">—</td>
-                  <td className="p-5 text-center text-gray-900 font-bold bg-[#A3E635]/10 border-x border-[#A3E635]/30">4 Reels / Videos</td>
+                  <td className="p-5 text-center text-gray-900 font-bold bg-[#A3E635]/10 border-x border-[#A3E635]/30">2 Reels / Videos</td>
                   <td className="p-5 text-center text-gray-700">4–6 Pro Edited Reels</td>
                 </tr>
                 <tr>

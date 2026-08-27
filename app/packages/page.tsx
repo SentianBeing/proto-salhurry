@@ -33,7 +33,7 @@ export default function PackagesPage() {
         name: 'Business Growth Package',
         price: '19999',
         priceCurrency: 'INR',
-        description: 'Meta Ads + Google Ads, 8-10 creatives, 4 video reels, on-page SEO groundwork, and website maintenance.',
+        description: 'Meta Ads + Google Ads, 8-10 creatives, 2 video reels, on-page SEO groundwork, and website maintenance.',
         url: 'https://www.salhurry.in/packages#business-growth'
       },
       {

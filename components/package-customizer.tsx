@@ -35,7 +35,7 @@ export default function PackageCustomizer() {
   const [creatives, setCreatives] = useState<'4' | '8-10' | '15+'>('8-10');
 
   // Step 4 — Video/reels
-  const [reels, setReels] = useState<'none' | '1' | '4' | '4-6pro'>('4');
+  const [reels, setReels] = useState<'none' | '1' | '2' | '4' | '4-6pro'>('2');
 
   // Step 5 — Add-ons
   const [seo, setSeo] = useState<'none' | 'basic' | 'advanced'>('basic');
@@ -63,6 +63,7 @@ export default function PackageCustomizer() {
 
     // Video modifier
     if (reels === '1') monthlyFee += 2000;
+    else if (reels === '2') monthlyFee += 3500;
     else if (reels === '4') monthlyFee += 6000;
     else if (reels === '4-6pro') monthlyFee += 9500;
 
@@ -97,7 +98,7 @@ export default function PackageCustomizer() {
     const isBusinessGrowthPreset =
       platform === 'both' &&
       creatives === '8-10' &&
-      reels === '4' &&
+      reels === '2' &&
       seo === 'basic' &&
       webMaint === 'minor' &&
       !productShoot &&
@@ -306,7 +307,7 @@ export default function PackageCustomizer() {
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
                 {[
                   { id: 'none', label: 'None' },
-                  { id: '1', label: '1 Reel/mo' },
+                  { id: '2', label: '2 Reels/mo' },
                   { id: '4', label: '4 Reels/mo' },
                   { id: '4-6pro', label: '4–6 Pro Reels/mo' }
                 ].map((item) => (
