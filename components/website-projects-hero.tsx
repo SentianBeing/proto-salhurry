@@ -41,13 +41,15 @@ export default function WebsiteProjectsHero() {
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
-  // 5 Polaroid Cards - Explodes from center stack (0, 0) out to exact positions clear of text
+  // 5 Polaroid Cards with initial explode coordinates + unique cloud floating loop parameters
   const polaroidCards = [
     {
       id: 'paperplane',
       title: 'Paperplane Studio',
       image: 'https://res.cloudinary.com/der2xk0cv/image/upload/v1772204480/rishi0_1_-AJivLpPK_bfnlgh.jpg',
-      // Top-Left (Arx Crates in screenshot)
+      floatDuration: 5.2,
+      floatY: [0, -12, 0, 8, 0],
+      floatRotate: [0, 1.8, 0, -1.2, 0],
       initial: { opacity: 0, scale: 0.3, x: 0, y: 0, rotate: -4 },
       animate: {
         opacity: 1,
@@ -61,7 +63,9 @@ export default function WebsiteProjectsHero() {
       id: 'transindia',
       title: 'Transindia Cooling',
       image: 'https://res.cloudinary.com/der2xk0cv/image/upload/v1772208495/Screenshot_2026-02-27_213719_nxaxrs.png',
-      // Mid-Left (Winston Moore in screenshot)
+      floatDuration: 6.4,
+      floatY: [0, 10, -8, 12, 0],
+      floatRotate: [0, -2.2, 0, 1.5, 0],
       initial: { opacity: 0, scale: 0.3, x: 0, y: 0, rotate: -4 },
       animate: {
         opacity: 1,
@@ -75,7 +79,9 @@ export default function WebsiteProjectsHero() {
       id: 'smoothdubai',
       title: 'Smooth Dubai',
       image: '/images/projects/smoothdubai.png',
-      // Top-Right (Golden Hour in screenshot)
+      floatDuration: 4.8,
+      floatY: [0, -14, 4, -8, 0],
+      floatRotate: [0, 2, -1, 1.5, 0],
       initial: { opacity: 0, scale: 0.3, x: 0, y: 0, rotate: -4 },
       animate: {
         opacity: 1,
@@ -89,7 +95,9 @@ export default function WebsiteProjectsHero() {
       id: 'sigmasand',
       title: 'Sigma Sands',
       image: 'https://res.cloudinary.com/der2xk0cv/image/upload/v1772207119/051737f6-fec7-4d05-9dbb-3c10f65d12cf_wu1bl6.png',
-      // Bottom-Left
+      floatDuration: 5.8,
+      floatY: [0, -9, 11, -5, 0],
+      floatRotate: [0, -1.8, 1.2, -1, 0],
       initial: { opacity: 0, scale: 0.3, x: 0, y: 0, rotate: -4 },
       animate: {
         opacity: 1,
@@ -103,7 +111,9 @@ export default function WebsiteProjectsHero() {
       id: 'greenhat',
       title: 'Greenhat Photo',
       image: '/images/projects/greenhatphotography.png',
-      // Bottom-Right
+      floatDuration: 5.4,
+      floatY: [0, 12, -10, 6, 0],
+      floatRotate: [0, 1.5, -2, 1.2, 0],
       initial: { opacity: 0, scale: 0.3, x: 0, y: 0, rotate: -4 },
       animate: {
         opacity: 1,
@@ -117,11 +127,22 @@ export default function WebsiteProjectsHero() {
 
   return (
     <section className="relative flex flex-col items-center justify-center px-4 sm:px-6 md:px-12 pt-2 sm:pt-6 md:pt-10 pb-16 sm:pb-24 overflow-hidden bg-[#0A0A0A] text-white rounded-b-[36px] md:rounded-b-[72px]">
-      {/* Background Soft Spotlight Glow */}
+      {/* Background Soft Spotlight & Ambient Cloud Glows */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(45,51,33,0.45)_0%,rgba(10,10,10,0.98)_72%)] pointer-events-none" />
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] sm:w-[750px] sm:h-[750px] bg-[#A3E635] opacity-10 rounded-full blur-[180px] pointer-events-none" />
+      
+      {/* Soft Drifting Cloud Mist Elements */}
+      <motion.div
+        animate={{
+          x: [-30, 30, -30],
+          y: [-20, 20, -20],
+          opacity: [0.08, 0.15, 0.08],
+        }}
+        transition={{ duration: 12, repeat: Infinity, ease: 'easeInOut' }}
+        className="absolute top-1/4 left-1/3 w-[350px] h-[350px] bg-white opacity-10 rounded-full blur-[140px] pointer-events-none"
+      />
 
-      {/* 1. SCATTERED POLAROID CARDS (Floating at outer edges on mobile & desktop) */}
+      {/* 1. POLAROID CARDS (Entrance Explode + Continuous Cloud Floating Effect) */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-10 overflow-hidden">
         {polaroidCards.map((card, index) => (
           <motion.div
@@ -133,11 +154,23 @@ export default function WebsiteProjectsHero() {
               delay: index * 0.07,
               ease: [0.16, 1, 0.3, 1] as const,
             }}
-            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-auto transform transition-all duration-300 hover:scale-110 hover:z-50 cursor-pointer"
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-auto cursor-pointer z-20"
             onClick={openModal}
           >
-            {/* Polaroid Card */}
-            <div className="bg-[#F8F9FA] text-black p-2 sm:p-2.5 pb-4 sm:pb-6 rounded-[16px] sm:rounded-[18px] shadow-[0_20px_50px_rgba(0,0,0,0.6)] border-2 border-black/80 w-[115px] sm:w-[155px] md:w-[185px] lg:w-[200px]">
+            {/* Inner Cloud Floating Bobbing Motion */}
+            <motion.div
+              animate={{
+                y: card.floatY,
+                rotate: card.floatRotate,
+              }}
+              transition={{
+                duration: card.floatDuration,
+                repeat: Infinity,
+                ease: 'easeInOut',
+                delay: 0.8 + index * 0.15,
+              }}
+              className="bg-[#F8F9FA] text-black p-2 sm:p-2.5 pb-4 sm:pb-6 rounded-[16px] sm:rounded-[18px] shadow-[0_25px_60px_rgba(0,0,0,0.65)] border-2 border-black/80 w-[115px] sm:w-[155px] md:w-[185px] lg:w-[200px] hover:scale-110 transition-transform duration-300"
+            >
               <div className="relative w-full aspect-[4/3] rounded-[11px] overflow-hidden bg-gray-900 border border-black/10">
                 <Image
                   src={card.image}
@@ -151,12 +184,12 @@ export default function WebsiteProjectsHero() {
               <p className="mt-1.5 text-[10px] sm:text-xs font-extrabold text-gray-900 tracking-tight font-sans truncate pl-0.5">
                 {card.title}
               </p>
-            </div>
+            </motion.div>
           </motion.div>
         ))}
       </div>
 
-      {/* 2. TEXT STACK (Positioned tightly below Navbar) */}
+      {/* 2. TEXT STACK */}
       <motion.div
         variants={textContainerVariants}
         initial="hidden"
@@ -208,7 +241,7 @@ export default function WebsiteProjectsHero() {
 
             <a
               href="#projects-grid"
-              className="px-6 sm:px-8 py-3.5 bg-white/10 text-white border border-white/20 font-bold rounded-full flex items-center gap-2.5 hover:bg-white hover:text-black hover:scale-105 transition-all text-xs uppercase tracking-wider backdrop-blur-md group"
+              className="px-6 sm:px-8 py-3.5 bg-white/10 text-white border border-white/20 font-bold rounded-full flex items-center gap-3 hover:bg-white hover:text-black hover:scale-105 transition-all text-xs uppercase tracking-wider backdrop-blur-md group"
             >
               <span>EXPLORE DESIGNS</span>
               <div className="w-5 h-5 rounded-full bg-white/20 group-hover:bg-black group-hover:text-white flex items-center justify-center transition-colors">
