@@ -13,4 +13,5 @@ export const staticRoutes = [
     { path: '/services/web-development', title: 'Web Development' },
     { path: '/digital-marketing-agency-trivandrum', title: 'Digital Marketing Agency Trivandrum' },
     { path: '/web-development-company-kerala', title: 'Web Development Company Kerala' },
+    { path: '/website-projects', title: 'Website Projects' },
 ];

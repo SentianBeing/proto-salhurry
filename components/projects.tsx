@@ -110,6 +110,16 @@ export default function Projects({ initialCaseStudies = [] }: { initialCaseStudi
           </motion.div>
         ))}
       </div>
+
+      <div className="mt-16 text-center">
+        <Link
+          href="/website-projects"
+          className="inline-flex items-center gap-3 px-8 py-4 bg-black text-white hover:bg-[#A3E635] hover:text-black font-bold text-xs rounded-full uppercase tracking-wider transition-all duration-300 shadow-lg group"
+        >
+          <span>View Website Projects</span>
+          <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+        </Link>
+      </div>
     </section>
   );
 }
