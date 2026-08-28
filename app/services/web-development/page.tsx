@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 import Navbar from '@/layouts/navbar';
 import Footer from '@/layouts/footer';
 import Partners from '@/components/partners';
@@ -6,6 +7,7 @@ import StackSection from '@/components/stack-section';
 import CTA from '@/components/cta';
 import AnimatedHeroImage from '@/components/animated-hero-image';
 import ContactButton from '@/components/contact-button';
+import StickyWorksButton from '@/components/sticky-works-button';
 import Image from 'next/image';
 import { constructMetadata } from '@/lib/seo';
 import { Metadata } from 'next';
@@ -45,9 +47,9 @@ export default function WebDevelopmentPage() {
                   text="Start Your Project"
                   className="bg-[#A3E635] text-black px-8 py-4 rounded-full font-bold hover:bg-white transition-all"
                 />
-                <a href="#tech-stack" className="border border-white/20 text-white px-8 py-4 rounded-full font-bold hover:bg-white/10 transition-all">
-                  View Our Stack
-                </a>
+                <Link href="/website-projects" className="border border-white/20 text-white px-8 py-4 rounded-full font-bold hover:bg-white hover:text-black transition-all">
+                  View Our Works
+                </Link>
               </div>
             </div>
 
@@ -217,6 +219,7 @@ export default function WebDevelopmentPage() {
 
       <CTA />
       <Footer />
+      <StickyWorksButton />
     </main>
   );
 }

@@ -60,6 +60,7 @@ export const metadata: Metadata = {
 
 import { ContactModalProvider } from '@/context/contact-modal-context';
 import Script from 'next/script';
+import MiniWhatsappButton from '@/components/mini-whatsapp-button';
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -85,6 +86,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
         <ContactModalProvider>
           {children}
+          <MiniWhatsappButton />
         </ContactModalProvider>
       </body>
     </html>
