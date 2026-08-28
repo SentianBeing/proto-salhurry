@@ -140,6 +140,18 @@ const websiteProjects: WebsiteProjectItem[] = [
     highlights: ['UAE IT Contracting Showcase', 'Fiber Optics & Security Grid', 'Enterprise B2B Inquiry', 'Tech Corporate Layout']
   },
   {
+    id: 'fuzefinance',
+    title: 'Fuze Finance',
+    url: 'https://fuze.finance/',
+    displayUrl: 'fuze.finance',
+    industry: 'Digital Assets & Fintech',
+    category: 'Finance & Consulting',
+    location: 'Dubai, UAE',
+    image: 'https://res.cloudinary.com/der2xk0cv/image/upload/v1787925514/6e573af5-e64d-49b2-b663-93acd1130ca6_ntzngl.png',
+    description: 'Digital asset infrastructure and regulated B2B crypto investment API platform operating out of Dubai, UAE.',
+    highlights: ['Digital Asset Infrastructure', 'Fintech API Architecture', 'UAE Regulated Platform', 'Dark Mode Fintech UI']
+  },
+  {
     id: 'smoothdubai',
     title: 'Smooth Dubai',
     url: 'https://smoothdubai.ae/',

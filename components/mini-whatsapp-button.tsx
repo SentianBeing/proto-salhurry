@@ -84,7 +84,7 @@ export default function MiniWhatsappButton() {
                       rel="noopener noreferrer"
                       className="text-gray-900 hover:text-[#25D366] transition-colors whitespace-nowrap"
                     >
-                      Wanna chat?
+                      Talk to us
                     </a>
                     <button
                       onClick={(e) => {
